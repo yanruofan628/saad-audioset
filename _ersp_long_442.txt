@@ -1,0 +1,28 @@
+[StrReplace d:\PycharmProjects\Attention_switch\plot_ersp_all_trial_saad.py]
+NEW:
+    plot_overview(ersp_map, times_ref, OUT / "ersp_all_overview.png", channels=OVERVIEW_CHANNELS, display_crop=False)
+    print(f"  wrote ersp_all_overview.png (full window)")
+    plot_overview(ersp_map, times_ref, OUT / "ersp_all_overview_clean.png", channels=OVERVIEW_CHANNELS, display_crop=True)
+    print(f"  wrote ersp_all_overview_clean.png (display crop {DISPLAY_TMIN}…{DISPLAY_TMAX}s)")
+
+    meta = {
+        "n_subjects": len(participants),
+        "channels": labs,
+        "overview_channels": OVERVIEW_CHANNELS,
+        "freqs_hz": FREQS.tolist(),
+        "time_window_s": [TMIN_REL, TMAX_REL],
+        "baseline_s": list(BASELINE),
+        "display_crop_s": [DISPLAY_TMIN, DISPLAY_TMAX],
+        "method": "Morlet total power (trial-average) → dB vs baseline → group median",
+        "no_LA_RA": True,
+        "vmin_vmax_db": [VMIN, VMAX],
+        "note": (
+            "Edge stripes are Morlet convolution boundary artifacts; "
+            "clean figures display-crop to reduce them. Computation uses full -3..+2 s."
+        ),
+        "outputs": {
+            "overview": "ersp_all_overview.png",
+            "overview_clean": "ersp_all_overview_clean.png",
+            "per_channel": [f"ersp_all_{c}.png" for c in labs],
+        },
+    }

@@ -1,0 +1,164 @@
+这篇论文的核心模型是 **AC-DANet**（Auditory Cortex-inspired Dual Attention Network，听觉皮层启发的双注意力网络）。它不是通用深度学习堆叠，而是把神经科学分析里发现的「背侧/腹侧注意力通路」直接写进了网络结构。
+
+---
+
+## 任务背景
+
+**输入**：单 trial EEG（刺激锁定后 1 秒，60 通道，100 Hz）
+
+**输出**：三分类
+1. **Target** — 目标声（枪声）
+2. **Interfering event** — 干扰事件（UrbanSound8K 里其他 9 类）
+3. **Background noise** — 纯背景风声
+
+实验里目标嵌在风声里，SNR 为 0 dB 或 -10 dB；被试听到目标就按键。模型要从脑电里解码「当前听到的是哪一类」。
+
+---
+
+## 整体架构：三大阶段
+
+```mermaid
+flowchart TB
+    EEG[原始 EEG X] --> ERP[ERP-Stream 时域]
+    EEG --> ERSP[ERSP-Stream STFT 时频]
+    EEG --> SRC[Source-Stream 约束空间滤波]
+
+    ERSP --> VAN[腹侧通路 VAN-Analog<br/>TFDC → Key/Value]
+    ERP --> DAN[背侧通路 DAN-Analog<br/>Transformer → Query]
+    SRC --> DAN
+
+    VAN --> GCAF[门控交叉注意力 GCAF]
+    DAN --> GCAF
+
+    EEG --> Pz[Pz 通道]
+    Pz --> PTL[顶叶目标位点 PTL]
+
+    GCAF --> FUSE[融合特征]
+    PTL --> FUSE
+    FUSE --> CLS[MLP 三分类]
+    PTL --> AUX[辅助二分类 target vs non-target]
+```
+
+---
+
+## 阶段 1：多视角神经表征嵌入
+
+原始 EEG \(X \in \mathbb{R}^{B \times C \times T}\) 被拆成三条并行流：
+
+### 1) ERP-Stream（时域）
+- 直接用原始时间序列
+- 保留 ERP 的形态和潜伏期
+- 给**背侧通路**用，对应自上而下认知控制
+
+### 2) ERSP-Stream（时频）
+- 用 STFT：\(X_{ERSP} = |STFT(X)|\)
+- 超参：window=32，hop=4
+- 表示刺激在时频上的能量分布
+- 给**腹侧通路**用，对应自下而上显著性检测
+
+### 3) Source-Stream（源空间近似）
+- 1D 卷积做**可学习空间滤波**：\(X_{source} = ReLU(W_{src} * X + b)\)
+- 学 2 个源成分（\(N_{src}=2\)）
+- 两个约束：
+  - 权重用 sLORETA 等源分析结果初始化（颞叶 vs 额顶等先验）
+  - 训练时对 \(W_{src}\) 加 **L1 稀疏**，鼓励局部、可解释的空间模式
+
+---
+
+## 阶段 2：双通路注意力核心（DPA）
+
+模仿大脑两条注意力网络的功能分工：
+
+### 腹侧通路 VAN-Analog（自下而上）
+- **输入**：只有 ERSP-Stream
+- **模块**：**TFDC**（Time-Frequency Decoupled Convolution）
+  - 频率轴、时间轴分开卷积，分别学频谱和节律
+- **输出**：显著性特征序列 **Key / Value** \(Z_{VAN}\)
+- 含义：场景里「哪些时频模式很显眼」
+
+### 背侧通路 DAN-Analog（自上而下）
+- **输入**：ERP-Stream + Source-Stream 拼接
+- **模块**：**Temporal Transformer Encoder**（1 层，2 头，\(d_m=64\)）
+- **输出**：单个 **Query** 向量 \(q_{DAN}\)
+- 含义：任务相关的自上而下注意指令
+
+### 门控交叉注意力融合 GCAF
+模拟 DAN 对 VAN 的调制：
+
+1. **交叉注意力**：Query 来自背侧，Key/Value 来自腹侧  
+   \(z_{attn} = CrossAttention(Q=q_{DAN}, K/V=Z_{VAN})\)
+
+2. **门控**：\(g = \sigma(W_g q_{DAN} + b_g)\)
+
+3. **融合**：\(z_{fused} = g \odot z_{attn}\)
+
+也就是：先按任务目标从显著性特征里筛选，再用门控决定保留多少。
+
+---
+
+## 阶段 3：顶叶目标位点 PTL + 决策
+
+神经分析发现 **Pz** 对目标最敏感，对干扰和纯噪声几乎无反应，所以单独加了一条并行支路：
+
+### PTL 模块
+- 只处理 **Pz 单通道**
+- 轻量 1D CNN，多头输出两件事：
+  1. **Confidence Score** \(s_{conf}\)：目标生物标记强度（标量）
+  2. **Auxiliary Logits** \(o_{aux}\)：二分类（target vs non-target）
+
+### 最终分类
+- 主通路融合特征 \(z_{fused}\) 与 \(s_{conf}\) 拼接
+- 送入 MLP → 三分类 logits \(o_{main}\)
+
+---
+
+## 联合损失函数
+
+\[
+\mathcal{L}_{total} = \mathcal{L}_{main} + \lambda_{aux} \cdot \mathcal{L}_{aux} + \lambda_{L1} \cdot \mathcal{L}_{L1}
+\]
+
+| 项 | 作用 |
+|---|---|
+| \(\mathcal{L}_{main}\) | 主任务三分类交叉熵 |
+| \(\mathcal{L}_{aux}\) | PTL 辅助损失，显式学 Pz 目标标记（\(\lambda_{aux}=0.4\)） |
+| \(\mathcal{L}_{L1}\) | Source-Stream 空间滤波稀疏（\(\lambda_{L1}=10^{-5}\)） |
+
+训练：Adam，lr=1e-3，batch=20，100 epochs，dropout=0.3；类别不平衡时对多数类下采样到与 target 相同。
+
+---
+
+## 神经科学如何驱动设计
+
+| 神经发现 | 模型对应 |
+|---|---|
+| 腹侧网络（STG/SMG）做声音选择与显著性 | VAN + ERSP + TFDC |
+| 背侧网络（PreCG/SPG/SFG）做任务控制 | DAN + ERP/Source + Transformer |
+| Pz 对目标特异、对干扰/噪声不敏感 | PTL 专路 + 辅助损失 |
+| 源空间颞叶/额顶先后激活 | Source-Stream 约束空间滤波 |
+| 目标诱发 alpha 抑制、delta/theta 增强 | ERSP-Stream 显式编码时频 |
+
+---
+
+## 性能（论文报告）
+
+**被试内 5 折**：准确率 **69.60%**，TPR **85.26%**，FPR **9.77%**（优于 EEGNet、ShallowConvNet、EEG-Conformer 等）
+
+**跨被试 LOSO**：准确率 **66.58%**，泛化较好
+
+**消融**（去掉后掉点最大）：
+- 去掉 **PTL**：-7.03%
+- 去掉 **GCAF**（改拼接）：-6.28%
+- 去掉 **双通路**（单路 CNN）：-5.19%
+
+主要混淆在 **target ↔ interfering**，背景噪声相对好分。
+
+---
+
+## 和你本地代码的关系
+
+你工作区里的 `eeg_audio_fusion_*.py` 是 **EEG + 音频特征** 融合；这篇论文的 AC-DANet 是 **纯 EEG 解码**，没有音频输入，但思路相近：多视角表征、双通路注意力、Pz/顶叶先验、交叉注意力融合。
+
+如果你愿意，我可以按这篇论文的结构，帮你对照现有代码画一版「能直接改你项目」的实现草图（哪些模块你已有、哪些要新写）。
+
+[REDACTED]

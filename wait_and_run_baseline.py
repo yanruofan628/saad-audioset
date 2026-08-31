@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""等 gated_ablation 三模块跑完后，自动补跑 residual_gated 基线（四人）。"""
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+OUTPUT_ROOT = Path('A:/standard_data_interp_ica_99/nme_fusion_results/individual/gated_ablation')
+PLV_SUMMARY = OUTPUT_ROOT / 'residual_gated_plv' / 'mirror' / 'all_subjects_summary.csv'
+BASELINE_SUMMARY = OUTPUT_ROOT / 'residual_gated' / 'mirror' / 'all_subjects_summary.csv'
+POLL_SEC = 120
+
+
+def main():
+    print('等待 spatial / ersp / plv 消融完成 ...')
+    print(f'  监视文件: {PLV_SUMMARY}')
+    while not PLV_SUMMARY.is_file():
+        time.sleep(POLL_SEC)
+    if BASELINE_SUMMARY.is_file():
+        print(f'基线已存在，跳过: {BASELINE_SUMMARY}')
+        return
+    print('消融已完成，开始跑 residual_gated 基线（4 人）...')
+    subprocess.run([sys.executable, 'run_residual_gated_baseline.py'], check=True)
+    print('基线跑完。')
+
+
+if __name__ == '__main__':
+    main()

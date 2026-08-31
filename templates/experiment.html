@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频实验</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .status {
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .progress {
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .video-container {
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        video {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            display: block;
+        }
+
+        .audio-info {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 1.1em;
+        }
+
+        .choice-buttons {
+            margin: 30px 0;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .choice-btn {
+            padding: 20px 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .choice-btn:active {
+            transform: translateY(0);
+        }
+
+        .left-btn {
+            background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+            color: white;
+        }
+
+        .right-btn {
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            color: white;
+        }
+
+        .choice-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .instructions {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .waiting {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .connected {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .disconnected {
+            background: #F44336;
+            color: white;
+        }
+
+        .audio-controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .audio-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .audio-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .choice-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .choice-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="connection-status" id="connectionStatus">
+        <span id="connectionText">连接中...</span>
+    </div>
+
+    <div class="container">
+        <h1>🎵 音频实验 🎵</h1>
+        
+        <div class="instructions">
+            <p><strong>实验说明：</strong></p>
+            <p>1. 请仔细观察视频画面并聆听音频</p>
+            <p>2. 音频播放后，请选择您认为更合适的选项</p>
+            <p>3. 请尽快做出选择，反应时间会被记录</p>
+            <p>4. 实验会自动进行，请耐心等待</p>
+        </div>
+
+        <div class="status" id="status">
+            等待实验开始...
+        </div>
+
+        <div class="progress" id="progressContainer" style="display: none;">
+            <div>实验进度</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div id="progressText">0 / 0</div>
+        </div>
+
+        <div class="timer" id="timer" style="display: none;">
+            <div id="timerText">准备中...</div>
+        </div>
+
+        <div class="video-container">
+            <video id="videoPlayer" controls style="display: none;">
+                <source src="/video" type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+        </div>
+
+        <div class="audio-info" id="audioInfo" style="display: none;">
+            <div>当前音频: <span id="currentAudio">-</span></div>
+            <div class="audio-controls">
+                <button class="audio-btn" id="playAudio">播放音频</button>
+                <button class="audio-btn" id="stopAudio">停止音频</button>
+            </div>
+        </div>
+
+        <div class="choice-buttons" id="choiceButtons" style="display: none;">
+            <button class="choice-btn left-btn" id="leftBtn" onclick="makeChoice('left')">
+                ← 左
+            </button>
+            <button class="choice-btn right-btn" id="rightBtn" onclick="makeChoice('right')">
+                右 →
+            </button>
+        </div>
+
+        <audio id="audioPlayer" preload="auto">
+            您的浏览器不支持音频播放
+        </audio>
+    </div>
+
+    <script src="/static/socket.io.min.js"></script>
+    <script>
+        // 全局变量
+        let socket;
+        let currentTrial = 0;
+        let totalTrials = 0;
+        let trialStartTime = 0;
+        let isWaitingForChoice = false;
+        let participantId = 'participant_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSocket();
+            setupEventListeners();
+            
+            // 显示参与者ID
+            console.log('参与者ID:', participantId);
+        });
+
+        // 初始化Socket连接
+        function initializeSocket() {
+            socket = io();
+            
+            socket.on('connect', function() {
+                updateConnectionStatus(true);
+                console.log('已连接到服务器');
+            });
+            
+            socket.on('disconnect', function() {
+                updateConnectionStatus(false);
+                console.log('与服务器断开连接');
+            });
+            
+            socket.on('status_update', function(data) {
+                updateStatus(data);
+            });
+            
+            socket.on('experiment_start', function(data) {
+                handleExperimentStart(data);
+            });
+            
+            socket.on('trial_start', function(data) {
+                handleTrialStart(data);
+            });
+            
+            socket.on('trial_end', function() {
+                handleTrialEnd();
+            });
+            
+            socket.on('experiment_end', function(data) {
+                handleExperimentEnd(data);
+            });
+            
+            socket.on('choice_recorded', function(data) {
+                console.log('选择已记录:', data);
+            });
+        }
+
+        // 设置事件监听器
+        function setupEventListeners() {
+            document.getElementById('playAudio').addEventListener('click', function() {
+                const audio = document.getElementById('audioPlayer');
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            });
+            
+            document.getElementById('stopAudio').addEventListener('click', function() {
+                const audio = document.getElementById('audioPlayer');
+                audio.pause();
+                audio.currentTime = 0;
+            });
+        }
+
+        // 更新连接状态
+        function updateConnectionStatus(connected) {
+            const statusEl = document.getElementById('connectionStatus');
+            const textEl = document.getElementById('connectionText');
+            
+            if (connected) {
+                statusEl.className = 'connection-status connected';
+                textEl.textContent = '已连接';
+            } else {
+                statusEl.className = 'connection-status disconnected';
+                textEl.textContent = '连接断开';
+            }
+        }
+
+        // 更新状态
+        function updateStatus(data) {
+            const statusEl = document.getElementById('status');
+            
+            if (data.is_running) {
+                statusEl.textContent = `实验进行中 - 当前试验: ${data.current_trial} / ${data.total_trials}`;
+                statusEl.className = 'status';
+            } else {
+                statusEl.textContent = '等待实验开始...';
+                statusEl.className = 'status waiting';
+            }
+        }
+
+        // 处理实验开始
+        function handleExperimentStart(data) {
+            totalTrials = data.total_trials;
+            currentTrial = 0;
+            
+            document.getElementById('status').textContent = `实验开始！共 ${totalTrials} 个试验`;
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('timer').style.display = 'block';
+            document.getElementById('videoPlayer').style.display = 'block';
+            
+            // 开始播放视频
+            const video = document.getElementById('videoPlayer');
+            video.play().catch(e => console.log('视频自动播放失败:', e));
+            
+            updateProgress();
+        }
+
+        // 处理试验开始
+        function handleTrialStart(data) {
+            currentTrial = data.trial_number;
+            trialStartTime = Date.now();
+            
+            document.getElementById('currentAudio').textContent = data.audio_file;
+            document.getElementById('audioInfo').style.display = 'block';
+            
+            // 加载音频
+            const audio = document.getElementById('audioPlayer');
+            audio.src = data.audio_path;
+            audio.load();
+            
+            // 显示选择按钮
+            document.getElementById('choiceButtons').style.display = 'flex';
+            isWaitingForChoice = true;
+            
+            updateProgress();
+            startTrialTimer();
+            
+            console.log(`试验 ${currentTrial} 开始: ${data.audio_file}`);
+        }
+
+        // 处理试验结束
+        function handleTrialEnd() {
+            isWaitingForChoice = false;
+            document.getElementById('choiceButtons').style.display = 'none';
+            document.getElementById('audioInfo').style.display = 'none';
+            document.getElementById('timer').style.display = 'none';
+            
+            // 停止音频
+            const audio = document.getElementById('audioPlayer');
+            audio.pause();
+            audio.currentTime = 0;
+            
+            console.log(`试验 ${currentTrial} 结束`);
+        }
+
+        // 处理实验结束
+        function handleExperimentEnd(data) {
+            document.getElementById('status').textContent = `实验完成！共完成 ${data.total_trials} 个试验`;
+            document.getElementById('choiceButtons').style.display = 'none';
+            document.getElementById('audioInfo').style.display = 'none';
+            document.getElementById('timer').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+            
+            console.log('实验结束:', data);
+        }
+
+        // 更新进度
+        function updateProgress() {
+            if (totalTrials > 0) {
+                const progress = (currentTrial / totalTrials) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('progressText').textContent = `${currentTrial} / ${totalTrials}`;
+            }
+        }
+
+        // 开始试验计时
+        function startTrialTimer() {
+            const timerEl = document.getElementById('timer');
+            const timerTextEl = document.getElementById('timerText');
+            
+            timerEl.style.display = 'block';
+            
+            // 17秒倒计时
+            let timeLeft = 17;
+            timerTextEl.textContent = `剩余时间: ${timeLeft}秒`;
+            
+            const countdown = setInterval(() => {
+                timeLeft--;
+                if (timeLeft > 0) {
+                    timerTextEl.textContent = `剩余时间: ${timeLeft}秒`;
+                } else {
+                    clearInterval(countdown);
+                    timerTextEl.textContent = '时间到！';
+                }
+            }, 1000);
+        }
+
+        // 做出选择
+        function makeChoice(choice) {
+            if (!isWaitingForChoice) {
+                console.log('当前不在等待选择状态');
+                return;
+            }
+            
+            const reactionTime = Date.now() - trialStartTime;
+            
+            const choiceData = {
+                participant_id: participantId,
+                trial_number: currentTrial,
+                audio_file: document.getElementById('currentAudio').textContent,
+                choice: choice,
+                reaction_time: reactionTime
+            };
+            
+            console.log('发送选择:', choiceData);
+            
+            // 发送选择到服务器
+            socket.emit('participant_choice', choiceData);
+            
+            // 禁用按钮
+            document.getElementById('leftBtn').disabled = true;
+            document.getElementById('rightBtn').disabled = true;
+            
+            // 显示选择结果
+            const selectedBtn = choice === 'left' ? document.getElementById('leftBtn') : document.getElementById('rightBtn');
+            selectedBtn.style.background = 'linear-gradient(135deg, #FFD700, #FFA500)';
+            selectedBtn.style.transform = 'scale(1.1)';
+            
+            console.log(`选择: ${choice}, 反应时间: ${reactionTime}ms`);
+        }
+
+        // 键盘快捷键
+        document.addEventListener('keydown', function(event) {
+            if (!isWaitingForChoice) return;
+            
+            if (event.key === 'ArrowLeft' || event.key === 'a' || event.key === 'A') {
+                makeChoice('left');
+                event.preventDefault();
+            } else if (event.key === 'ArrowRight' || event.key === 'd' || event.key === 'D') {
+                makeChoice('right');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

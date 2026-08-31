@@ -1,0 +1,40 @@
+=== mirror_amfm_vs_salience_beta.log ===
+训练模型: am_fm_salience, salience_beta
+  yanxingzhuo: am_fm_salience=0.6896, salience_beta=0.8208
+  jinxiaoyue: am_fm_salience=0.8500, salience_beta=0.8271
+  chenxianwei: am_fm_salience=0.8187, salience_beta=0.7708
+  yeziyuan: am_fm_salience=0.6959, salience_beta=0.6812
+  zhangzhiyao: am_fm_salience=0.6292, salience_beta=0.6188
+  haoxiang: am_fm_salience=0.7597, salience_beta=0.7358
+  hehaohuai: am_fm_salience=0.7591, salience_beta=0.6858
+  qiuhaiyun: am_fm_salience=0.8438, salience_beta=0.8458
+  GROUP:
+    am_fm_salience: 0.7557 ± 0.0798 (n=8)
+    salience_beta: 0.7483 ± 0.0818 (n=8)
+
+=== mirror_amfm_vs_content_priority_subj1-5.log ===
+no model line
+  GROUP:
+
+=== mirror_audio_vs_amfm_salience.log ===
+训练模型: audio_only, am_fm_salience
+  yanxingzhuo: am_fm_salience=0.7000, audio_only=0.6771
+  jinxiaoyue: am_fm_salience=0.8438, audio_only=0.7771
+  chenxianwei: am_fm_salience=0.8229, audio_only=0.7479
+  yeziyuan: am_fm_salience=0.6958, audio_only=0.7354
+  zhangzhiyao: am_fm_salience=0.6229, audio_only=0.6417
+  haoxiang: am_fm_salience=0.7569, audio_only=0.7312
+  hehaohuai: am_fm_salience=0.7421, audio_only=0.7460
+  qiuhaiyun: am_fm_salience=0.8563, audio_only=0.8146
+  zhouyu: am_fm_salience=0.7375, audio_only=0.6875
+  honghaokai: am_fm_salience=0.8093, audio_only=0.7688
+  caolulu: am_fm_salience=0.6729, audio_only=0.6750
+  yanyinsong: am_fm_salience=0.7915, audio_only=0.7646
+  huangxiaohang: am_fm_salience=0.7417, audio_only=0.7292
+  xufan: am_fm_salience=0.7604, audio_only=0.7646
+  qiusiqi: am_fm_salience=0.7542, audio_only=0.7333
+  machenxiang: am_fm_salience=0.7979, audio_only=0.7750
+  lizhuhang: am_fm_salience=0.7229, audio_only=0.7125
+  GROUP:
+    am_fm_salience: 0.7547 ± 0.0619 (n=17)
+    audio_only: 0.7342 ± 0.0443 (n=17)

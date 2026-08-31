@@ -1,0 +1,231 @@
+下面按你们稿子里的时间结构（**试次约 5 s：0–3 s 静，3–5 s 分听**；`eeg_audio_residual.py` 里 `stimulus_start_seconds = 3.0`）说明 **分别怎么画**。优先用 **MNE-Python**；若只有 `*_eeg.npy`、没有事件文件，也能从已切 epoch **裁出刺激锁定**。
+
+---
+
+## 0. 共同准备
+
+### 数据与时间轴
+
+| 项目 | 建议值 |
+|------|--------|
+| 采样率 | 250 Hz |
+| 单试次长度 | 5 s（1250 点）若与现稿一致 |
+| 刺激 onset | **相对试次起点 3.0 s**（样本索引 `750`） |
+| ERP 窗 | **−0.2 ~ +2.0 s**（相对刺激 onset） |
+| ERSP 窗 | **−0.2 ~ +2.0 s**，基线 **−0.2 ~ 0 s** |
+| 参考/滤波 | 与论文预处理一致（CAR、0.1–40 Hz 等） |
+
+### 从 `npy` 做成 MNE Epochs（刺激 onset = 0）
+
+```python
+import numpy as np
+import mne
+
+sfreq = 250.0
+stim_onset_s = 3.0          # 相对 5 s 试次起点
+pre_s, post_s = 0.2, 2.0   # 刺激锁定窗
+
+# X: (n_epochs, n_channels, n_times=1250), 来自 processed/*_eeg.npy
+start = int((stim_onset_s - pre_s) * sfreq)
+stop = int((stim_onset_s + post_s) * sfreq)
+X_lock = X[:, :, start:stop]   # (n_epo, n_ch, n_samp)
+
+tmin = -pre_s
+info = mne.create_info(ch_names=ch_names, sfreq=sfreq, ch_types="eeg")
+montage = mne.channels.make_standard_montage("GSN-HydroCel-128")  # 或你们的 cap
+info.set_montage(montage, on_missing="ignore")
+
+epochs = mne.EpochsArray(
+    X_lock * 1e-6,  # 若 npy 是 µV；若是 V 则去掉 *1e-6
+    info,
+    tmin=tmin,
+    event_id={"dichotic": 1},
+    baseline=(-pre_s, 0),  # ERP/ERSP 基线
+)
+epochs.set_eeg_reference("average")
+```
+
+> **更严谨**：从 **raw `.mff` + 事件标记** 重新 `mne.Epochs(events, tmin=-0.2, tmax=2.0)`，避免 trial-end 对齐误差。有事件码时优先这条。
+
+---
+
+## 1. 刺激锁定 ERP（替代主文 3e/3f 的主图）
+
+### 要画什么
+
+- **(a)** 组平均 ERP：Fz 或 Cz（听觉）  
+- **(b)** 峰值时刻 **地形图**（如 N1 约 80–120 ms）  
+- 可选：**(c)** 全脑 butterfly（补充）
+
+### 步骤
+
+```python
+# 1) 每人 evoked，再 grand average
+evokeds = []
+for sub in subjects:
+    ep = load_subject_epochs(sub)  # 上节 EpochsArray
+    evokeds.append(ep.average())
+
+grand = mne.grand_average(evokeds, weights="equal")  # 或 mne.combine_evoked
+
+# 2) 波形图
+fig = grand.plot(picks=["FZ", "Cz"], spatial_colors=False, time_unit="s")
+
+# 3) 地形图：找通道均值峰值时间
+picks_topo = mne.pick_types(grand.info, eeg=True, exclude="bads")
+data = grand.get_data(picks_topo)
+times = grand.times
+peak_t = times[np.argmax(np.abs(data).mean(axis=0))]  # 或固定 t=0.1
+
+grand.plot_topomap(times=[0.08, 0.12, peak_t], ch_type="eeg")
+```
+
+### 图形要点
+
+- 纵轴 µV，横轴 ms（`times * 1000`）  
+- 竖线 0 = dichotic onset  
+- 图注：**baseline −200~0 ms, stimulus-locked**  
+- 正文写：**auditory evoked responses**，不写 selective attention  
+
+### 探索性（可选）
+
+```python
+left_epochs = epochs[labels == "left"]
+right_epochs = epochs[labels == "right"]
+mne.viz.plot_compare_evokeds(
+    {"reported left": left_epochs.average(), "reported right": right_epochs.average()},
+    picks="eeg", combine="mean",
+)
+# 严谨：cluster permutation（mne.stats.spatio_temporal_cluster_test）
+```
+
+---
+
+## 2. 刺激锁定 ERSP / 时频（比 3e 更合适）
+
+### 要画什么
+
+- 一张 **time × frequency** 热图（组平均）  
+- 常用 **4–30 Hz**，**dB 相对基线**
+
+### 步骤（Morlet，MNE 标准）
+
+```python
+freqs = np.arange(4, 31, 1)
+n_cycles = freqs / 2.0   # 或 freqs * 0.25，低频周期别太短
+
+power = mne.time_frequency.tfr_morlet(
+    epochs,
+    freqs=freqs,
+    n_cycles=n_cycles,
+    average=True,           # 先组内平均再组间，或先全部再平均
+    return_itc=False,
+    decim=2,                # 可选，加速
+    n_jobs=1,
+)
+
+# 组平均：对每个被试 average=True 得到 power 再 grand
+# 若 epochs 已是所有人合并，average=True 即 grand
+
+power.plot(
+    picks=["Cz", "Fz"],
+    baseline=(-0.2, 0),
+    mode="logratio",        # 或 "percent" → 即 ERSP/ERSP 常用 dB
+    vmin=-1, vmax=1,
+    cmap="RdBu_r",
+)
+```
+
+### 全脑均值 ERSP（一张总图）
+
+```python
+# 所有 EEG 通道平均后的 TFR
+power_all = power.copy().pick(picks="eeg")
+data = power_all.data.mean(axis=0)  # (n_freq, n_times)
+import matplotlib.pyplot as plt
+plt.imshow(
+    10 * np.log10(data / data[:, :,(power.times < 0)].mean(-1, keepdims=True)),  # 简化
+    aspect="auto",
+    origin="lower",
+    extent=[power.times[0], power.times[-1], freqs[0], freqs[-1]],
+)
+plt.axvline(0, color="k")
+plt.xlabel("Time (s)"); plt.ylabel("Frequency (Hz)")
+```
+
+更省事：`power.plot_topo(baseline=(-0.2, 0), mode="logratio", tmin=0, tmax=2)`
+
+### 与旧 PSD(3e) 的差别（画图时）
+
+| 旧 3e | ERSP |
+|-------|------|
+| 对 **0–3 s 静** 与 **3–5 s 有声** 各算 **一条 PSD 曲线** | 对每个试次、**以 onset=0** 算 **功率随时间变化** |
+| `psd_welch` 在长静段上 | `tfr_morlet` + `baseline=(-0.2,0)` |
+
+---
+
+## 3. 旧版 PSD + 拓扑（3e/3f）— 若仍要画（建议补充）
+
+### 3e：两条 PSD 曲线
+
+```python
+# epoch 5 s, 未重对齐：baseline 0-3s, stim 3-5s
+f_base, psd_base = epochs.get_data()[:, :, :750], ...
+# 或对每窗单独 welch
+from mne.time_frequency import psd_array_welch
+
+for name, t0, t1 in [("baseline", 0, 3), ("dichotic", 3, 5)]:
+    seg = X[:, :, int(t0*sfreq):int(t1*sfreq)]
+    psd, freqs = psd_array_welch(seg, sfreq=sfreq, fmin=1, fmax=40, average="mean")
+# 组平均后 plot(freqs, 10*log10(psd))
+```
+
+### 3f：拓扑（刺激窗 − 基线窗）
+
+```python
+# 各频段在 3-5 s 与 0-3 s 的平均功率差 → topomap
+# 用 mne.time_frequency.psd_array_welch + 频段掩膜 + plot_topomap
+```
+
+图注必须写：**pre-stimulus silence vs dichotic epoch**，避免 *selective attention*。
+
+---
+
+## 4. 信号质量图（3a–d，保留）— 简表
+
+| 子图 | 画法 |
+|------|------|
+| **3a 布局** | `mne.channels.plot_layout(info)` 或 cap montage |
+| **3b 坏道/ICA 数** | 每人一个数 → `matplotlib` 柱状图 |
+| **3c ICLabel** | ICA 跑完后 `mne-icalabel` 标分量，截屏 2–3 个成分拓扑 |
+| **3d 清洗前后** | 同一电极 `raw` 或单试次片段叠加对比 |
+
+---
+
+## 5. 推荐投稿图组合
+
+```
+主文 Fig. 质量:  3a–d（保留）
+主文 Fig. 神经:  ERP 波形 + N1 topo  |  ERSP (Cz 或 topo)
+补充:          旧 PSD 3e（可选）
+解码/行为:      原有
+```
+
+---
+
+## 6. 论文字段对应（Methods 一句）
+
+> For neurophysiological validation, we computed stimulus-locked ERPs and time–frequency representations (Morlet, 4–30 Hz) with baseline correction (−200 to 0 ms relative to dichotic onset). Epochs were aligned to stimulus onset at 3 s within each 5-s trial (or re-epoched from raw event markers when available).
+
+---
+
+## 7. 常见坑
+
+1. **npy 单位**：µV 还是 V，进 MNE 要一致。  
+2. **只用 3–5 s 段且 tmin=0**：那是 **刺激起点为 epoch 起点**，不是刺激锁定；应用上面 **slice + tmin=−0.2**。  
+3. **ERSP n_cycles**：<4 Hz 时周期数 ≥5，避免不稳定。  
+4. **先剔除坏试次** 再 grand average，与解码一致。  
+
+如果你把 `*_eeg.npy` 的 **shape 和是否已基线校正** 发我，我可以按你们实际维度改一版 **可直接运行的 `plot_validation_erp_ersp.py` 脚本**（含保存 pdf 路径）。
+
+[REDACTED]

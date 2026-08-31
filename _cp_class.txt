@@ -1,0 +1,267 @@
+        z_l = self.ear_encoder(am_left, mel_left)
+        z_r = self.ear_encoder(am_right, mel_right)
+        return self.classifier(torch.cat([z_l, z_r], dim=1))
+
+
+DEFAULT_CONTENT_PRIO_MARGIN = 0.1
+DEFAULT_CONTENT_PRIO_LOSS_WEIGHT = 0.2
+
+
+def content_priority_margin_loss(
+    p_left: torch.Tensor,
+    p_right: torch.Tensor,
+    labels: torch.Tensor,
+    margin: float = DEFAULT_CONTENT_PRIO_MARGIN,
+) -> torch.Tensor:
+    """Win-ear content priority score should exceed lose-ear by margin."""
+    choose_left = labels.eq(0)
+    p_win = torch.where(choose_left.unsqueeze(1), p_left, p_right)
+    p_lose = torch.where(choose_left.unsqueeze(1), p_right, p_left)
+    return F.relu(margin + p_lose - p_win).mean()
+
+
+def am_envelope_rms(am: torch.Tensor) -> torch.Tensor:
+    """Per-trial AM salience scalar from envelope frames. am: (B, T) -> (B, 1)."""
+    return torch.sqrt(torch.mean(am ** 2, dim=1, keepdim=True) + 1e-8)
+
+
+class AMFMSalienceContentPriorityClassifier(nn.Module):
+    """
+    AM+FM with explicit shared content-priority scores (no category labels).
+
+    Per ear: z = EarSalienceEncoder(AM, FM), p = priority_head(z) (shared across ears).
+    AM salience: RMS(AM). Classifier sees z_L/R, p_L/R, Δ_content, Δ_am.
+  Training: CE + optional margin on p_win - p_lose.
+    """
+
+    def __init__(
+        self,
+        n_mels: int = DEFAULT_N_MELS,
+        embed_dim: int = 32,
+        n_classes: int = 2,
+    ):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.ear_encoder = EarSalienceEncoder(n_mels=n_mels, embed_dim=embed_dim)
+        self.priority_head = nn.Sequential(
+            nn.Linear(embed_dim, 16),
+            nn.ReLU(),
+            nn.Dropout(0.1),
+            nn.Linear(16, 1),
+        )
+        feat_dim = embed_dim * 2 + 4  # z_l, z_r, p_l, p_r, delta_p, delta_am
+        self.classifier = nn.Sequential(
+            nn.Linear(feat_dim, 64),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(32, n_classes),
+        )
+
+    def encode_ears(
+        self,
+        am_left: torch.Tensor,
+        am_right: torch.Tensor,
+        mel_left: torch.Tensor,
+        mel_right: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+        z_l = self.ear_encoder(am_left, mel_left)
+        z_r = self.ear_encoder(am_right, mel_right)
+        p_l = self.priority_head(z_l)
+        p_r = self.priority_head(z_r)
+        s_l = am_envelope_rms(am_left)
+        s_r = am_envelope_rms(am_right)
+        return z_l, z_r, p_l, p_r, s_l, s_r
+
+    def forward(
+        self,
+        am_left: torch.Tensor,
+        am_right: torch.Tensor,
+        mel_left: torch.Tensor,
+        mel_right: torch.Tensor,
+        return_parts: bool = False,
+    ):
+        z_l, z_r, p_l, p_r, s_l, s_r = self.encode_ears(
+            am_left, am_right, mel_left, mel_right
+        )
+        delta_p = p_l - p_r
+        delta_am = s_l - s_r
+        feat = torch.cat([z_l, z_r, p_l, p_r, delta_p, delta_am], dim=1)
+        logits = self.classifier(feat)
+        if return_parts:
+            return logits, z_l, z_r, p_l, p_r
+        return logits
+
+
+def _pad_am_mel_batches(
+
+#####
+
+        if return_parts:
+            return logits, z_l, z_r, p_l, p_r
+        return logits
+
+
+class _ContentPriorityEarMixin:
+    """Shared encode path for content-priority variants."""
+
+    embed_dim: int
+    ear_encoder: EarSalienceEncoder
+    priority_head: nn.Module
+    classifier: nn.Module
+    priority_from_fm: bool = False
+
+    def _encode_ear_priority(
+        self, am: torch.Tensor, mel: torch.Tensor
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        z, _, fm_h = self.ear_encoder.forward_parts(am, mel)
+        if self.priority_from_fm:
+            p = self.priority_head(fm_h)
+        else:
+            p = self.priority_head(z)
+        s = am_envelope_rms(am)
+        return z, p, s
+
+    def encode_ears(
+        self,
+        am_left: torch.Tensor,
+        am_right: torch.Tensor,
+        mel_left: torch.Tensor,
+        mel_right: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+        z_l, p_l, s_l = self._encode_ear_priority(am_left, mel_left)
+        z_r, p_r, s_r = self._encode_ear_priority(am_right, mel_right)
+        return z_l, z_r, p_l, p_r, s_l, s_r
+
+    def _classifier_logits(
+        self,
+        z_l: torch.Tensor,
+        z_r: torch.Tensor,
+        p_l: torch.Tensor,
+        p_r: torch.Tensor,
+        s_l: torch.Tensor,
+        s_r: torch.Tensor,
+    ) -> torch.Tensor:
+        delta_p = p_l - p_r
+        delta_am = s_l - s_r
+        feat = torch.cat([z_l, z_r, p_l, p_r, delta_p, delta_am], dim=1)
+        return self.classifier(feat)
+
+
+class AMFMSalienceContentPriorityFMClassifier(_ContentPriorityEarMixin, nn.Module):
+    """
+    Tier A: content priority p from FM branch only (timbre identity).
+    AM branch supplies explicit salience s via RMS(AM); z still fuses AM+FM for classifier.
+    """
+
+    priority_from_fm = True
+
+    def __init__(
+        self,
+        n_mels: int = DEFAULT_N_MELS,
+        embed_dim: int = 32,
+        n_classes: int = 2,
+    ):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.ear_encoder = EarSalienceEncoder(n_mels=n_mels, embed_dim=embed_dim)
+        self.priority_head = nn.Sequential(
+            nn.Linear(FM_BRANCH_DIM, 16),
+            nn.ReLU(),
+            nn.Dropout(0.1),
+            nn.Linear(16, 1),
+        )
+        feat_dim = embed_dim * 2 + 4
+        self.classifier = nn.Sequential(
+            nn.Linear(feat_dim, 64),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(32, n_classes),
+        )
+
+    def forward(
+        self,
+        am_left: torch.Tensor,
+        am_right: torch.Tensor,
+        mel_left: torch.Tensor,
+        mel_right: torch.Tensor,
+        return_parts: bool = False,
+    ):
+        z_l, z_r, p_l, p_r, s_l, s_r = self.encode_ears(
+            am_left, am_right, mel_left, mel_right
+        )
+        logits = self._classifier_logits(z_l, z_r, p_l, p_r, s_l, s_r)
+        if return_parts:
+            return logits, z_l, z_r, p_l, p_r
+        return logits
+
+
+class AMFMSalienceGatedPriorityClassifier(_ContentPriorityEarMixin, nn.Module):
+    """
+    Tier C: explicit conflict-aware fusion of AM salience (Δ_am) and FM priority (Δp).
+    Gate uses |Δ_am| only (no labels at inference): large loudness diff -> trust AM.
+    """
+
+    priority_from_fm = True
+
+    def __init__(
+        self,
+        n_mels: int = DEFAULT_N_MELS,
+        embed_dim: int = 32,
+        n_classes: int = 2,
+        gate_tau: float = DEFAULT_GATE_TAU,
+    ):
+        super().__init__()
+        self.embed_dim = embed_dim
+        self.log_gate_tau = nn.Parameter(
+            torch.tensor(float(np.log(max(gate_tau, 1e-4))), dtype=torch.float32)
+        )
+        self.gate_scale = nn.Parameter(torch.tensor(1.0))
+        self.ear_encoder = EarSalienceEncoder(n_mels=n_mels, embed_dim=embed_dim)
+        self.priority_head = nn.Sequential(
+            nn.Linear(FM_BRANCH_DIM, 16),
+            nn.ReLU(),
+            nn.Dropout(0.1),
+            nn.Linear(16, 1),
+        )
+        feat_dim = embed_dim * 2 + 4
+        self.classifier = nn.Sequential(
+            nn.Linear(feat_dim, 64),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(32, n_classes),
+        )
+
+    def gate_weight(self, delta_am: torch.Tensor) -> torch.Tensor:
+        tau = torch.exp(self.log_gate_tau).clamp(min=1e-4)
+        return torch.sigmoid(-delta_am.abs() / tau)
+
+    def forward(
+        self,
+        am_left: torch.Tensor,
+        am_right: torch.Tensor,
+        mel_left: torch.Tensor,
+        mel_right: torch.Tensor,
+        return_parts: bool = False,
+    ):
+        z_l, z_r, p_l, p_r, s_l, s_r = self.encode_ears(
+            am_left, am_right, mel_left, mel_right
+        )
+        delta_p = p_l - p_r
+        delta_am = s_l - s_r
+        w = self.gate_weight(delta_am)
+        d_gated = w * delta_am + (1.0 - w) * delta_p
+        logits_cls = self._classifier_logits(z_l, z_r, p_l, p_r, s_l, s_r)
+        logits_gate = torch.cat([-d_gated, d_gated], dim=1)
+        logits = logits_cls + self.gate_scale * logits_gate
+        if return_parts:
+            return logits, z_l, z_r, p_l, p_r
+        return logits

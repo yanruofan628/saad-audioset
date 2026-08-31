@@ -1,0 +1,481 @@
+﻿original_name,cat_L,cat_R,s_clap_L,s_clap_R,pred_clap,rms_L,rms_R,pred_rms
+"sub_Male speech, man speaking_JLKsLx_SGOU_1+Baby cry, infant cry_g9Qah25_yH0_1.wav","Male speech, man speaking","Baby cry, infant cry",0.10626925528049469,0.34620019793510437,1,0.009167009674191614,0.022531475110939614,1
+"sub_Female speech, woman speaking_-1LQP2wemiQ_1+Telephone bell ringing_1isuXShxzOY_1.wav","Female speech, woman speaking",Telephone bell ringing,0.20875146985054016,0.2653381824493408,1,0.017467544211007387,0.03609646116992179,1
+sub_Helicopter_rzxqz7XqLHA_1+Sad music_dsibOgkezN8_1.wav,Helicopter,Sad music,0.00801524706184864,0.2151850461959839,1,0.020079898992972186,0.02658915691660165,1
+"sub_Male speech, man speaking_BuIMVqz85uk_1+Helicopter_5slM2JWYnBw_1.wav","Male speech, man speaking",Helicopter,0.22208231687545776,0.12392202019691467,0,0.034384155084835534,0.027147148312238953,0
+"sub_Male speech, man speaking_Fihamhv6TJo_1+Computer keyboard_4O-dYCrVKLY_1.wav","Male speech, man speaking",Computer keyboard,0.12907478213310242,0.17508554458618164,1,0.02744716012223882,0.016282165617939482,0
+"sub_Helicopter_GO_1gBjIR1c_1+Male speech, man speaking_Fihamhv6TJo_1.wav",Helicopter,"Male speech, man speaking",0.19670447707176208,0.12907478213310242,0,0.04695372131513407,0.02744716012223882,0
+"sub_Baby cry, infant cry_UFcUTwPlFAU_1+Bass drum_mHRF_-IOT2s_1.wav","Baby cry, infant cry",Bass drum,0.3021028935909271,0.15502899885177612,0,0.03210689261674738,0.0245993923397595,0
+"sub_Baby cry, infant cry_ypmfbwrqL4s_1+Bass drum_JesyktMT-Dk_1.wav","Baby cry, infant cry",Bass drum,0.3533092737197876,0.1732480674982071,0,0.03561908324408149,0.02185939767935835,0
+"sub_Helicopter_EOKUV6hgMhM_1+Baby cry, infant cry_ypmfbwrqL4s_1.wav",Helicopter,"Baby cry, infant cry",0.22658462822437286,0.3533092737197876,1,0.016602581913552707,0.03561908324408149,1
+"sub_Female speech, woman speaking_EQ91XVsmq-I_1+Telephone bell ringing_8UQI59N-bAs_1.wav","Female speech, woman speaking",Telephone bell ringing,0.24911892414093018,0.19591394066810608,0,0.027686756367876732,0.024386343738287998,0
+sub_Telephone bell ringing_EEhnuLFYehU_1+Bass drum_9tBOegUHrL0_1.wav,Telephone bell ringing,Bass drum,0.22332578897476196,0.1693619042634964,0,0.014630782429752312,0.03236642745502604,1
+"sub_Helicopter_rzxqz7XqLHA_1+Baby cry, infant cry_dIIiaO12I5Q_1.wav",Helicopter,"Baby cry, infant cry",0.00801524706184864,0.32512813806533813,1,0.020079898992972186,0.029880779617539956,1
+"sub_Baby cry, infant cry_wVVBhbrnj9s_1+Bass drum_uNpSMpqlkMA_1.wav","Baby cry, infant cry",Bass drum,0.2693762183189392,0.24160143733024597,0,0.029695993992929506,0.014815168932340072,0
+"sub_Baby cry, infant cry_UFcUTwPlFAU_1+Male speech, man speaking_H85puQUqrQY_1.wav","Baby cry, infant cry","Male speech, man speaking",0.3021028935909271,0.2335149198770523,0,0.03210689261674738,0.012301038367430928,0
+sub_Helicopter_9nsLTLNvOSw_1+Bass drum_-bJPDtT31p0_1.wav,Helicopter,Bass drum,0.2349580079317093,0.1344626247882843,0,0.02953913877489413,0.026194569256150588,0
+"sub_Bass drum_uNpSMpqlkMA_1+Baby cry, infant cry_wVVBhbrnj9s_1.wav",Bass drum,"Baby cry, infant cry",0.24160143733024597,0.2693762183189392,1,0.014815168932340072,0.029695993992929506,1
+"sub_Female speech, woman speaking_lO1rUT_MTjk_1+Bass drum_3k8zGf8Btfo_1.wav","Female speech, woman speaking",Bass drum,0.33074361085891724,0.20558224618434906,0,0.02667689995972267,0.0246707653126498,0
+sub_Sad music_6CaZAITdAsk_1+Telephone bell ringing_JUL2kqVi4qI_1.wav,Sad music,Telephone bell ringing,0.20593127608299255,0.242732435464859,1,0.034457693973890785,0.03142276891838854,0
+"sub_Female speech, woman speaking_J5_m9Ee6A6M_1+Baby cry, infant cry_2eWobSpugTw_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.06107553094625473,0.36616450548171997,1,0.008221909032821417,0.017638425939089094,1
+"sub_Baby cry, infant cry_s_Le6PwhssI_1+Sad music_lmrzR9cSMRY_1.wav","Baby cry, infant cry",Sad music,0.32947874069213867,0.15623514354228973,0,0.02123882576390495,0.027547265220659412,1
+sub_Computer keyboard_8evHpuXTcgM_1+Sad music_T0oF8MyYhBM_1.wav,Computer keyboard,Sad music,-0.03387540578842163,0.2158471643924713,1,0.011549582379851335,0.033650112084658186,1
+"sub_Male speech, man speaking_QNRche7AZkM_1+Helicopter_R2Aq_j1TDSs_1.wav","Male speech, man speaking",Helicopter,0.23521149158477783,0.17155446112155914,0,0.022952383940606072,0.03577077406509107,1
+sub_Helicopter_BNrmXcZQ-p4_1+Telephone bell ringing_Qtpn66PvyUA_1.wav,Helicopter,Telephone bell ringing,0.20046581327915192,0.17218750715255737,0,0.03015510155372596,0.019963718770951117,0
+"sub_Helicopter_X76DCP7SCR0_1+Baby cry, infant cry_StO32FBBIH4_1.wav",Helicopter,"Baby cry, infant cry",0.17519816756248474,0.2973054051399231,1,0.013568852471902638,0.030336070083123817,1
+"sub_Computer keyboard_66eFB3sy7Bw_1+Male speech, man speaking_H85puQUqrQY_1.wav",Computer keyboard,"Male speech, man speaking",0.26343226432800293,0.2335149198770523,0,0.022719664422401392,0.012301038367430928,0
+"sub_Male speech, man speaking_Ky8aKwI522Q_1+Telephone bell ringing_HhP9eZ8cNIY_1.wav","Male speech, man speaking",Telephone bell ringing,0.09816574305295944,0.18631279468536377,1,0.019951914097412596,0.026080087313384768,1
+"sub_Female speech, woman speaking_a7WAfwKi88Q_1+Bass drum_ZuBxMCk0cco_1.wav","Female speech, woman speaking",Bass drum,0.11717846989631653,0.3037988245487213,1,0.02096864244393639,0.02588605783852958,1
+sub_Sad music_OaV-ZyjNDFE_1+Computer keyboard_66eFB3sy7Bw_1.wav,Sad music,Computer keyboard,0.06866730004549026,0.26343226432800293,1,0.0316552433205264,0.022719664422401392,0
+"sub_Telephone bell ringing_HhP9eZ8cNIY_1+Male speech, man speaking_Ky8aKwI522Q_1.wav",Telephone bell ringing,"Male speech, man speaking",0.18631279468536377,0.09816574305295944,0,0.026080087313384768,0.019951914097412596,0
+"sub_Helicopter_4A3_lLVLpUg_1+Female speech, woman speaking_LrcvUfmRN8k_1.wav",Helicopter,"Female speech, woman speaking",0.10075502842664719,0.2578538656234741,1,0.02984095453096978,0.020230268639673542,0
+"sub_Helicopter_6_NEAEGeFIw_1+Male speech, man speaking_mZ_z2lorJeY_1.wav",Helicopter,"Male speech, man speaking",0.1179148480296135,-0.02197234332561493,0,0.03224426745635446,0.01995634221517222,0
+sub_Helicopter_jkvXuu8XltI_1+Bass drum_YnL6TJ_t068_1.wav,Helicopter,Bass drum,0.11986648291349411,0.167755126953125,1,0.043444815280350046,0.017973152554863234,0
+"sub_Bass drum_oBsTZmqrpFQ_1+Male speech, man speaking_BuIMVqz85uk_1.wav",Bass drum,"Male speech, man speaking",0.15396779775619507,0.22208231687545776,1,0.033185759744709366,0.034384155084835534,1
+"sub_Sad music_qZkM3QaeaUM_1+Baby cry, infant cry_XZ5oHxjfHKY_1.wav",Sad music,"Baby cry, infant cry",0.1707686483860016,0.3260090947151184,1,0.028783565108194607,0.012037681483777415,0
+"sub_Baby cry, infant cry_dIIiaO12I5Q_1+Computer keyboard_4O-dYCrVKLY_1.wav","Baby cry, infant cry",Computer keyboard,0.32512813806533813,0.17508554458618164,0,0.029880779617539956,0.016282165617939482,0
+"sub_Computer keyboard_Jz5wulRv1Ps_1+Female speech, woman speaking_HPfBYRU8tVM_1.wav",Computer keyboard,"Female speech, woman speaking",0.05724233761429787,0.2102241814136505,1,0.012851288245006153,0.027981318023461578,1
+"sub_Male speech, man speaking_bO6gUBBcniY_1+Helicopter_Wr44Q8MQHL0_1.wav","Male speech, man speaking",Helicopter,0.16679570078849792,0.07292193174362183,0,0.027914524189952532,0.03258769751000481,1
+"sub_Telephone bell ringing_TYc_q463LvA_1+Female speech, woman speaking_ytUznPL6d4E_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.19335827231407166,0.13982096314430237,0,0.028891460415676723,0.029289292324969775,1
+"sub_Female speech, woman speaking_HPfBYRU8tVM_1+Baby cry, infant cry_ypmfbwrqL4s_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.2102241814136505,0.3533092737197876,1,0.027981318023461578,0.03561908324408149,1
+sub_Computer keyboard_YUcV-grp898_1+Telephone bell ringing_TYc_q463LvA_1.wav,Computer keyboard,Telephone bell ringing,0.24475392699241638,0.19335827231407166,0,0.0015552846650162193,0.028891460415676723,1
+"sub_Telephone bell ringing_EEhnuLFYehU_1+Female speech, woman speaking_lAznHBBQkp4_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.22332578897476196,0.23681506514549255,1,0.014630782429752312,0.023978382327917692,1
+"sub_Baby cry, infant cry_QyJ4Z0jRJ20_1+Male speech, man speaking_BuIMVqz85uk_1.wav","Baby cry, infant cry","Male speech, man speaking",0.3034319281578064,0.22208231687545776,0,0.019458638784637293,0.034384155084835534,1
+sub_Sad music_dsibOgkezN8_1+Helicopter_rzxqz7XqLHA_1.wav,Sad music,Helicopter,0.2151850461959839,0.00801524706184864,0,0.02658915691660165,0.020079898992972186,0
+sub_Bass drum_ZuBxMCk0cco_1+Helicopter_R1zoAMguO3A_1.wav,Bass drum,Helicopter,0.3037988245487213,0.2648676037788391,0,0.02588605783852958,0.03446795801768726,1
+sub_Bass drum_CeA8--FUxYg_1+Computer keyboard_VQbC7Oth7wQ_1.wav,Bass drum,Computer keyboard,0.16762380301952362,0.2045033723115921,1,0.019618701383368096,0.01854362207590696,0
+"sub_Baby cry, infant cry_PyXQVNaAbHc_1+Sad music_bt8iHoIf2mo_1.wav","Baby cry, infant cry",Sad music,0.32274121046066284,0.1510903537273407,0,0.02118521588029352,0.03931063727766966,1
+sub_Computer keyboard_VQbC7Oth7wQ_1+Bass drum_CeA8--FUxYg_1.wav,Computer keyboard,Bass drum,0.2045033723115921,0.16762380301952362,0,0.01854362207590696,0.019618701383368096,1
+"sub_Sad music_giPa2vVEyVc_1+Baby cry, infant cry_K8On7nUJuP8_1.wav",Sad music,"Baby cry, infant cry",0.2772318720817566,0.40241000056266785,1,0.027422134855894575,0.022750498882331223,0
+"sub_Male speech, man speaking_Ky8aKwI522Q_1+Computer keyboard_whOLzTgCJds_1.wav","Male speech, man speaking",Computer keyboard,0.09816574305295944,0.17951758205890656,1,0.019951914097412596,0.017542052869595218,0
+"sub_Female speech, woman speaking_HPfBYRU8tVM_1+Sad music_I0q3IGmTkRo_1.wav","Female speech, woman speaking",Sad music,0.2102241814136505,0.167400062084198,0,0.027981318023461578,0.03734753911287748,1
+sub_Computer keyboard_rTh92nlG9io_1+Sad music_3OUNEL8XaR0_1.wav,Computer keyboard,Sad music,0.09708543121814728,0.10246409475803375,1,0.013735322247026793,0.02139235905130801,1
+sub_Computer keyboard_VQbC7Oth7wQ_1+Telephone bell ringing_N2jZmXePKV0_1.wav,Computer keyboard,Telephone bell ringing,0.2045033723115921,0.19966700673103333,0,0.01854362207590696,0.01948435864164277,1
+sub_Bass drum_1wqJ9KDfcME_1+Helicopter_BNrmXcZQ-p4_1.wav,Bass drum,Helicopter,0.19596613943576813,0.20046581327915192,1,0.020648628269157157,0.03015510155372596,1
+"sub_Baby cry, infant cry_UFcUTwPlFAU_1+Female speech, woman speaking_2ofK2gAQue4_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.3021028935909271,0.22387957572937012,0,0.03210689261674738,0.006277651219279194,0
+"sub_Baby cry, infant cry_Zm-sQnazFAQ_1+Female speech, woman speaking_QXnJ2manIdI_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.3335641920566559,0.17333272099494934,0,0.029361426265011495,0.019135637900501747,0
+"sub_Computer keyboard_4O-dYCrVKLY_1+Baby cry, infant cry_dIIiaO12I5Q_1.wav",Computer keyboard,"Baby cry, infant cry",0.17508554458618164,0.32512813806533813,1,0.016282165617939482,0.029880779617539956,1
+sub_Computer keyboard_P9qEFBa2s8Q_1+Telephone bell ringing_P-QOd_28o9c_1.wav,Computer keyboard,Telephone bell ringing,0.07968397438526154,-0.07122160494327545,0,0.017288184468420606,0.02489902672598854,1
+"sub_Baby cry, infant cry_StO32FBBIH4_1+Helicopter_X76DCP7SCR0_1.wav","Baby cry, infant cry",Helicopter,0.2973054051399231,0.17519816756248474,0,0.030336070083123817,0.013568852471902638,0
+"sub_Computer keyboard_iyroRIRrXUw_1+Male speech, man speaking_mZ_z2lorJeY_1.wav",Computer keyboard,"Male speech, man speaking",0.14235903322696686,-0.02197234332561493,0,0.00704593463919413,0.01995634221517222,1
+"sub_Baby cry, infant cry_QhUa5vXLlCI_1+Computer keyboard_PuvTDLP8lwM_1.wav","Baby cry, infant cry",Computer keyboard,0.20123791694641113,0.09532952308654785,0,0.035361207469240014,0.013868379556728266,0
+"sub_Male speech, man speaking_GnmgSQq6E54_1+Computer keyboard_uLdRi__nG2c_1.wav","Male speech, man speaking",Computer keyboard,0.27065181732177734,0.1435331106185913,0,0.01850078388162459,0.009341872385155802,0
+"sub_Helicopter_h5NTDVXiTiI_1+Female speech, woman speaking_a7WAfwKi88Q_1.wav",Helicopter,"Female speech, woman speaking",0.1642274558544159,0.11717846989631653,0,0.03015065387042272,0.02096864244393639,0
+"sub_Female speech, woman speaking_QXnJ2manIdI_1+Telephone bell ringing_TRgs9jv8ah0_1.wav","Female speech, woman speaking",Telephone bell ringing,0.17333272099494934,0.20252373814582825,1,0.019135637900501747,0.03386082589034153,1
+"sub_Baby cry, infant cry_UFcUTwPlFAU_1+Helicopter_xY4YrFk_PI8_1.wav","Baby cry, infant cry",Helicopter,0.3021028935909271,0.19636589288711548,0,0.03210689261674738,0.034454023038013704,1
+"sub_Sad music_vp6p45b-038_1+Baby cry, infant cry_StO32FBBIH4_1.wav",Sad music,"Baby cry, infant cry",0.132741317152977,0.2973054051399231,1,0.029591921437119188,0.030336070083123817,1
+sub_Telephone bell ringing_TYc_q463LvA_1+Sad music_qZkM3QaeaUM_1.wav,Telephone bell ringing,Sad music,0.19335827231407166,0.1707686483860016,0,0.028891460415676723,0.028783565108194607,0
+"sub_Sad music_6CaZAITdAsk_1+Baby cry, infant cry_QyJ4Z0jRJ20_1.wav",Sad music,"Baby cry, infant cry",0.20593127608299255,0.3034319281578064,1,0.034457693973890785,0.019458638784637293,0
+"sub_Sad music_UzDVZzIIcy8_1+Female speech, woman speaking_vuD0qyibQyQ_1.wav",Sad music,"Female speech, woman speaking",0.11867983639240265,0.15355730056762695,1,0.03628547419578216,0.027836392522283607,0
+sub_Computer keyboard_66eFB3sy7Bw_1+Sad music_OaV-ZyjNDFE_1.wav,Computer keyboard,Sad music,0.26343226432800293,0.06866730004549026,0,0.022719664422401392,0.0316552433205264,1
+sub_Sad music_giPa2vVEyVc_1+Helicopter_5slM2JWYnBw_1.wav,Sad music,Helicopter,0.2772318720817566,0.12392202019691467,0,0.027422134855894575,0.027147148312238953,0
+"sub_Female speech, woman speaking_EQ91XVsmq-I_1+Baby cry, infant cry_XZ5oHxjfHKY_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.24911892414093018,0.3260090947151184,1,0.027686756367876732,0.012037681483777415,0
+"sub_Baby cry, infant cry_Zm-sQnazFAQ_1+Helicopter_z4HX8-du2nQ_1.wav","Baby cry, infant cry",Helicopter,0.3335641920566559,0.2374526411294937,0,0.029361426265011495,0.0337619871616582,1
+"sub_Baby cry, infant cry_dIIiaO12I5Q_1+Sad music_y_toDfeACWE_1.wav","Baby cry, infant cry",Sad music,0.32512813806533813,0.13569843769073486,0,0.029880779617539956,0.016866205905453416,0
+sub_Helicopter_W3u2hj1x7gY_1+Bass drum_J6T4OwacRL0_1.wav,Helicopter,Bass drum,0.2960547208786011,0.15612220764160156,0,0.025070262424948236,0.027513031138971057,1
+"sub_Bass drum_pSlVtxLOYiM_1+Male speech, man speaking_JLKsLx_SGOU_1.wav",Bass drum,"Male speech, man speaking",0.1790561079978943,0.10626925528049469,0,0.02043919567514078,0.009167009674191614,0
+sub_Sad music_lmrzR9cSMRY_1+Telephone bell ringing_nBA65g90mnA_1.wav,Sad music,Telephone bell ringing,0.15623514354228973,0.264318585395813,1,0.027547265220659412,0.011962978857016382,0
+"sub_Baby cry, infant cry_g9Qah25_yH0_1+Male speech, man speaking_JLKsLx_SGOU_1.wav","Baby cry, infant cry","Male speech, man speaking",0.34620019793510437,0.10626925528049469,0,0.022531475110939614,0.009167009674191614,0
+"sub_Bass drum_y0TDJyuco0I_1+Female speech, woman speaking_-fAGzY9rnaA_1.wav",Bass drum,"Female speech, woman speaking",0.12885376811027527,0.08587349951267242,0,0.027004778406769226,0.02882286503977782,1
+sub_Bass drum_2qGjgfpQtFI_1+Computer keyboard_MQtUV_cFcm8_1.wav,Bass drum,Computer keyboard,0.23250363767147064,0.056705161929130554,0,0.03059836853277941,0.02525583930582542,0
+sub_Telephone bell ringing_P-QOd_28o9c_1+Computer keyboard_P9qEFBa2s8Q_1.wav,Telephone bell ringing,Computer keyboard,-0.07122160494327545,0.07968397438526154,1,0.02489902672598854,0.017288184468420606,0
+"sub_Male speech, man speaking_bO6gUBBcniY_1+Bass drum_ZuBxMCk0cco_1.wav","Male speech, man speaking",Bass drum,0.16679570078849792,0.3037988245487213,1,0.027914524189952532,0.02588605783852958,0
+sub_Telephone bell ringing_wg0LlkP_K3c_1+Sad music_Y7SoAXBFUew_1.wav,Telephone bell ringing,Sad music,0.16630646586418152,0.07309752702713013,0,0.019311372092620703,0.035617225143571886,1
+"sub_Telephone bell ringing_nBA65g90mnA_1+Male speech, man speaking_GnmgSQq6E54_1.wav",Telephone bell ringing,"Male speech, man speaking",0.264318585395813,0.27065181732177734,1,0.011962978857016382,0.01850078388162459,1
+"sub_Telephone bell ringing_JUL2kqVi4qI_1+Female speech, woman speaking_a7WAfwKi88Q_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.242732435464859,0.11717846989631653,0,0.03142276891838854,0.02096864244393639,0
+"sub_Female speech, woman speaking_7QnyKZe6VBA_1+Bass drum_9tBOegUHrL0_1.wav","Female speech, woman speaking",Bass drum,0.17125552892684937,0.1693619042634964,0,0.016932509190503625,0.03236642745502604,1
+"sub_Male speech, man speaking_mZ_z2lorJeY_1+Baby cry, infant cry_ZnGO4o9SqHY_1.wav","Male speech, man speaking","Baby cry, infant cry",-0.02197234332561493,0.17951032519340515,1,0.01995634221517222,0.02052144823027912,1
+"sub_Female speech, woman speaking_DpiGR6_i4Js_1+Sad music_xIdWJyhWueE_1.wav","Female speech, woman speaking",Sad music,0.1872529536485672,0.10191518068313599,0,0.02007495085217987,0.03972820822779523,1
+"sub_Helicopter_4A3_lLVLpUg_1+Male speech, man speaking_H85puQUqrQY_1.wav",Helicopter,"Male speech, man speaking",0.10075502842664719,0.2335149198770523,1,0.02984095453096978,0.012301038367430928,0
+sub_Sad music_dwSj0Rr3vFc_1+Computer keyboard_4O-dYCrVKLY_1.wav,Sad music,Computer keyboard,0.17465898394584656,0.17508554458618164,1,0.03983621562369695,0.016282165617939482,0
+sub_Sad music_qZkM3QaeaUM_1+Telephone bell ringing_TYc_q463LvA_1.wav,Sad music,Telephone bell ringing,0.1707686483860016,0.19335827231407166,1,0.028783565108194607,0.028891460415676723,1
+sub_Computer keyboard_MQtUV_cFcm8_1+Telephone bell ringing_0ZAfYE4bgs8_1.wav,Computer keyboard,Telephone bell ringing,0.056705161929130554,0.15856918692588806,1,0.02525583930582542,0.011660886296134597,0
+"sub_Female speech, woman speaking_vuD0qyibQyQ_1+Sad music_UzDVZzIIcy8_1.wav","Female speech, woman speaking",Sad music,0.15355730056762695,0.11867983639240265,0,0.027836392522283607,0.03628547419578216,1
+"sub_Telephone bell ringing_wg0LlkP_K3c_1+Male speech, man speaking_BuIMVqz85uk_1.wav",Telephone bell ringing,"Male speech, man speaking",0.16630646586418152,0.22208231687545776,1,0.019311372092620703,0.034384155084835534,1
+"sub_Sad music_bt8iHoIf2mo_1+Male speech, man speaking_Ky8aKwI522Q_1.wav",Sad music,"Male speech, man speaking",0.1510903537273407,0.09816574305295944,0,0.03931063727766966,0.019951914097412596,0
+sub_Sad music_3OUNEL8XaR0_1+Computer keyboard_rTh92nlG9io_1.wav,Sad music,Computer keyboard,0.10246409475803375,0.09708543121814728,0,0.02139235905130801,0.013735322247026793,0
+sub_Bass drum_5yLw_p9YcQE_1+Telephone bell ringing_8bRQgDQyTNw_1.wav,Bass drum,Telephone bell ringing,0.22079208493232727,0.17827099561691284,0,0.0266286515986745,0.03428080792696428,1
+"sub_Baby cry, infant cry_wVVBhbrnj9s_1+Male speech, man speaking_1OFDyTzUj24_1.wav","Baby cry, infant cry","Male speech, man speaking",0.2693762183189392,0.21842926740646362,0,0.029695993992929506,0.017769420048526056,0
+sub_Bass drum_YnL6TJ_t068_1+Helicopter_jkvXuu8XltI_1.wav,Bass drum,Helicopter,0.167755126953125,0.11986648291349411,0,0.017973152554863234,0.043444815280350046,1
+"sub_Bass drum_wff_C_CKm1g_1+Baby cry, infant cry_XZ5oHxjfHKY_1.wav",Bass drum,"Baby cry, infant cry",0.19600996375083923,0.3260090947151184,1,0.02480928716428038,0.012037681483777415,0
+"sub_Computer keyboard_uLdRi__nG2c_1+Male speech, man speaking_GnmgSQq6E54_1.wav",Computer keyboard,"Male speech, man speaking",0.1435331106185913,0.27065181732177734,1,0.009341872385155802,0.01850078388162459,1
+"sub_Female speech, woman speaking_lAznHBBQkp4_1+Baby cry, infant cry_z15CKEUxkEg_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.23681506514549255,0.3207845389842987,1,0.023978382327917692,0.026606538561588126,1
+"sub_Male speech, man speaking_Ky8aKwI522Q_1+Sad music_bt8iHoIf2mo_1.wav","Male speech, man speaking",Sad music,0.09816574305295944,0.1510903537273407,1,0.019951914097412596,0.03931063727766966,1
+"sub_Female speech, woman speaking_n6lloBIIZ-k_1+Helicopter_EOKUV6hgMhM_1.wav","Female speech, woman speaking",Helicopter,0.23039484024047852,0.22658462822437286,0,0.016687025980569842,0.016602581913552707,0
+sub_Computer keyboard_YUcV-grp898_1+Sad music_MIexFfOsuJs_1.wav,Computer keyboard,Sad music,0.24475392699241638,0.28348007798194885,1,0.0015552846650162193,0.02721486521344261,1
+sub_Helicopter_q3W8UiycXe8_1+Sad music_eQTK2fo3RoE_1.wav,Helicopter,Sad music,0.2725178599357605,0.07471414655447006,0,0.027024928730496865,0.0235679678418862,0
+sub_Sad music_T0oF8MyYhBM_1+Computer keyboard_8evHpuXTcgM_1.wav,Sad music,Computer keyboard,0.2158471643924713,-0.03387540578842163,0,0.033650112084658186,0.011549582379851335,0
+"sub_Bass drum_3k8zGf8Btfo_1+Male speech, man speaking_1OFDyTzUj24_1.wav",Bass drum,"Male speech, man speaking",0.20558224618434906,0.21842926740646362,1,0.0246707653126498,0.017769420048526056,0
+sub_Computer keyboard_66eFB3sy7Bw_1+Bass drum_nG9IOZqGHdM_1.wav,Computer keyboard,Bass drum,0.26343226432800293,0.21810197830200195,0,0.022719664422401392,0.02900128559150187,1
+"sub_Sad music_1WlvXneu6oY_1+Female speech, woman speaking_LysFhHBYTmE_1.wav",Sad music,"Female speech, woman speaking",0.13259074091911316,0.22248727083206177,1,0.036237833093002006,0.018925430181506348,0
+"sub_Female speech, woman speaking_LysFhHBYTmE_1+Telephone bell ringing_P-QOd_28o9c_1.wav","Female speech, woman speaking",Telephone bell ringing,0.22248727083206177,-0.07122160494327545,0,0.018925430181506348,0.02489902672598854,1
+"sub_Female speech, woman speaking_n6lloBIIZ-k_1+Bass drum_OrYHuCwfvb4_1.wav","Female speech, woman speaking",Bass drum,0.23039484024047852,0.19532236456871033,0,0.016687025980569842,0.039433855436534465,1
+"sub_Baby cry, infant cry_jHs2_FLtd9U_1+Male speech, man speaking_Fihamhv6TJo_1.wav","Baby cry, infant cry","Male speech, man speaking",0.4057883024215698,0.12907478213310242,0,0.012330456501517057,0.02744716012223882,1
+"sub_Bass drum_6DwlcJyDyxc_1+Baby cry, infant cry_dIIiaO12I5Q_1.wav",Bass drum,"Baby cry, infant cry",0.1997656226158142,0.32512813806533813,1,0.016877288193388483,0.029880779617539956,1
+"sub_Sad music_I0q3IGmTkRo_1+Female speech, woman speaking_HPfBYRU8tVM_1.wav",Sad music,"Female speech, woman speaking",0.167400062084198,0.2102241814136505,1,0.03734753911287748,0.027981318023461578,0
+"sub_Male speech, man speaking_mZ_z2lorJeY_1+Telephone bell ringing__xuq9rBndUE_1.wav","Male speech, man speaking",Telephone bell ringing,-0.02197234332561493,0.18790365755558014,1,0.01995634221517222,0.022149481838608813,1
+"sub_Baby cry, infant cry_tk4s-nlhmEQ_1+Male speech, man speaking_gPaoJv-NrEU_1.wav","Baby cry, infant cry","Male speech, man speaking",0.3513612151145935,0.20261499285697937,0,0.02361603505027917,0.031558803978028384,1
+sub_Telephone bell ringing_JUL2kqVi4qI_1+Computer keyboard_HKN2548Ts6A_1.wav,Telephone bell ringing,Computer keyboard,0.242732435464859,0.22994369268417358,0,0.03142276891838854,0.015337957553431564,0
+"sub_Computer keyboard_66eFB3sy7Bw_1+Baby cry, infant cry_nzwmPWAAQFg_1.wav",Computer keyboard,"Baby cry, infant cry",0.26343226432800293,0.357689768075943,1,0.022719664422401392,0.011938539889963058,0
+"sub_Bass drum_JesyktMT-Dk_1+Baby cry, infant cry_ypmfbwrqL4s_1.wav",Bass drum,"Baby cry, infant cry",0.1732480674982071,0.3533092737197876,1,0.02185939767935835,0.03561908324408149,1
+sub_Computer keyboard_PZACLpEasFU_1+Telephone bell ringing_HhP9eZ8cNIY_1.wav,Computer keyboard,Telephone bell ringing,0.21231141686439514,0.18631279468536377,0,0.00892444578687077,0.026080087313384768,1
+"sub_Baby cry, infant cry_ypmfbwrqL4s_1+Helicopter_EOKUV6hgMhM_1.wav","Baby cry, infant cry",Helicopter,0.3533092737197876,0.22658462822437286,0,0.03561908324408149,0.016602581913552707,0
+sub_Bass drum_eWsnTX9zkHI_1+Helicopter_5slM2JWYnBw_1.wav,Bass drum,Helicopter,0.19954413175582886,0.12392202019691467,0,0.03020290072871647,0.027147148312238953,0
+"sub_Sad music_lmrzR9cSMRY_1+Male speech, man speaking_bO6gUBBcniY_1.wav",Sad music,"Male speech, man speaking",0.15623514354228973,0.16679570078849792,1,0.027547265220659412,0.027914524189952532,1
+sub_Bass drum_xxffSM6940A_1+Telephone bell ringing_1isuXShxzOY_1.wav,Bass drum,Telephone bell ringing,0.18124723434448242,0.2653381824493408,1,0.03258839054246838,0.03609646116992179,1
+"sub_Sad music_9aE33JEIGOg_1+Female speech, woman speaking_lAznHBBQkp4_1.wav",Sad music,"Female speech, woman speaking",0.2783162295818329,0.23681506514549255,0,0.03993854029842428,0.023978382327917692,0
+"sub_Helicopter_6_NEAEGeFIw_1+Female speech, woman speaking_HPfBYRU8tVM_1.wav",Helicopter,"Female speech, woman speaking",0.1179148480296135,0.2102241814136505,1,0.03224426745635446,0.027981318023461578,0
+sub_Bass drum_a1Dch1ez9fY_1+Helicopter_GO_1gBjIR1c_1.wav,Bass drum,Helicopter,0.13753575086593628,0.19670447707176208,1,0.028335923604238426,0.04695372131513407,1
+"sub_Male speech, man speaking_mZ_z2lorJeY_1+Bass drum_5yLw_p9YcQE_1.wav","Male speech, man speaking",Bass drum,-0.02197234332561493,0.22079208493232727,1,0.01995634221517222,0.0266286515986745,1
+"sub_Male speech, man speaking_BuIMVqz85uk_1+Baby cry, infant cry_QyJ4Z0jRJ20_1.wav","Male speech, man speaking","Baby cry, infant cry",0.22208231687545776,0.3034319281578064,1,0.034384155084835534,0.019458638784637293,0
+"sub_Telephone bell ringing_TRgs9jv8ah0_1+Male speech, man speaking_H85puQUqrQY_1.wav",Telephone bell ringing,"Male speech, man speaking",0.20252373814582825,0.2335149198770523,1,0.03386082589034153,0.012301038367430928,0
+"sub_Female speech, woman speaking_LrcvUfmRN8k_1+Sad music_6vRBp8jo40Q_1.wav","Female speech, woman speaking",Sad music,0.2578538656234741,0.12646645307540894,0,0.020230268639673542,0.03952871402931249,1
+sub_Telephone bell ringing_RthSBUaKjes_1+Helicopter_jkvXuu8XltI_1.wav,Telephone bell ringing,Helicopter,0.19623711705207825,0.11986648291349411,0,0.02484404412607075,0.043444815280350046,1
+"sub_Sad music_MpS2SSIhe2g_1+Male speech, man speaking_GnmgSQq6E54_1.wav",Sad music,"Male speech, man speaking",0.152250275015831,0.27065181732177734,1,0.02437056483275767,0.01850078388162459,0
+"sub_Male speech, man speaking_BuIMVqz85uk_1+Telephone bell ringing_wg0LlkP_K3c_1.wav","Male speech, man speaking",Telephone bell ringing,0.22208231687545776,0.16630646586418152,0,0.034384155084835534,0.019311372092620703,0
+"sub_Sad music_lmrzR9cSMRY_1+Female speech, woman speaking_7761uBKNpd8_1.wav",Sad music,"Female speech, woman speaking",0.15623514354228973,0.18020597100257874,1,0.027547265220659412,0.022206402297783024,0
+sub_Telephone bell ringing_cQci9o1C4UY_1+Helicopter_t0txEC0Rhdg_1.wav,Telephone bell ringing,Helicopter,0.24241432547569275,0.12231294810771942,0,0.023322889394370418,0.030313977101890998,1
+"sub_Baby cry, infant cry_z15CKEUxkEg_1+Helicopter_8Fut6ZU85Fs_1.wav","Baby cry, infant cry",Helicopter,0.3207845389842987,0.1863502562046051,0,0.026606538561588126,0.031190049155566505,1
+sub_Computer keyboard_24tWz7gmngI_1+Bass drum_eWsnTX9zkHI_1.wav,Computer keyboard,Bass drum,0.11218379437923431,0.19954413175582886,1,0.012254043334320237,0.03020290072871647,1
+sub_Bass drum_nfdEqi5YMjk_1+Helicopter_z4HX8-du2nQ_1.wav,Bass drum,Helicopter,0.2525174021720886,0.2374526411294937,0,0.023782750238747492,0.0337619871616582,1
+sub_Bass drum_9tBOegUHrL0_1+Telephone bell ringing_EEhnuLFYehU_1.wav,Bass drum,Telephone bell ringing,0.1693619042634964,0.22332578897476196,1,0.03236642745502604,0.014630782429752312,0
+sub_Sad music_3OUNEL8XaR0_1+Helicopter_W3u2hj1x7gY_1.wav,Sad music,Helicopter,0.10246409475803375,0.2960547208786011,1,0.02139235905130801,0.025070262424948236,1
+sub_Sad music_vp6p45b-038_1+Helicopter_BNrmXcZQ-p4_1.wav,Sad music,Helicopter,0.132741317152977,0.20046581327915192,1,0.029591921437119188,0.03015510155372596,1
+"sub_Bass drum_ZuBxMCk0cco_1+Female speech, woman speaking_a7WAfwKi88Q_1.wav",Bass drum,"Female speech, woman speaking",0.3037988245487213,0.11717846989631653,0,0.02588605783852958,0.02096864244393639,0
+"sub_Female speech, woman speaking_DpiGR6_i4Js_1+Bass drum_-bJPDtT31p0_1.wav","Female speech, woman speaking",Bass drum,0.1872529536485672,0.1344626247882843,0,0.02007495085217987,0.026194569256150588,1
+sub_Telephone bell ringing_LJH4TFzWiW0_1+Sad music_y_toDfeACWE_1.wav,Telephone bell ringing,Sad music,0.32087278366088867,0.13569843769073486,0,0.03997657279446448,0.016866205905453416,0
+"sub_Helicopter_z4HX8-du2nQ_1+Baby cry, infant cry_Zm-sQnazFAQ_1.wav",Helicopter,"Baby cry, infant cry",0.2374526411294937,0.3335641920566559,1,0.0337619871616582,0.029361426265011495,0
+"sub_Male speech, man speaking_GnmgSQq6E54_1+Telephone bell ringing_nBA65g90mnA_1.wav","Male speech, man speaking",Telephone bell ringing,0.27065181732177734,0.264318585395813,0,0.01850078388162459,0.011962978857016382,0
+sub_Sad music_3OUNEL8XaR0_1+Telephone bell ringing_1isuXShxzOY_1.wav,Sad music,Telephone bell ringing,0.10246409475803375,0.2653381824493408,1,0.02139235905130801,0.03609646116992179,1
+sub_Sad music_MIexFfOsuJs_1+Computer keyboard_YUcV-grp898_1.wav,Sad music,Computer keyboard,0.28348007798194885,0.24475392699241638,0,0.02721486521344261,0.0015552846650162193,0
+sub_Bass drum_pSlVtxLOYiM_1+Computer keyboard_Ti0Ck0xTdw4_1.wav,Bass drum,Computer keyboard,0.1790561079978943,0.2991736829280853,1,0.02043919567514078,0.006035326468433831,0
+"sub_Male speech, man speaking_bO6gUBBcniY_1+Computer keyboard_P9qEFBa2s8Q_1.wav","Male speech, man speaking",Computer keyboard,0.16679570078849792,0.07968397438526154,0,0.027914524189952532,0.017288184468420606,0
+"sub_Helicopter_X76DCP7SCR0_1+Male speech, man speaking_GnmgSQq6E54_1.wav",Helicopter,"Male speech, man speaking",0.17519816756248474,0.27065181732177734,1,0.013568852471902638,0.01850078388162459,1
+sub_Sad music_9aE33JEIGOg_1+Helicopter_h5NTDVXiTiI_1.wav,Sad music,Helicopter,0.2783162295818329,0.1642274558544159,0,0.03993854029842428,0.03015065387042272,0
+"sub_Computer keyboard_P9qEFBa2s8Q_1+Female speech, woman speaking_vuD0qyibQyQ_1.wav",Computer keyboard,"Female speech, woman speaking",0.07968397438526154,0.15355730056762695,1,0.017288184468420606,0.027836392522283607,1
+"sub_Female speech, woman speaking_vuD0qyibQyQ_1+Helicopter_STdAr1JNXIU_1.wav","Female speech, woman speaking",Helicopter,0.15355730056762695,0.1435829997062683,0,0.027836392522283607,0.029006276749442308,1
+"sub_Computer keyboard_8evHpuXTcgM_1+Male speech, man speaking_gPaoJv-NrEU_1.wav",Computer keyboard,"Male speech, man speaking",-0.03387540578842163,0.20261499285697937,1,0.011549582379851335,0.031558803978028384,1
+"sub_Female speech, woman speaking_lO1rUT_MTjk_1+Telephone bell ringing_cQci9o1C4UY_1.wav","Female speech, woman speaking",Telephone bell ringing,0.33074361085891724,0.24241432547569275,0,0.02667689995972267,0.023322889394370418,0
+"sub_Bass drum_OrYHuCwfvb4_1+Male speech, man speaking_W4acKG-KSTE_1.wav",Bass drum,"Male speech, man speaking",0.19532236456871033,0.2639746069908142,1,0.039433855436534465,0.016383123342230077,0
+"sub_Female speech, woman speaking_7QnyKZe6VBA_1+Sad music_qZkM3QaeaUM_1.wav","Female speech, woman speaking",Sad music,0.17125552892684937,0.1707686483860016,0,0.016932509190503625,0.028783565108194607,1
+"sub_Female speech, woman speaking_LrcvUfmRN8k_1+Helicopter_4A3_lLVLpUg_1.wav","Female speech, woman speaking",Helicopter,0.2578538656234741,0.10075502842664719,0,0.020230268639673542,0.02984095453096978,1
+sub_Sad music_fZjQBgPD1Ys_1+Computer keyboard_iyroRIRrXUw_1.wav,Sad music,Computer keyboard,0.154634028673172,0.14235903322696686,0,0.03712812221299464,0.00704593463919413,0
+"sub_Bass drum_nfdEqi5YMjk_1+Baby cry, infant cry_PVSHN_arz2k_1.wav",Bass drum,"Baby cry, infant cry",0.2525174021720886,0.30947425961494446,1,0.023782750238747492,0.021125368473135623,0
+"sub_Female speech, woman speaking_MfavlJej70A_1+Bass drum_GrACpo7aonA_1.wav","Female speech, woman speaking",Bass drum,0.04684774577617645,0.21470583975315094,1,0.03345741516258426,0.019585215278095806,0
+"sub_Female speech, woman speaking_LysFhHBYTmE_1+Helicopter_t0txEC0Rhdg_1.wav","Female speech, woman speaking",Helicopter,0.22248727083206177,0.12231294810771942,0,0.018925430181506348,0.030313977101890998,1
+"sub_Baby cry, infant cry_ypmfbwrqL4s_1+Female speech, woman speaking_HPfBYRU8tVM_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.3533092737197876,0.2102241814136505,0,0.03561908324408149,0.027981318023461578,0
+sub_Sad music_Y7SoAXBFUew_1+Telephone bell ringing_wg0LlkP_K3c_1.wav,Sad music,Telephone bell ringing,0.07309752702713013,0.16630646586418152,1,0.035617225143571886,0.019311372092620703,0
+sub_Computer keyboard_HKN2548Ts6A_1+Telephone bell ringing_JUL2kqVi4qI_1.wav,Computer keyboard,Telephone bell ringing,0.22994369268417358,0.242732435464859,1,0.015337957553431564,0.03142276891838854,1
+"sub_Helicopter_R2Aq_j1TDSs_1+Male speech, man speaking_QNRche7AZkM_1.wav",Helicopter,"Male speech, man speaking",0.17155446112155914,0.23521149158477783,1,0.03577077406509107,0.022952383940606072,0
+"sub_Telephone bell ringing_HhP9eZ8cNIY_1+Female speech, woman speaking_1hba9jmspEQ_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.18631279468536377,0.24184013903141022,1,0.026080087313384768,0.011205365322814239,0
+"sub_Female speech, woman speaking_a7WAfwKi88Q_1+Helicopter_h5NTDVXiTiI_1.wav","Female speech, woman speaking",Helicopter,0.11717846989631653,0.1642274558544159,1,0.02096864244393639,0.03015065387042272,1
+"sub_Telephone bell ringing_3Kb4RHaZpxo_1+Male speech, man speaking_QNRche7AZkM_1.wav",Telephone bell ringing,"Male speech, man speaking",0.26087090373039246,0.23521149158477783,0,0.03357963058858357,0.022952383940606072,0
+"sub_Baby cry, infant cry_PyXQVNaAbHc_1+Bass drum_G1-XHWLgtlA_1.wav","Baby cry, infant cry",Bass drum,0.32274121046066284,0.18712851405143738,0,0.02118521588029352,0.013211608559799541,0
+"sub_Computer keyboard_VHUZvGxQbFA_1+Female speech, woman speaking_QXnJ2manIdI_1.wav",Computer keyboard,"Female speech, woman speaking",0.21952582895755768,0.17333272099494934,0,0.021812452997667948,0.019135637900501747,0
+sub_Computer keyboard_iyroRIRrXUw_1+Sad music_fZjQBgPD1Ys_1.wav,Computer keyboard,Sad music,0.14235903322696686,0.154634028673172,1,0.00704593463919413,0.03712812221299464,1
+sub_Computer keyboard_VHUZvGxQbFA_1+Bass drum_1rJWW_KqeAw_1.wav,Computer keyboard,Bass drum,0.21952582895755768,0.22193044424057007,1,0.021812452997667948,0.026895034446554646,1
+"sub_Male speech, man speaking_1OFDyTzUj24_1+Computer keyboard_HKN2548Ts6A_1.wav","Male speech, man speaking",Computer keyboard,0.21842926740646362,0.22994369268417358,1,0.017769420048526056,0.015337957553431564,0
+sub_Helicopter_z4HX8-du2nQ_1+Bass drum_nfdEqi5YMjk_1.wav,Helicopter,Bass drum,0.2374526411294937,0.2525174021720886,1,0.0337619871616582,0.023782750238747492,0
+"sub_Computer keyboard_HKN2548Ts6A_1+Male speech, man speaking_1OFDyTzUj24_1.wav",Computer keyboard,"Male speech, man speaking",0.22994369268417358,0.21842926740646362,0,0.015337957553431564,0.017769420048526056,1
+sub_Telephone bell ringing_N2jZmXePKV0_1+Computer keyboard_VQbC7Oth7wQ_1.wav,Telephone bell ringing,Computer keyboard,0.19966700673103333,0.2045033723115921,1,0.01948435864164277,0.01854362207590696,0
+sub_Helicopter_t0txEC0Rhdg_1+Sad music_6CaZAITdAsk_1.wav,Helicopter,Sad music,0.12231294810771942,0.20593127608299255,1,0.030313977101890998,0.034457693973890785,1
+sub_Telephone bell ringing_TRgs9jv8ah0_1+Bass drum_ov_g-r7Vo8M_1.wav,Telephone bell ringing,Bass drum,0.20252373814582825,0.14702188968658447,0,0.03386082589034153,0.023070768089542986,0
+"sub_Computer keyboard_4O-dYCrVKLY_1+Male speech, man speaking_Fihamhv6TJo_1.wav",Computer keyboard,"Male speech, man speaking",0.17508554458618164,0.12907478213310242,0,0.016282165617939482,0.02744716012223882,1
+"sub_Bass drum_G1-XHWLgtlA_1+Baby cry, infant cry_PyXQVNaAbHc_1.wav",Bass drum,"Baby cry, infant cry",0.18712851405143738,0.32274121046066284,1,0.013211608559799541,0.02118521588029352,1
+sub_Sad music_-f6s6kQEHFY_1+Telephone bell ringing_cQci9o1C4UY_1.wav,Sad music,Telephone bell ringing,0.1900234818458557,0.24241432547569275,1,0.028806453982167336,0.023322889394370418,0
+"sub_Computer keyboard_z2-3fMOOexU_1+Baby cry, infant cry_wVVBhbrnj9s_1.wav",Computer keyboard,"Baby cry, infant cry",0.0750311017036438,0.2693762183189392,1,0.015737021213874106,0.029695993992929506,1
+"sub_Sad music_y_toDfeACWE_1+Baby cry, infant cry_dIIiaO12I5Q_1.wav",Sad music,"Baby cry, infant cry",0.13569843769073486,0.32512813806533813,1,0.016866205905453416,0.029880779617539956,1
+"sub_Female speech, woman speaking_QXnJ2manIdI_1+Sad music_eQTK2fo3RoE_1.wav","Female speech, woman speaking",Sad music,0.17333272099494934,0.07471414655447006,0,0.019135637900501747,0.0235679678418862,1
+"sub_Sad music_6vRBp8jo40Q_1+Female speech, woman speaking_LrcvUfmRN8k_1.wav",Sad music,"Female speech, woman speaking",0.12646645307540894,0.2578538656234741,1,0.03952871402931249,0.020230268639673542,0
+"sub_Baby cry, infant cry_dIIiaO12I5Q_1+Bass drum_6DwlcJyDyxc_1.wav","Baby cry, infant cry",Bass drum,0.32512813806533813,0.1997656226158142,0,0.029880779617539956,0.016877288193388483,0
+"sub_Female speech, woman speaking_MfavlJej70A_1+Computer keyboard_24tWz7gmngI_1.wav","Female speech, woman speaking",Computer keyboard,0.04684774577617645,0.11218379437923431,1,0.03345741516258426,0.012254043334320237,0
+"sub_Female speech, woman speaking_HPfBYRU8tVM_1+Helicopter_6_NEAEGeFIw_1.wav","Female speech, woman speaking",Helicopter,0.2102241814136505,0.1179148480296135,0,0.027981318023461578,0.03224426745635446,1
+"sub_Bass drum_JesyktMT-Dk_1+Male speech, man speaking_gPaoJv-NrEU_1.wav",Bass drum,"Male speech, man speaking",0.1732480674982071,0.20261499285697937,1,0.02185939767935835,0.031558803978028384,1
+"sub_Sad music_dwSj0Rr3vFc_1+Male speech, man speaking_BuIMVqz85uk_1.wav",Sad music,"Male speech, man speaking",0.17465898394584656,0.22208231687545776,1,0.03983621562369695,0.034384155084835534,0
+sub_Telephone bell ringing_FIM7nfN6IT0_1+Bass drum_4bJeisLGFuA_1.wav,Telephone bell ringing,Bass drum,0.24325110018253326,0.16625916957855225,0,0.01848322117344395,0.020439644205804595,1
+sub_Telephone bell ringing_0ZAfYE4bgs8_1+Computer keyboard_MQtUV_cFcm8_1.wav,Telephone bell ringing,Computer keyboard,0.15856918692588806,0.056705161929130554,0,0.011660886296134597,0.02525583930582542,1
+"sub_Telephone bell ringing_TRgs9jv8ah0_1+Female speech, woman speaking_QXnJ2manIdI_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.20252373814582825,0.17333272099494934,0,0.03386082589034153,0.019135637900501747,0
+"sub_Male speech, man speaking_9wkgTdE7nz8_1+Sad music_-f6s6kQEHFY_1.wav","Male speech, man speaking",Sad music,0.2461727261543274,0.1900234818458557,0,0.027226992821161686,0.028806453982167336,1
+"sub_Baby cry, infant cry_P02Zdk3amjk_1+Computer keyboard_P9qEFBa2s8Q_1.wav","Baby cry, infant cry",Computer keyboard,0.23120436072349548,0.07968397438526154,0,0.015565673916010218,0.017288184468420606,1
+"sub_Female speech, woman speaking_-1LQP2wemiQ_1+Baby cry, infant cry_s_Le6PwhssI_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.20875146985054016,0.32947874069213867,1,0.017467544211007387,0.02123882576390495,1
+"sub_Helicopter_R1zoAMguO3A_1+Baby cry, infant cry_ZnGO4o9SqHY_1.wav",Helicopter,"Baby cry, infant cry",0.2648676037788391,0.17951032519340515,0,0.03446795801768726,0.02052144823027912,0
+"sub_Male speech, man speaking_BuIMVqz85uk_1+Sad music_dwSj0Rr3vFc_1.wav","Male speech, man speaking",Sad music,0.22208231687545776,0.17465898394584656,0,0.034384155084835534,0.03983621562369695,1
+"sub_Computer keyboard_VQbC7Oth7wQ_1+Male speech, man speaking_BuIMVqz85uk_1.wav",Computer keyboard,"Male speech, man speaking",0.2045033723115921,0.22208231687545776,1,0.01854362207590696,0.034384155084835534,1
+sub_Bass drum_xTVn_voSi3Q_1+Telephone bell ringing_nBA65g90mnA_1.wav,Bass drum,Telephone bell ringing,0.20192918181419373,0.264318585395813,1,0.037672028133066235,0.011962978857016382,0
+"sub_Female speech, woman speaking_vuD0qyibQyQ_1+Computer keyboard_P9qEFBa2s8Q_1.wav","Female speech, woman speaking",Computer keyboard,0.15355730056762695,0.07968397438526154,0,0.027836392522283607,0.017288184468420606,0
+sub_Helicopter_z4HX8-du2nQ_1+Sad music_KxjiEi2Eywk_1.wav,Helicopter,Sad music,0.2374526411294937,0.15429534018039703,0,0.0337619871616582,0.02837506195642908,0
+"sub_Helicopter_EOKUV6hgMhM_1+Female speech, woman speaking_n6lloBIIZ-k_1.wav",Helicopter,"Female speech, woman speaking",0.22658462822437286,0.23039484024047852,1,0.016602581913552707,0.016687025980569842,1
+sub_Helicopter_GO_1gBjIR1c_1+Telephone bell ringing_8bRQgDQyTNw_1.wav,Helicopter,Telephone bell ringing,0.19670447707176208,0.17827099561691284,0,0.04695372131513407,0.03428080792696428,0
+"sub_Helicopter_8Fut6ZU85Fs_1+Baby cry, infant cry_z15CKEUxkEg_1.wav",Helicopter,"Baby cry, infant cry",0.1863502562046051,0.3207845389842987,1,0.031190049155566505,0.026606538561588126,0
+"sub_Male speech, man speaking_9wkgTdE7nz8_1+Computer keyboard_VHUZvGxQbFA_1.wav","Male speech, man speaking",Computer keyboard,0.2461727261543274,0.21952582895755768,0,0.027226992821161686,0.021812452997667948,0
+"sub_Baby cry, infant cry_ypmfbwrqL4s_1+Computer keyboard_rTh92nlG9io_1.wav","Baby cry, infant cry",Computer keyboard,0.3533092737197876,0.09708543121814728,0,0.03561908324408149,0.013735322247026793,0
+"sub_Female speech, woman speaking_2ofK2gAQue4_1+Baby cry, infant cry_UFcUTwPlFAU_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.22387957572937012,0.3021028935909271,1,0.006277651219279194,0.03210689261674738,1
+sub_Computer keyboard_MQtUV_cFcm8_1+Bass drum_2qGjgfpQtFI_1.wav,Computer keyboard,Bass drum,0.056705161929130554,0.23250363767147064,1,0.02525583930582542,0.03059836853277941,1
+"sub_Sad music_-f6s6kQEHFY_1+Male speech, man speaking_9wkgTdE7nz8_1.wav",Sad music,"Male speech, man speaking",0.1900234818458557,0.2461727261543274,1,0.028806453982167336,0.027226992821161686,0
+"sub_Bass drum_3k8zGf8Btfo_1+Female speech, woman speaking_lO1rUT_MTjk_1.wav",Bass drum,"Female speech, woman speaking",0.20558224618434906,0.33074361085891724,1,0.0246707653126498,0.02667689995972267,1
+sub_Sad music_I0q3IGmTkRo_1+Telephone bell ringing_0ZAfYE4bgs8_1.wav,Sad music,Telephone bell ringing,0.167400062084198,0.15856918692588806,0,0.03734753911287748,0.011660886296134597,0
+"sub_Telephone bell ringing_P-QOd_28o9c_1+Male speech, man speaking_Fihamhv6TJo_1.wav",Telephone bell ringing,"Male speech, man speaking",-0.07122160494327545,0.12907478213310242,1,0.02489902672598854,0.02744716012223882,1
+sub_Helicopter_h5NTDVXiTiI_1+Sad music_9aE33JEIGOg_1.wav,Helicopter,Sad music,0.1642274558544159,0.2783162295818329,1,0.03015065387042272,0.03993854029842428,1
+sub_Sad music_Y7SoAXBFUew_1+Helicopter_jkvXuu8XltI_1.wav,Sad music,Helicopter,0.07309752702713013,0.11986648291349411,1,0.035617225143571886,0.043444815280350046,1
+sub_Sad music_dsibOgkezN8_1+Telephone bell ringing_TRgs9jv8ah0_1.wav,Sad music,Telephone bell ringing,0.2151850461959839,0.20252373814582825,0,0.02658915691660165,0.03386082589034153,1
+"sub_Female speech, woman speaking_-fAGzY9rnaA_1+Bass drum_y0TDJyuco0I_1.wav","Female speech, woman speaking",Bass drum,0.08587349951267242,0.12885376811027527,1,0.02882286503977782,0.027004778406769226,0
+sub_Sad music_6CaZAITdAsk_1+Helicopter_t0txEC0Rhdg_1.wav,Sad music,Helicopter,0.20593127608299255,0.12231294810771942,0,0.034457693973890785,0.030313977101890998,0
+"sub_Computer keyboard_4O-dYCrVKLY_1+Female speech, woman speaking_-1LQP2wemiQ_1.wav",Computer keyboard,"Female speech, woman speaking",0.17508554458618164,0.20875146985054016,1,0.016282165617939482,0.017467544211007387,1
+sub_Telephone bell ringing_8UQI59N-bAs_1+Bass drum_u77nPT6b60k_1.wav,Telephone bell ringing,Bass drum,0.19591394066810608,0.19294287264347076,0,0.024386343738287998,0.028655266490392118,1
+sub_Telephone bell ringing_8UQI59N-bAs_1+Computer keyboard_uLdRi__nG2c_1.wav,Telephone bell ringing,Computer keyboard,0.19591394066810608,0.1435331106185913,0,0.024386343738287998,0.009341872385155802,0
+"sub_Female speech, woman speaking_1hba9jmspEQ_1+Computer keyboard_rTh92nlG9io_1.wav","Female speech, woman speaking",Computer keyboard,0.24184013903141022,0.09708543121814728,0,0.011205365322814239,0.013735322247026793,1
+"sub_Male speech, man speaking_bO6gUBBcniY_1+Sad music_lmrzR9cSMRY_1.wav","Male speech, man speaking",Sad music,0.16679570078849792,0.15623514354228973,0,0.027914524189952532,0.027547265220659412,0
+"sub_Baby cry, infant cry_QyJ4Z0jRJ20_1+Sad music_6CaZAITdAsk_1.wav","Baby cry, infant cry",Sad music,0.3034319281578064,0.20593127608299255,0,0.019458638784637293,0.034457693973890785,1
+"sub_Male speech, man speaking_BuIMVqz85uk_1+Bass drum_oBsTZmqrpFQ_1.wav","Male speech, man speaking",Bass drum,0.22208231687545776,0.15396779775619507,0,0.034384155084835534,0.033185759744709366,0
+sub_Computer keyboard_24tWz7gmngI_1+Sad music_6CaZAITdAsk_1.wav,Computer keyboard,Sad music,0.11218379437923431,0.20593127608299255,1,0.012254043334320237,0.034457693973890785,1
+"sub_Baby cry, infant cry_hC7sSMWLwDo_1+Computer keyboard_Jz5wulRv1Ps_1.wav","Baby cry, infant cry",Computer keyboard,0.42617666721343994,0.05724233761429787,0,0.01730174188439675,0.012851288245006153,0
+sub_Telephone bell ringing_cQci9o1C4UY_1+Sad music_-f6s6kQEHFY_1.wav,Telephone bell ringing,Sad music,0.24241432547569275,0.1900234818458557,0,0.023322889394370418,0.028806453982167336,1
+sub_Bass drum_p5i3sd1uubo_1+Computer keyboard_z2-3fMOOexU_1.wav,Bass drum,Computer keyboard,0.27660253643989563,0.0750311017036438,0,0.008981369588046888,0.015737021213874106,1
+"sub_Helicopter_R2Aq_j1TDSs_1+Female speech, woman speaking_QXnJ2manIdI_1.wav",Helicopter,"Female speech, woman speaking",0.17155446112155914,0.17333272099494934,1,0.03577077406509107,0.019135637900501747,0
+"sub_Male speech, man speaking_JLKsLx_SGOU_1+Helicopter_W3u2hj1x7gY_1.wav","Male speech, man speaking",Helicopter,0.10626925528049469,0.2960547208786011,1,0.009167009674191614,0.025070262424948236,1
+"sub_Bass drum_OrYHuCwfvb4_1+Female speech, woman speaking_n6lloBIIZ-k_1.wav",Bass drum,"Female speech, woman speaking",0.19532236456871033,0.23039484024047852,1,0.039433855436534465,0.016687025980569842,0
+"sub_Baby cry, infant cry_XZ5oHxjfHKY_1+Computer keyboard_Ti0Ck0xTdw4_1.wav","Baby cry, infant cry",Computer keyboard,0.3260090947151184,0.2991736829280853,0,0.012037681483777415,0.006035326468433831,0
+"sub_Bass drum_uNpSMpqlkMA_1+Male speech, man speaking_Ky8aKwI522Q_1.wav",Bass drum,"Male speech, man speaking",0.24160143733024597,0.09816574305295944,0,0.014815168932340072,0.019951914097412596,1
+sub_Telephone bell ringing_wg0LlkP_K3c_1+Computer keyboard_Ti0Ck0xTdw4_1.wav,Telephone bell ringing,Computer keyboard,0.16630646586418152,0.2991736829280853,1,0.019311372092620703,0.006035326468433831,0
+"sub_Male speech, man speaking_GnmgSQq6E54_1+Baby cry, infant cry_2eWobSpugTw_1.wav","Male speech, man speaking","Baby cry, infant cry",0.27065181732177734,0.36616450548171997,1,0.01850078388162459,0.017638425939089094,0
+sub_Computer keyboard_HKN2548Ts6A_1+Sad music_xIdWJyhWueE_1.wav,Computer keyboard,Sad music,0.22994369268417358,0.10191518068313599,0,0.015337957553431564,0.03972820822779523,1
+"sub_Female speech, woman speaking_-fAGzY9rnaA_1+Computer keyboard_z2-3fMOOexU_1.wav","Female speech, woman speaking",Computer keyboard,0.08587349951267242,0.0750311017036438,0,0.02882286503977782,0.015737021213874106,0
+"sub_Sad music_9aE33JEIGOg_1+Baby cry, infant cry_z15CKEUxkEg_1.wav",Sad music,"Baby cry, infant cry",0.2783162295818329,0.3207845389842987,1,0.03993854029842428,0.026606538561588126,0
+"sub_Computer keyboard_24tWz7gmngI_1+Female speech, woman speaking_MfavlJej70A_1.wav",Computer keyboard,"Female speech, woman speaking",0.11218379437923431,0.04684774577617645,0,0.012254043334320237,0.03345741516258426,1
+"sub_Male speech, man speaking_Fihamhv6TJo_1+Baby cry, infant cry_jHs2_FLtd9U_1.wav","Male speech, man speaking","Baby cry, infant cry",0.12907478213310242,0.4057883024215698,1,0.02744716012223882,0.012330456501517057,0
+"sub_Baby cry, infant cry_tk4s-nlhmEQ_1+Helicopter_5slM2JWYnBw_1.wav","Baby cry, infant cry",Helicopter,0.3513612151145935,0.12392202019691467,0,0.02361603505027917,0.027147148312238953,1
+"sub_Female speech, woman speaking_W6iwVLm51-k_1+Baby cry, infant cry_QhUa5vXLlCI_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.2611715495586395,0.20123791694641113,0,0.015614557813666248,0.035361207469240014,1
+"sub_Male speech, man speaking_1OFDyTzUj24_1+Helicopter_z4HX8-du2nQ_1.wav","Male speech, man speaking",Helicopter,0.21842926740646362,0.2374526411294937,1,0.017769420048526056,0.0337619871616582,1
+"sub_Female speech, woman speaking_W6iwVLm51-k_1+Sad music_T0oF8MyYhBM_1.wav","Female speech, woman speaking",Sad music,0.2611715495586395,0.2158471643924713,0,0.015614557813666248,0.033650112084658186,1
+"sub_Female speech, woman speaking_lO1rUT_MTjk_1+Computer keyboard_g3kkGbxwSLQ_1.wav","Female speech, woman speaking",Computer keyboard,0.33074361085891724,0.17975765466690063,0,0.02667689995972267,0.012677980974684219,0
+"sub_Female speech, woman speaking_QXnJ2manIdI_1+Computer keyboard_VHUZvGxQbFA_1.wav","Female speech, woman speaking",Computer keyboard,0.17333272099494934,0.21952582895755768,1,0.019135637900501747,0.021812452997667948,1
+"sub_Computer keyboard_P9qEFBa2s8Q_1+Baby cry, infant cry_P02Zdk3amjk_1.wav",Computer keyboard,"Baby cry, infant cry",0.07968397438526154,0.23120436072349548,1,0.017288184468420606,0.015565673916010218,0
+"sub_Computer keyboard_g3kkGbxwSLQ_1+Female speech, woman speaking_lO1rUT_MTjk_1.wav",Computer keyboard,"Female speech, woman speaking",0.17975765466690063,0.33074361085891724,1,0.012677980974684219,0.02667689995972267,1
+"sub_Male speech, man speaking_H85puQUqrQY_1+Bass drum_YnL6TJ_t068_1.wav","Male speech, man speaking",Bass drum,0.2335149198770523,0.167755126953125,0,0.012301038367430928,0.017973152554863234,1
+sub_Bass drum_-bJPDtT31p0_1+Helicopter_9nsLTLNvOSw_1.wav,Bass drum,Helicopter,0.1344626247882843,0.2349580079317093,1,0.026194569256150588,0.02953913877489413,1
+"sub_Helicopter_t0txEC0Rhdg_1+Female speech, woman speaking_LysFhHBYTmE_1.wav",Helicopter,"Female speech, woman speaking",0.12231294810771942,0.22248727083206177,1,0.030313977101890998,0.018925430181506348,0
+sub_Telephone bell ringing_TRgs9jv8ah0_1+Helicopter_bq6C0_tAbJM_1.wav,Telephone bell ringing,Helicopter,0.20252373814582825,0.07397038489580154,0,0.03386082589034153,0.034009340396442364,1
+sub_Helicopter_t0txEC0Rhdg_1+Telephone bell ringing_cQci9o1C4UY_1.wav,Helicopter,Telephone bell ringing,0.12231294810771942,0.24241432547569275,1,0.030313977101890998,0.023322889394370418,0
+"sub_Bass drum_1rJWW_KqeAw_1+Female speech, woman speaking_EQ91XVsmq-I_1.wav",Bass drum,"Female speech, woman speaking",0.22193044424057007,0.24911892414093018,1,0.026895034446554646,0.027686756367876732,1
+"sub_Baby cry, infant cry_2eWobSpugTw_1+Male speech, man speaking_GnmgSQq6E54_1.wav","Baby cry, infant cry","Male speech, man speaking",0.36616450548171997,0.27065181732177734,0,0.017638425939089094,0.01850078388162459,1
+"sub_Computer keyboard_z2-3fMOOexU_1+Female speech, woman speaking_-fAGzY9rnaA_1.wav",Computer keyboard,"Female speech, woman speaking",0.0750311017036438,0.08587349951267242,1,0.015737021213874106,0.02882286503977782,1
+sub_Sad music_y_toDfeACWE_1+Computer keyboard_whOLzTgCJds_1.wav,Sad music,Computer keyboard,0.13569843769073486,0.17951758205890656,1,0.016866205905453416,0.017542052869595218,1
+"sub_Helicopter_bq6C0_tAbJM_1+Male speech, man speaking_gPaoJv-NrEU_1.wav",Helicopter,"Male speech, man speaking",0.07397038489580154,0.20261499285697937,1,0.034009340396442364,0.031558803978028384,0
+"sub_Male speech, man speaking_Fihamhv6TJo_1+Helicopter_GO_1gBjIR1c_1.wav","Male speech, man speaking",Helicopter,0.12907478213310242,0.19670447707176208,1,0.02744716012223882,0.04695372131513407,1
+sub_Bass drum_vlNuy9e-79o_1+Telephone bell ringing_wg0LlkP_K3c_1.wav,Bass drum,Telephone bell ringing,0.11602270603179932,0.16630646586418152,1,0.04114161595611999,0.019311372092620703,0
+"sub_Helicopter_W3u2hj1x7gY_1+Male speech, man speaking_JLKsLx_SGOU_1.wav",Helicopter,"Male speech, man speaking",0.2960547208786011,0.10626925528049469,0,0.025070262424948236,0.009167009674191614,0
+"sub_Bass drum_YnL6TJ_t068_1+Male speech, man speaking_H85puQUqrQY_1.wav",Bass drum,"Male speech, man speaking",0.167755126953125,0.2335149198770523,1,0.017973152554863234,0.012301038367430928,0
+sub_Helicopter_W3u2hj1x7gY_1+Sad music_3OUNEL8XaR0_1.wav,Helicopter,Sad music,0.2960547208786011,0.10246409475803375,0,0.025070262424948236,0.02139235905130801,0
+sub_Bass drum_u77nPT6b60k_1+Telephone bell ringing_8UQI59N-bAs_1.wav,Bass drum,Telephone bell ringing,0.19294287264347076,0.19591394066810608,1,0.028655266490392118,0.024386343738287998,0
+sub_Bass drum_3k8zGf8Btfo_1+Telephone bell ringing_HhP9eZ8cNIY_1.wav,Bass drum,Telephone bell ringing,0.20558224618434906,0.18631279468536377,0,0.0246707653126498,0.026080087313384768,1
+"sub_Male speech, man speaking_Fihamhv6TJo_1+Telephone bell ringing_P-QOd_28o9c_1.wav","Male speech, man speaking",Telephone bell ringing,0.12907478213310242,-0.07122160494327545,0,0.02744716012223882,0.02489902672598854,0
+sub_Sad music_KxjiEi2Eywk_1+Helicopter_z4HX8-du2nQ_1.wav,Sad music,Helicopter,0.15429534018039703,0.2374526411294937,1,0.02837506195642908,0.0337619871616582,1
+sub_Telephone bell ringing_1isuXShxzOY_1+Sad music_3OUNEL8XaR0_1.wav,Telephone bell ringing,Sad music,0.2653381824493408,0.10246409475803375,0,0.03609646116992179,0.02139235905130801,0
+"sub_Male speech, man speaking_H85puQUqrQY_1+Baby cry, infant cry_UFcUTwPlFAU_1.wav","Male speech, man speaking","Baby cry, infant cry",0.2335149198770523,0.3021028935909271,1,0.012301038367430928,0.03210689261674738,1
+"sub_Computer keyboard_Ti0Ck0xTdw4_1+Baby cry, infant cry_XZ5oHxjfHKY_1.wav",Computer keyboard,"Baby cry, infant cry",0.2991736829280853,0.3260090947151184,1,0.006035326468433831,0.012037681483777415,1
+"sub_Male speech, man speaking_Fihamhv6TJo_1+Sad music_MIexFfOsuJs_1.wav","Male speech, man speaking",Sad music,0.12907478213310242,0.28348007798194885,1,0.02744716012223882,0.02721486521344261,0
+sub_Telephone bell ringing_HhP9eZ8cNIY_1+Helicopter_Wr44Q8MQHL0_1.wav,Telephone bell ringing,Helicopter,0.18631279468536377,0.07292193174362183,0,0.026080087313384768,0.03258769751000481,1
+"sub_Sad music_giPa2vVEyVc_1+Male speech, man speaking_QNRche7AZkM_1.wav",Sad music,"Male speech, man speaking",0.2772318720817566,0.23521149158477783,0,0.027422134855894575,0.022952383940606072,0
+"sub_Female speech, woman speaking_QXnJ2manIdI_1+Baby cry, infant cry_Zm-sQnazFAQ_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.17333272099494934,0.3335641920566559,1,0.019135637900501747,0.029361426265011495,1
+"sub_Baby cry, infant cry_nzwmPWAAQFg_1+Computer keyboard_66eFB3sy7Bw_1.wav","Baby cry, infant cry",Computer keyboard,0.357689768075943,0.26343226432800293,0,0.011938539889963058,0.022719664422401392,1
+sub_Helicopter_jkvXuu8XltI_1+Telephone bell ringing_RthSBUaKjes_1.wav,Helicopter,Telephone bell ringing,0.11986648291349411,0.19623711705207825,1,0.043444815280350046,0.02484404412607075,0
+"sub_Male speech, man speaking_H85puQUqrQY_1+Telephone bell ringing_TRgs9jv8ah0_1.wav","Male speech, man speaking",Telephone bell ringing,0.2335149198770523,0.20252373814582825,0,0.012301038367430928,0.03386082589034153,1
+"sub_Female speech, woman speaking_HPfBYRU8tVM_1+Computer keyboard_Jz5wulRv1Ps_1.wav","Female speech, woman speaking",Computer keyboard,0.2102241814136505,0.05724233761429787,0,0.027981318023461578,0.012851288245006153,0
+"sub_Computer keyboard_g3kkGbxwSLQ_1+Baby cry, infant cry_z15CKEUxkEg_1.wav",Computer keyboard,"Baby cry, infant cry",0.17975765466690063,0.3207845389842987,1,0.012677980974684219,0.026606538561588126,1
+"sub_Male speech, man speaking_BuIMVqz85uk_1+Computer keyboard_VQbC7Oth7wQ_1.wav","Male speech, man speaking",Computer keyboard,0.22208231687545776,0.2045033723115921,0,0.034384155084835534,0.01854362207590696,0
+"sub_Male speech, man speaking_mZ_z2lorJeY_1+Computer keyboard_iyroRIRrXUw_1.wav","Male speech, man speaking",Computer keyboard,-0.02197234332561493,0.14235903322696686,1,0.01995634221517222,0.00704593463919413,0
+"sub_Baby cry, infant cry_tk4s-nlhmEQ_1+Bass drum_ZuBxMCk0cco_1.wav","Baby cry, infant cry",Bass drum,0.3513612151145935,0.3037988245487213,0,0.02361603505027917,0.02588605783852958,1
+"sub_Baby cry, infant cry_XZ5oHxjfHKY_1+Sad music_qZkM3QaeaUM_1.wav","Baby cry, infant cry",Sad music,0.3260090947151184,0.1707686483860016,0,0.012037681483777415,0.028783565108194607,1
+"sub_Sad music_xIdWJyhWueE_1+Female speech, woman speaking_DpiGR6_i4Js_1.wav",Sad music,"Female speech, woman speaking",0.10191518068313599,0.1872529536485672,1,0.03972820822779523,0.02007495085217987,0
+sub_Bass drum_ktvOqV10lW0_1+Helicopter_hSAgDYarzOs_1.wav,Bass drum,Helicopter,0.21492913365364075,0.1332230567932129,0,0.019303353502627994,0.06156185253489151,1
+"sub_Male speech, man speaking_QNRche7AZkM_1+Baby cry, infant cry_P02Zdk3amjk_1.wav","Male speech, man speaking","Baby cry, infant cry",0.23521149158477783,0.23120436072349548,0,0.022952383940606072,0.015565673916010218,0
+sub_Telephone bell ringing_wg0LlkP_K3c_1+Bass drum_vlNuy9e-79o_1.wav,Telephone bell ringing,Bass drum,0.16630646586418152,0.11602270603179932,0,0.019311372092620703,0.04114161595611999,1
+sub_Bass drum_2CidaVnd60g_1+Computer keyboard_iyroRIRrXUw_1.wav,Bass drum,Computer keyboard,0.2412586659193039,0.14235903322696686,0,0.011914565604317882,0.00704593463919413,0
+"sub_Male speech, man speaking_QNRche7AZkM_1+Sad music_giPa2vVEyVc_1.wav","Male speech, man speaking",Sad music,0.23521149158477783,0.2772318720817566,1,0.022952383940606072,0.027422134855894575,1
+"sub_Baby cry, infant cry_XZ5oHxjfHKY_1+Bass drum_wff_C_CKm1g_1.wav","Baby cry, infant cry",Bass drum,0.3260090947151184,0.19600996375083923,0,0.012037681483777415,0.02480928716428038,1
+"sub_Telephone bell ringing_1isuXShxzOY_1+Female speech, woman speaking_-1LQP2wemiQ_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.2653381824493408,0.20875146985054016,0,0.03609646116992179,0.017467544211007387,0
+sub_Helicopter_GO_1gBjIR1c_1+Bass drum_a1Dch1ez9fY_1.wav,Helicopter,Bass drum,0.19670447707176208,0.13753575086593628,0,0.04695372131513407,0.028335923604238426,0
+"sub_Baby cry, infant cry_hC7sSMWLwDo_1+Bass drum_ME7TYB3B27o_1.wav","Baby cry, infant cry",Bass drum,0.42617666721343994,0.0853940099477768,0,0.01730174188439675,0.02401981197644108,1
+"sub_Computer keyboard_whOLzTgCJds_1+Female speech, woman speaking_7761uBKNpd8_1.wav",Computer keyboard,"Female speech, woman speaking",0.17951758205890656,0.18020597100257874,1,0.017542052869595218,0.022206402297783024,1
+"sub_Telephone bell ringing_cQci9o1C4UY_1+Female speech, woman speaking_lO1rUT_MTjk_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.24241432547569275,0.33074361085891724,1,0.023322889394370418,0.02667689995972267,1
+"sub_Male speech, man speaking_gPaoJv-NrEU_1+Sad music_fZjQBgPD1Ys_1.wav","Male speech, man speaking",Sad music,0.20261499285697937,0.154634028673172,0,0.031558803978028384,0.03712812221299464,1
+sub_Bass drum_J6T4OwacRL0_1+Helicopter_W3u2hj1x7gY_1.wav,Bass drum,Helicopter,0.15612220764160156,0.2960547208786011,1,0.027513031138971057,0.025070262424948236,0
+"sub_Female speech, woman speaking_lAznHBBQkp4_1+Telephone bell ringing_EEhnuLFYehU_1.wav","Female speech, woman speaking",Telephone bell ringing,0.23681506514549255,0.22332578897476196,0,0.023978382327917692,0.014630782429752312,0
+sub_Telephone bell ringing_nBA65g90mnA_1+Sad music_lmrzR9cSMRY_1.wav,Telephone bell ringing,Sad music,0.264318585395813,0.15623514354228973,0,0.011962978857016382,0.027547265220659412,1
+"sub_Telephone bell ringing_8bRQgDQyTNw_1+Female speech, woman speaking_HPfBYRU8tVM_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.17827099561691284,0.2102241814136505,1,0.03428080792696428,0.027981318023461578,0
+"sub_Helicopter_Wr44Q8MQHL0_1+Male speech, man speaking_bO6gUBBcniY_1.wav",Helicopter,"Male speech, man speaking",0.07292193174362183,0.16679570078849792,1,0.03258769751000481,0.027914524189952532,0
+"sub_Computer keyboard_whOLzTgCJds_1+Male speech, man speaking_Ky8aKwI522Q_1.wav",Computer keyboard,"Male speech, man speaking",0.17951758205890656,0.09816574305295944,0,0.017542052869595218,0.019951914097412596,1
+"sub_Male speech, man speaking_JLKsLx_SGOU_1+Bass drum_pSlVtxLOYiM_1.wav","Male speech, man speaking",Bass drum,0.10626925528049469,0.1790561079978943,1,0.009167009674191614,0.02043919567514078,1
+"sub_Male speech, man speaking_Ky8aKwI522Q_1+Bass drum_uNpSMpqlkMA_1.wav","Male speech, man speaking",Bass drum,0.09816574305295944,0.24160143733024597,1,0.019951914097412596,0.014815168932340072,0
+"sub_Baby cry, infant cry_StO32FBBIH4_1+Female speech, woman speaking_-fAGzY9rnaA_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.2973054051399231,0.08587349951267242,0,0.030336070083123817,0.02882286503977782,0
+sub_Helicopter_5slM2JWYnBw_1+Bass drum_eWsnTX9zkHI_1.wav,Helicopter,Bass drum,0.12392202019691467,0.19954413175582886,1,0.027147148312238953,0.03020290072871647,1
+"sub_Baby cry, infant cry_ZnGO4o9SqHY_1+Bass drum_s9d-2nhuJCQ_1.wav","Baby cry, infant cry",Bass drum,0.17951032519340515,0.16984310746192932,0,0.02052144823027912,0.030581892923815992,1
+"sub_Sad music_vp6p45b-038_1+Male speech, man speaking_H85puQUqrQY_1.wav",Sad music,"Male speech, man speaking",0.132741317152977,0.2335149198770523,1,0.029591921437119188,0.012301038367430928,0
+"sub_Sad music_I0q3IGmTkRo_1+Baby cry, infant cry_P02Zdk3amjk_1.wav",Sad music,"Baby cry, infant cry",0.167400062084198,0.23120436072349548,1,0.03734753911287748,0.015565673916010218,0
+"sub_Sad music_OaV-ZyjNDFE_1+Baby cry, infant cry_nzwmPWAAQFg_1.wav",Sad music,"Baby cry, infant cry",0.06866730004549026,0.357689768075943,1,0.0316552433205264,0.011938539889963058,0
+"sub_Male speech, man speaking_H85puQUqrQY_1+Helicopter_4A3_lLVLpUg_1.wav","Male speech, man speaking",Helicopter,0.2335149198770523,0.10075502842664719,0,0.012301038367430928,0.02984095453096978,1
+"sub_Sad music_bt8iHoIf2mo_1+Baby cry, infant cry_PyXQVNaAbHc_1.wav",Sad music,"Baby cry, infant cry",0.1510903537273407,0.32274121046066284,1,0.03931063727766966,0.02118521588029352,0
+sub_Telephone bell ringing_HhP9eZ8cNIY_1+Sad music_fZjQBgPD1Ys_1.wav,Telephone bell ringing,Sad music,0.18631279468536377,0.154634028673172,0,0.026080087313384768,0.03712812221299464,1
+sub_Computer keyboard_4O-dYCrVKLY_1+Bass drum_9tBOegUHrL0_1.wav,Computer keyboard,Bass drum,0.17508554458618164,0.1693619042634964,0,0.016282165617939482,0.03236642745502604,1
+"sub_Female speech, woman speaking_7761uBKNpd8_1+Helicopter_jkvXuu8XltI_1.wav","Female speech, woman speaking",Helicopter,0.18020597100257874,0.11986648291349411,0,0.022206402297783024,0.043444815280350046,1
+sub_Telephone bell ringing_1isuXShxzOY_1+Bass drum_xxffSM6940A_1.wav,Telephone bell ringing,Bass drum,0.2653381824493408,0.18124723434448242,0,0.03609646116992179,0.03258839054246838,0
+sub_Helicopter_5slM2JWYnBw_1+Sad music_giPa2vVEyVc_1.wav,Helicopter,Sad music,0.12392202019691467,0.2772318720817566,1,0.027147148312238953,0.027422134855894575,1
+sub_Telephone bell ringing_TYc_q463LvA_1+Computer keyboard_YUcV-grp898_1.wav,Telephone bell ringing,Computer keyboard,0.19335827231407166,0.24475392699241638,1,0.028891460415676723,0.0015552846650162193,0
+"sub_Sad music_T0oF8MyYhBM_1+Female speech, woman speaking_W6iwVLm51-k_1.wav",Sad music,"Female speech, woman speaking",0.2158471643924713,0.2611715495586395,1,0.033650112084658186,0.015614557813666248,0
+"sub_Helicopter_8Fut6ZU85Fs_1+Female speech, woman speaking_J5_m9Ee6A6M_1.wav",Helicopter,"Female speech, woman speaking",0.1863502562046051,0.06107553094625473,0,0.031190049155566505,0.008221909032821417,0
+"sub_Computer keyboard_Jz5wulRv1Ps_1+Baby cry, infant cry_hC7sSMWLwDo_1.wav",Computer keyboard,"Baby cry, infant cry",0.05724233761429787,0.42617666721343994,1,0.012851288245006153,0.01730174188439675,1
+"sub_Telephone bell ringing_P-QOd_28o9c_1+Female speech, woman speaking_LysFhHBYTmE_1.wav",Telephone bell ringing,"Female speech, woman speaking",-0.07122160494327545,0.22248727083206177,1,0.02489902672598854,0.018925430181506348,0
+sub_Computer keyboard_24tWz7gmngI_1+Telephone bell ringing_3Kb4RHaZpxo_1.wav,Computer keyboard,Telephone bell ringing,0.11218379437923431,0.26087090373039246,1,0.012254043334320237,0.03357963058858357,1
+"sub_Male speech, man speaking_1OFDyTzUj24_1+Telephone bell ringing_Qtpn66PvyUA_1.wav","Male speech, man speaking",Telephone bell ringing,0.21842926740646362,0.17218750715255737,0,0.017769420048526056,0.019963718770951117,1
+sub_Sad music_6CaZAITdAsk_1+Computer keyboard_24tWz7gmngI_1.wav,Sad music,Computer keyboard,0.20593127608299255,0.11218379437923431,0,0.034457693973890785,0.012254043334320237,0
+"sub_Male speech, man speaking_GnmgSQq6E54_1+Sad music_MpS2SSIhe2g_1.wav","Male speech, man speaking",Sad music,0.27065181732177734,0.152250275015831,0,0.01850078388162459,0.02437056483275767,1
+"sub_Baby cry, infant cry_wVVBhbrnj9s_1+Computer keyboard_z2-3fMOOexU_1.wav","Baby cry, infant cry",Computer keyboard,0.2693762183189392,0.0750311017036438,0,0.029695993992929506,0.015737021213874106,0
+"sub_Bass drum_5yLw_p9YcQE_1+Male speech, man speaking_mZ_z2lorJeY_1.wav",Bass drum,"Male speech, man speaking",0.22079208493232727,-0.02197234332561493,0,0.0266286515986745,0.01995634221517222,0
+sub_Bass drum_eWsnTX9zkHI_1+Computer keyboard_24tWz7gmngI_1.wav,Bass drum,Computer keyboard,0.19954413175582886,0.11218379437923431,0,0.03020290072871647,0.012254043334320237,0
+"sub_Male speech, man speaking_Fihamhv6TJo_1+Bass drum_CeA8--FUxYg_1.wav","Male speech, man speaking",Bass drum,0.12907478213310242,0.16762380301952362,1,0.02744716012223882,0.019618701383368096,0
+sub_Computer keyboard_Ti0Ck0xTdw4_1+Bass drum_pSlVtxLOYiM_1.wav,Computer keyboard,Bass drum,0.2991736829280853,0.1790561079978943,0,0.006035326468433831,0.02043919567514078,1
+"sub_Baby cry, infant cry_hC7sSMWLwDo_1+Male speech, man speaking_Ky8aKwI522Q_1.wav","Baby cry, infant cry","Male speech, man speaking",0.42617666721343994,0.09816574305295944,0,0.01730174188439675,0.019951914097412596,1
+"sub_Bass drum_mHRF_-IOT2s_1+Baby cry, infant cry_UFcUTwPlFAU_1.wav",Bass drum,"Baby cry, infant cry",0.15502899885177612,0.3021028935909271,1,0.0245993923397595,0.03210689261674738,1
+"sub_Baby cry, infant cry_PVSHN_arz2k_1+Helicopter_wjmMSonpdT0_1.wav","Baby cry, infant cry",Helicopter,0.30947425961494446,0.11495975404977798,0,0.021125368473135623,0.04073498858275951,1
+sub_Helicopter_R1zoAMguO3A_1+Bass drum_ZuBxMCk0cco_1.wav,Helicopter,Bass drum,0.2648676037788391,0.3037988245487213,1,0.03446795801768726,0.02588605783852958,0
+sub_Telephone bell ringing_TYc_q463LvA_1+Helicopter_xY4YrFk_PI8_1.wav,Telephone bell ringing,Helicopter,0.19335827231407166,0.19636589288711548,1,0.028891460415676723,0.034454023038013704,1
+"sub_Computer keyboard_VHUZvGxQbFA_1+Male speech, man speaking_9wkgTdE7nz8_1.wav",Computer keyboard,"Male speech, man speaking",0.21952582895755768,0.2461727261543274,1,0.021812452997667948,0.027226992821161686,1
+"sub_Sad music_lmrzR9cSMRY_1+Baby cry, infant cry_s_Le6PwhssI_1.wav",Sad music,"Baby cry, infant cry",0.15623514354228973,0.32947874069213867,1,0.027547265220659412,0.02123882576390495,0
+sub_Helicopter_q3W8UiycXe8_1+Telephone bell ringing_FIM7nfN6IT0_1.wav,Helicopter,Telephone bell ringing,0.2725178599357605,0.24325110018253326,0,0.027024928730496865,0.01848322117344395,0
+sub_Telephone bell ringing_8bRQgDQyTNw_1+Bass drum_5yLw_p9YcQE_1.wav,Telephone bell ringing,Bass drum,0.17827099561691284,0.22079208493232727,1,0.03428080792696428,0.0266286515986745,0
+"sub_Female speech, woman speaking_-1LQP2wemiQ_1+Computer keyboard_4O-dYCrVKLY_1.wav","Female speech, woman speaking",Computer keyboard,0.20875146985054016,0.17508554458618164,0,0.017467544211007387,0.016282165617939482,0
+"sub_Baby cry, infant cry_XZ5oHxjfHKY_1+Female speech, woman speaking_EQ91XVsmq-I_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.3260090947151184,0.24911892414093018,0,0.012037681483777415,0.027686756367876732,1
+sub_Helicopter_bq6C0_tAbJM_1+Telephone bell ringing_TRgs9jv8ah0_1.wav,Helicopter,Telephone bell ringing,0.07397038489580154,0.20252373814582825,1,0.034009340396442364,0.03386082589034153,0
+"sub_Baby cry, infant cry_3KwulXmBX-8_1+Female speech, woman speaking_lO1rUT_MTjk_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.3545949459075928,0.33074361085891724,0,0.03469165310067072,0.02667689995972267,0
+"sub_Female speech, woman speaking_ytUznPL6d4E_1+Bass drum_uNpSMpqlkMA_1.wav","Female speech, woman speaking",Bass drum,0.13982096314430237,0.24160143733024597,1,0.029289292324969775,0.014815168932340072,0
+sub_Sad music_y_toDfeACWE_1+Telephone bell ringing_LJH4TFzWiW0_1.wav,Sad music,Telephone bell ringing,0.13569843769073486,0.32087278366088867,1,0.016866205905453416,0.03997657279446448,1
+"sub_Bass drum_9tBOegUHrL0_1+Female speech, woman speaking_7QnyKZe6VBA_1.wav",Bass drum,"Female speech, woman speaking",0.1693619042634964,0.17125552892684937,1,0.03236642745502604,0.016932509190503625,0
+sub_Bass drum_OrYHuCwfvb4_1+Helicopter_bq6C0_tAbJM_1.wav,Bass drum,Helicopter,0.19532236456871033,0.07397038489580154,0,0.039433855436534465,0.034009340396442364,0
+"sub_Baby cry, infant cry_PyXQVNaAbHc_1+Computer keyboard_24tWz7gmngI_1.wav","Baby cry, infant cry",Computer keyboard,0.32274121046066284,0.11218379437923431,0,0.02118521588029352,0.012254043334320237,0
+"sub_Female speech, woman speaking_QXnJ2manIdI_1+Helicopter_R2Aq_j1TDSs_1.wav","Female speech, woman speaking",Helicopter,0.17333272099494934,0.17155446112155914,0,0.019135637900501747,0.03577077406509107,1
+"sub_Helicopter_jkvXuu8XltI_1+Female speech, woman speaking_7761uBKNpd8_1.wav",Helicopter,"Female speech, woman speaking",0.11986648291349411,0.18020597100257874,1,0.043444815280350046,0.022206402297783024,0
+sub_Telephone bell ringing__xuq9rBndUE_1+Computer keyboard_z2-3fMOOexU_1.wav,Telephone bell ringing,Computer keyboard,0.18790365755558014,0.0750311017036438,0,0.022149481838608813,0.015737021213874106,0
+"sub_Female speech, woman speaking_lO1rUT_MTjk_1+Baby cry, infant cry_3KwulXmBX-8_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.33074361085891724,0.3545949459075928,1,0.02667689995972267,0.03469165310067072,1
+"sub_Sad music_fZjQBgPD1Ys_1+Male speech, man speaking_gPaoJv-NrEU_1.wav",Sad music,"Male speech, man speaking",0.154634028673172,0.20261499285697937,1,0.03712812221299464,0.031558803978028384,0
+"sub_Male speech, man speaking_QNRche7AZkM_1+Telephone bell ringing_3Kb4RHaZpxo_1.wav","Male speech, man speaking",Telephone bell ringing,0.23521149158477783,0.26087090373039246,1,0.022952383940606072,0.03357963058858357,1
+"sub_Male speech, man speaking_1OFDyTzUj24_1+Bass drum_3k8zGf8Btfo_1.wav","Male speech, man speaking",Bass drum,0.21842926740646362,0.20558224618434906,0,0.017769420048526056,0.0246707653126498,1
+"sub_Computer keyboard_rTh92nlG9io_1+Baby cry, infant cry_ypmfbwrqL4s_1.wav",Computer keyboard,"Baby cry, infant cry",0.09708543121814728,0.3533092737197876,1,0.013735322247026793,0.03561908324408149,1
+sub_Computer keyboard_whOLzTgCJds_1+Sad music_y_toDfeACWE_1.wav,Computer keyboard,Sad music,0.17951758205890656,0.13569843769073486,0,0.017542052869595218,0.016866205905453416,0
+"sub_Baby cry, infant cry_StO32FBBIH4_1+Sad music_vp6p45b-038_1.wav","Baby cry, infant cry",Sad music,0.2973054051399231,0.132741317152977,0,0.030336070083123817,0.029591921437119188,0
+"sub_Computer keyboard_P9qEFBa2s8Q_1+Male speech, man speaking_bO6gUBBcniY_1.wav",Computer keyboard,"Male speech, man speaking",0.07968397438526154,0.16679570078849792,1,0.017288184468420606,0.027914524189952532,1
+sub_Helicopter_jkvXuu8XltI_1+Sad music_Y7SoAXBFUew_1.wav,Helicopter,Sad music,0.11986648291349411,0.07309752702713013,0,0.043444815280350046,0.035617225143571886,0
+"sub_Male speech, man speaking_1OFDyTzUj24_1+Baby cry, infant cry_wVVBhbrnj9s_1.wav","Male speech, man speaking","Baby cry, infant cry",0.21842926740646362,0.2693762183189392,1,0.017769420048526056,0.029695993992929506,1
+"sub_Baby cry, infant cry_PVSHN_arz2k_1+Bass drum_nfdEqi5YMjk_1.wav","Baby cry, infant cry",Bass drum,0.30947425961494446,0.2525174021720886,0,0.021125368473135623,0.023782750238747492,1
+"sub_Computer keyboard_24tWz7gmngI_1+Baby cry, infant cry_PyXQVNaAbHc_1.wav",Computer keyboard,"Baby cry, infant cry",0.11218379437923431,0.32274121046066284,1,0.012254043334320237,0.02118521588029352,1
+sub_Helicopter_hSAgDYarzOs_1+Bass drum_ktvOqV10lW0_1.wav,Helicopter,Bass drum,0.1332230567932129,0.21492913365364075,1,0.06156185253489151,0.019303353502627994,0
+"sub_Female speech, woman speaking_-fAGzY9rnaA_1+Baby cry, infant cry_StO32FBBIH4_1.wav","Female speech, woman speaking","Baby cry, infant cry",0.08587349951267242,0.2973054051399231,1,0.02882286503977782,0.030336070083123817,1
+"sub_Baby cry, infant cry_K8On7nUJuP8_1+Sad music_giPa2vVEyVc_1.wav","Baby cry, infant cry",Sad music,0.40241000056266785,0.2772318720817566,0,0.022750498882331223,0.027422134855894575,1
+"sub_Computer keyboard_iyroRIRrXUw_1+Female speech, woman speaking_ytUznPL6d4E_1.wav",Computer keyboard,"Female speech, woman speaking",0.14235903322696686,0.13982096314430237,0,0.00704593463919413,0.029289292324969775,1
+"sub_Helicopter_xY4YrFk_PI8_1+Baby cry, infant cry_UFcUTwPlFAU_1.wav",Helicopter,"Baby cry, infant cry",0.19636589288711548,0.3021028935909271,1,0.034454023038013704,0.03210689261674738,0
+"sub_Female speech, woman speaking_ytUznPL6d4E_1+Computer keyboard_iyroRIRrXUw_1.wav","Female speech, woman speaking",Computer keyboard,0.13982096314430237,0.14235903322696686,1,0.029289292324969775,0.00704593463919413,0
+sub_Computer keyboard_z2-3fMOOexU_1+Telephone bell ringing__xuq9rBndUE_1.wav,Computer keyboard,Telephone bell ringing,0.0750311017036438,0.18790365755558014,1,0.015737021213874106,0.022149481838608813,1
+"sub_Computer keyboard_rTh92nlG9io_1+Female speech, woman speaking_1hba9jmspEQ_1.wav",Computer keyboard,"Female speech, woman speaking",0.09708543121814728,0.24184013903141022,1,0.013735322247026793,0.011205365322814239,0
+"sub_Female speech, woman speaking_lAznHBBQkp4_1+Sad music_9aE33JEIGOg_1.wav","Female speech, woman speaking",Sad music,0.23681506514549255,0.2783162295818329,1,0.023978382327917692,0.03993854029842428,1
+"sub_Telephone bell ringing_EEhnuLFYehU_1+Male speech, man speaking_gPaoJv-NrEU_1.wav",Telephone bell ringing,"Male speech, man speaking",0.22332578897476196,0.20261499285697937,0,0.014630782429752312,0.031558803978028384,1
+sub_Computer keyboard_4O-dYCrVKLY_1+Sad music_dwSj0Rr3vFc_1.wav,Computer keyboard,Sad music,0.17508554458618164,0.17465898394584656,0,0.016282165617939482,0.03983621562369695,1
+"sub_Male speech, man speaking_gPaoJv-NrEU_1+Helicopter_bq6C0_tAbJM_1.wav","Male speech, man speaking",Helicopter,0.20261499285697937,0.07397038489580154,0,0.031558803978028384,0.034009340396442364,1
+sub_Bass drum_1rJWW_KqeAw_1+Computer keyboard_VHUZvGxQbFA_1.wav,Bass drum,Computer keyboard,0.22193044424057007,0.21952582895755768,0,0.026895034446554646,0.021812452997667948,0
+"sub_Male speech, man speaking_gPaoJv-NrEU_1+Telephone bell ringing_EEhnuLFYehU_1.wav","Male speech, man speaking",Telephone bell ringing,0.20261499285697937,0.22332578897476196,1,0.031558803978028384,0.014630782429752312,0
+sub_Computer keyboard_8evHpuXTcgM_1+Bass drum_JesyktMT-Dk_1.wav,Computer keyboard,Bass drum,-0.03387540578842163,0.1732480674982071,1,0.011549582379851335,0.02185939767935835,1
+"sub_Male speech, man speaking_W4acKG-KSTE_1+Bass drum_OrYHuCwfvb4_1.wav","Male speech, man speaking",Bass drum,0.2639746069908142,0.19532236456871033,0,0.016383123342230077,0.039433855436534465,1
+"sub_Baby cry, infant cry_QhUa5vXLlCI_1+Female speech, woman speaking_W6iwVLm51-k_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.20123791694641113,0.2611715495586395,1,0.035361207469240014,0.015614557813666248,0
+"sub_Telephone bell ringing_8UQI59N-bAs_1+Female speech, woman speaking_EQ91XVsmq-I_1.wav",Telephone bell ringing,"Female speech, woman speaking",0.19591394066810608,0.24911892414093018,1,0.024386343738287998,0.027686756367876732,1
+"sub_Bass drum_ZuBxMCk0cco_1+Male speech, man speaking_bO6gUBBcniY_1.wav",Bass drum,"Male speech, man speaking",0.3037988245487213,0.16679570078849792,0,0.02588605783852958,0.027914524189952532,1
+"sub_Bass drum_GrACpo7aonA_1+Female speech, woman speaking_MfavlJej70A_1.wav",Bass drum,"Female speech, woman speaking",0.21470583975315094,0.04684774577617645,0,0.019585215278095806,0.03345741516258426,1
+sub_Telephone bell ringing_nBA65g90mnA_1+Bass drum_xTVn_voSi3Q_1.wav,Telephone bell ringing,Bass drum,0.264318585395813,0.20192918181419373,0,0.011962978857016382,0.037672028133066235,1
+sub_Bass drum_ov_g-r7Vo8M_1+Telephone bell ringing_TRgs9jv8ah0_1.wav,Bass drum,Telephone bell ringing,0.14702188968658447,0.20252373814582825,1,0.023070768089542986,0.03386082589034153,1
+sub_Telephone bell ringing_TRgs9jv8ah0_1+Sad music_dsibOgkezN8_1.wav,Telephone bell ringing,Sad music,0.20252373814582825,0.2151850461959839,1,0.03386082589034153,0.02658915691660165,0
+sub_Bass drum_nG9IOZqGHdM_1+Computer keyboard_66eFB3sy7Bw_1.wav,Bass drum,Computer keyboard,0.21810197830200195,0.26343226432800293,1,0.02900128559150187,0.022719664422401392,0
+"sub_Helicopter_5slM2JWYnBw_1+Baby cry, infant cry_tk4s-nlhmEQ_1.wav",Helicopter,"Baby cry, infant cry",0.12392202019691467,0.3513612151145935,1,0.027147148312238953,0.02361603505027917,0
+"sub_Baby cry, infant cry_z15CKEUxkEg_1+Female speech, woman speaking_lAznHBBQkp4_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.3207845389842987,0.23681506514549255,0,0.026606538561588126,0.023978382327917692,0
+"sub_Telephone bell ringing_Qtpn66PvyUA_1+Male speech, man speaking_1OFDyTzUj24_1.wav",Telephone bell ringing,"Male speech, man speaking",0.17218750715255737,0.21842926740646362,1,0.019963718770951117,0.017769420048526056,0
+"sub_Sad music_MIexFfOsuJs_1+Male speech, man speaking_Fihamhv6TJo_1.wav",Sad music,"Male speech, man speaking",0.28348007798194885,0.12907478213310242,0,0.02721486521344261,0.02744716012223882,1
+sub_Bass drum_9tBOegUHrL0_1+Computer keyboard_4O-dYCrVKLY_1.wav,Bass drum,Computer keyboard,0.1693619042634964,0.17508554458618164,1,0.03236642745502604,0.016282165617939482,0
+"sub_Telephone bell ringing__xuq9rBndUE_1+Male speech, man speaking_mZ_z2lorJeY_1.wav",Telephone bell ringing,"Male speech, man speaking",0.18790365755558014,-0.02197234332561493,0,0.022149481838608813,0.01995634221517222,0
+"sub_Female speech, woman speaking_lO1rUT_MTjk_1+Helicopter_BNrmXcZQ-p4_1.wav","Female speech, woman speaking",Helicopter,0.33074361085891724,0.20046581327915192,0,0.02667689995972267,0.03015510155372596,1
+"sub_Baby cry, infant cry_nzwmPWAAQFg_1+Sad music_OaV-ZyjNDFE_1.wav","Baby cry, infant cry",Sad music,0.357689768075943,0.06866730004549026,0,0.011938539889963058,0.0316552433205264,1
+"sub_Female speech, woman speaking_LysFhHBYTmE_1+Sad music_1WlvXneu6oY_1.wav","Female speech, woman speaking",Sad music,0.22248727083206177,0.13259074091911316,0,0.018925430181506348,0.036237833093002006,1
+"sub_Helicopter_GO_1gBjIR1c_1+Baby cry, infant cry_XZ5oHxjfHKY_1.wav",Helicopter,"Baby cry, infant cry",0.19670447707176208,0.3260090947151184,1,0.04695372131513407,0.012037681483777415,0
+"sub_Baby cry, infant cry_dIIiaO12I5Q_1+Helicopter_rzxqz7XqLHA_1.wav","Baby cry, infant cry",Helicopter,0.32512813806533813,0.00801524706184864,0,0.029880779617539956,0.020079898992972186,0
+sub_Helicopter_BNrmXcZQ-p4_1+Bass drum_1wqJ9KDfcME_1.wav,Helicopter,Bass drum,0.20046581327915192,0.19596613943576813,0,0.03015510155372596,0.020648628269157157,0
+sub_Telephone bell ringing_FIM7nfN6IT0_1+Helicopter_q3W8UiycXe8_1.wav,Telephone bell ringing,Helicopter,0.24325110018253326,0.2725178599357605,1,0.01848322117344395,0.027024928730496865,1
+sub_Bass drum_JesyktMT-Dk_1+Computer keyboard_8evHpuXTcgM_1.wav,Bass drum,Computer keyboard,0.1732480674982071,-0.03387540578842163,0,0.02185939767935835,0.011549582379851335,0
+sub_Computer keyboard_PZACLpEasFU_1+Sad music_-f6s6kQEHFY_1.wav,Computer keyboard,Sad music,0.21231141686439514,0.1900234818458557,0,0.00892444578687077,0.028806453982167336,1
+"sub_Male speech, man speaking_H85puQUqrQY_1+Computer keyboard_66eFB3sy7Bw_1.wav","Male speech, man speaking",Computer keyboard,0.2335149198770523,0.26343226432800293,1,0.012301038367430928,0.022719664422401392,1
+"sub_Male speech, man speaking_GnmgSQq6E54_1+Helicopter_X76DCP7SCR0_1.wav","Male speech, man speaking",Helicopter,0.27065181732177734,0.17519816756248474,0,0.01850078388162459,0.013568852471902638,0
+sub_Bass drum_4bJeisLGFuA_1+Telephone bell ringing_FIM7nfN6IT0_1.wav,Bass drum,Telephone bell ringing,0.16625916957855225,0.24325110018253326,1,0.020439644205804595,0.01848322117344395,0
+"sub_Sad music_eQTK2fo3RoE_1+Female speech, woman speaking_QXnJ2manIdI_1.wav",Sad music,"Female speech, woman speaking",0.07471414655447006,0.17333272099494934,1,0.0235679678418862,0.019135637900501747,0
+sub_Helicopter_5slM2JWYnBw_1+Telephone bell ringing_P-QOd_28o9c_1.wav,Helicopter,Telephone bell ringing,0.12392202019691467,-0.07122160494327545,0,0.027147148312238953,0.02489902672598854,0
+"sub_Helicopter_BNrmXcZQ-p4_1+Female speech, woman speaking_lO1rUT_MTjk_1.wav",Helicopter,"Female speech, woman speaking",0.20046581327915192,0.33074361085891724,1,0.03015510155372596,0.02667689995972267,0
+sub_Telephone bell ringing_Qtpn66PvyUA_1+Helicopter_BNrmXcZQ-p4_1.wav,Telephone bell ringing,Helicopter,0.17218750715255737,0.20046581327915192,1,0.019963718770951117,0.03015510155372596,1
+"sub_Male speech, man speaking_gPaoJv-NrEU_1+Computer keyboard_8evHpuXTcgM_1.wav","Male speech, man speaking",Computer keyboard,0.20261499285697937,-0.03387540578842163,0,0.031558803978028384,0.011549582379851335,0
+sub_Telephone bell ringing_3Kb4RHaZpxo_1+Computer keyboard_24tWz7gmngI_1.wav,Telephone bell ringing,Computer keyboard,0.26087090373039246,0.11218379437923431,0,0.03357963058858357,0.012254043334320237,0
+"sub_Female speech, woman speaking_7761uBKNpd8_1+Computer keyboard_whOLzTgCJds_1.wav","Female speech, woman speaking",Computer keyboard,0.18020597100257874,0.17951758205890656,0,0.022206402297783024,0.017542052869595218,0
+"sub_Helicopter_z4HX8-du2nQ_1+Male speech, man speaking_1OFDyTzUj24_1.wav",Helicopter,"Male speech, man speaking",0.2374526411294937,0.21842926740646362,0,0.0337619871616582,0.017769420048526056,0
+sub_Computer keyboard_iyroRIRrXUw_1+Bass drum_2CidaVnd60g_1.wav,Computer keyboard,Bass drum,0.14235903322696686,0.2412586659193039,1,0.00704593463919413,0.011914565604317882,1
+"sub_Bass drum_ME7TYB3B27o_1+Baby cry, infant cry_hC7sSMWLwDo_1.wav",Bass drum,"Baby cry, infant cry",0.0853940099477768,0.42617666721343994,1,0.02401981197644108,0.01730174188439675,0
+"sub_Baby cry, infant cry_P02Zdk3amjk_1+Male speech, man speaking_QNRche7AZkM_1.wav","Baby cry, infant cry","Male speech, man speaking",0.23120436072349548,0.23521149158477783,1,0.015565673916010218,0.022952383940606072,1
+sub_Telephone bell ringing_HhP9eZ8cNIY_1+Bass drum_3k8zGf8Btfo_1.wav,Telephone bell ringing,Bass drum,0.18631279468536377,0.20558224618434906,1,0.026080087313384768,0.0246707653126498,0
+"sub_Helicopter_STdAr1JNXIU_1+Female speech, woman speaking_vuD0qyibQyQ_1.wav",Helicopter,"Female speech, woman speaking",0.1435829997062683,0.15355730056762695,1,0.029006276749442308,0.027836392522283607,0
+sub_Telephone bell ringing__xuq9rBndUE_1+Helicopter_9nsLTLNvOSw_1.wav,Telephone bell ringing,Helicopter,0.18790365755558014,0.2349580079317093,1,0.022149481838608813,0.02953913877489413,1
+"sub_Male speech, man speaking_gPaoJv-NrEU_1+Bass drum_JesyktMT-Dk_1.wav","Male speech, man speaking",Bass drum,0.20261499285697937,0.1732480674982071,0,0.031558803978028384,0.02185939767935835,0
+"sub_Female speech, woman speaking_EQ91XVsmq-I_1+Bass drum_1rJWW_KqeAw_1.wav","Female speech, woman speaking",Bass drum,0.24911892414093018,0.22193044424057007,0,0.027686756367876732,0.026895034446554646,0
+sub_Helicopter_Wr44Q8MQHL0_1+Telephone bell ringing_HhP9eZ8cNIY_1.wav,Helicopter,Telephone bell ringing,0.07292193174362183,0.18631279468536377,1,0.03258769751000481,0.026080087313384768,0
+sub_Telephone bell ringing_P-QOd_28o9c_1+Helicopter_5slM2JWYnBw_1.wav,Telephone bell ringing,Helicopter,-0.07122160494327545,0.12392202019691467,1,0.02489902672598854,0.027147148312238953,1
+"sub_Helicopter_wjmMSonpdT0_1+Baby cry, infant cry_PVSHN_arz2k_1.wav",Helicopter,"Baby cry, infant cry",0.11495975404977798,0.30947425961494446,1,0.04073498858275951,0.021125368473135623,0
+sub_Telephone bell ringing_JUL2kqVi4qI_1+Sad music_6CaZAITdAsk_1.wav,Telephone bell ringing,Sad music,0.242732435464859,0.20593127608299255,0,0.03142276891838854,0.034457693973890785,1
+"sub_Male speech, man speaking_gPaoJv-NrEU_1+Baby cry, infant cry_tk4s-nlhmEQ_1.wav","Male speech, man speaking","Baby cry, infant cry",0.20261499285697937,0.3513612151145935,1,0.031558803978028384,0.02361603505027917,0
+sub_Telephone bell ringing__xuq9rBndUE_1+Bass drum_J6T4OwacRL0_1.wav,Telephone bell ringing,Bass drum,0.18790365755558014,0.15612220764160156,0,0.022149481838608813,0.027513031138971057,1
+sub_Helicopter_xY4YrFk_PI8_1+Telephone bell ringing_TYc_q463LvA_1.wav,Helicopter,Telephone bell ringing,0.19636589288711548,0.19335827231407166,0,0.034454023038013704,0.028891460415676723,0
+sub_Computer keyboard_Ti0Ck0xTdw4_1+Telephone bell ringing_wg0LlkP_K3c_1.wav,Computer keyboard,Telephone bell ringing,0.2991736829280853,0.16630646586418152,0,0.006035326468433831,0.019311372092620703,1
+"sub_Male speech, man speaking_9wkgTdE7nz8_1+Telephone bell ringing_cQci9o1C4UY_1.wav","Male speech, man speaking",Telephone bell ringing,0.2461727261543274,0.24241432547569275,0,0.027226992821161686,0.023322889394370418,0
+sub_Sad music_xIdWJyhWueE_1+Computer keyboard_HKN2548Ts6A_1.wav,Sad music,Computer keyboard,0.10191518068313599,0.22994369268417358,1,0.03972820822779523,0.015337957553431564,0
+sub_Computer keyboard_uLdRi__nG2c_1+Telephone bell ringing_8UQI59N-bAs_1.wav,Computer keyboard,Telephone bell ringing,0.1435331106185913,0.19591394066810608,1,0.009341872385155802,0.024386343738287998,1
+"sub_Bass drum_s9d-2nhuJCQ_1+Baby cry, infant cry_ZnGO4o9SqHY_1.wav",Bass drum,"Baby cry, infant cry",0.16984310746192932,0.17951032519340515,1,0.030581892923815992,0.02052144823027912,0
+sub_Telephone bell ringing_HhP9eZ8cNIY_1+Computer keyboard_PZACLpEasFU_1.wav,Telephone bell ringing,Computer keyboard,0.18631279468536377,0.21231141686439514,1,0.026080087313384768,0.00892444578687077,0
+"sub_Female speech, woman speaking_7761uBKNpd8_1+Sad music_lmrzR9cSMRY_1.wav","Female speech, woman speaking",Sad music,0.18020597100257874,0.15623514354228973,0,0.022206402297783024,0.027547265220659412,1
+"sub_Baby cry, infant cry_2eWobSpugTw_1+Female speech, woman speaking_J5_m9Ee6A6M_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.36616450548171997,0.06107553094625473,0,0.017638425939089094,0.008221909032821417,0
+"sub_Baby cry, infant cry_s_Le6PwhssI_1+Female speech, woman speaking_-1LQP2wemiQ_1.wav","Baby cry, infant cry","Female speech, woman speaking",0.32947874069213867,0.20875146985054016,0,0.02123882576390495,0.017467544211007387,0
+"sub_Bass drum_mHRF_-IOT2s_1+Female speech, woman speaking_2ofK2gAQue4_1.wav",Bass drum,"Female speech, woman speaking",0.15502899885177612,0.22387957572937012,1,0.0245993923397595,0.006277651219279194,0
+"sub_Female speech, woman speaking_ytUznPL6d4E_1+Telephone bell ringing_TYc_q463LvA_1.wav","Female speech, woman speaking",Telephone bell ringing,0.13982096314430237,0.19335827231407166,1,0.029289292324969775,0.028891460415676723,0
+sub_Sad music_-f6s6kQEHFY_1+Computer keyboard_PZACLpEasFU_1.wav,Sad music,Computer keyboard,0.1900234818458557,0.21231141686439514,1,0.028806453982167336,0.00892444578687077,0
+"sub_Baby cry, infant cry_z15CKEUxkEg_1+Computer keyboard_g3kkGbxwSLQ_1.wav","Baby cry, infant cry",Computer keyboard,0.3207845389842987,0.17975765466690063,0,0.026606538561588126,0.012677980974684219,0
+sub_Helicopter_GO_1gBjIR1c_1+Sad music_qZkM3QaeaUM_1.wav,Helicopter,Sad music,0.19670447707176208,0.1707686483860016,0,0.04695372131513407,0.028783565108194607,0
+sub_Computer keyboard_z2-3fMOOexU_1+Bass drum_p5i3sd1uubo_1.wav,Computer keyboard,Bass drum,0.0750311017036438,0.27660253643989563,1,0.015737021213874106,0.008981369588046888,0
+sub_Helicopter_BNrmXcZQ-p4_1+Sad music_vp6p45b-038_1.wav,Helicopter,Sad music,0.20046581327915192,0.132741317152977,0,0.03015510155372596,0.029591921437119188,0
+sub_Bass drum_J6T4OwacRL0_1+Telephone bell ringing__xuq9rBndUE_1.wav,Bass drum,Telephone bell ringing,0.15612220764160156,0.18790365755558014,1,0.027513031138971057,0.022149481838608813,0
+"sub_Female speech, woman speaking_a7WAfwKi88Q_1+Telephone bell ringing_JUL2kqVi4qI_1.wav","Female speech, woman speaking",Telephone bell ringing,0.11717846989631653,0.242732435464859,1,0.02096864244393639,0.03142276891838854,1
+"sub_Bass drum_ZuBxMCk0cco_1+Baby cry, infant cry_tk4s-nlhmEQ_1.wav",Bass drum,"Baby cry, infant cry",0.3037988245487213,0.3513612151145935,1,0.02588605783852958,0.02361603505027917,0
+"sub_Baby cry, infant cry_ZnGO4o9SqHY_1+Male speech, man speaking_mZ_z2lorJeY_1.wav","Baby cry, infant cry","Male speech, man speaking",0.17951032519340515,-0.02197234332561493,0,0.02052144823027912,0.01995634221517222,0
+"sub_Sad music_qZkM3QaeaUM_1+Female speech, woman speaking_7QnyKZe6VBA_1.wav",Sad music,"Female speech, woman speaking",0.1707686483860016,0.17125552892684937,1,0.028783565108194607,0.016932509190503625,0
+sub_Helicopter_bq6C0_tAbJM_1+Bass drum_OrYHuCwfvb4_1.wav,Helicopter,Bass drum,0.07397038489580154,0.19532236456871033,1,0.034009340396442364,0.039433855436534465,1
+"sub_Baby cry, infant cry_z15CKEUxkEg_1+Sad music_9aE33JEIGOg_1.wav","Baby cry, infant cry",Sad music,0.3207845389842987,0.2783162295818329,0,0.026606538561588126,0.03993854029842428,1
+"sub_Female speech, woman speaking_2ofK2gAQue4_1+Bass drum_mHRF_-IOT2s_1.wav","Female speech, woman speaking",Bass drum,0.22387957572937012,0.15502899885177612,0,0.006277651219279194,0.0245993923397595,1
+sub_Sad music_qZkM3QaeaUM_1+Helicopter_GO_1gBjIR1c_1.wav,Sad music,Helicopter,0.1707686483860016,0.19670447707176208,1,0.028783565108194607,0.04695372131513407,1
+"sub_Male speech, man speaking_H85puQUqrQY_1+Sad music_vp6p45b-038_1.wav","Male speech, man speaking",Sad music,0.2335149198770523,0.132741317152977,0,0.012301038367430928,0.029591921437119188,1
+"sub_Bass drum_uNpSMpqlkMA_1+Female speech, woman speaking_ytUznPL6d4E_1.wav",Bass drum,"Female speech, woman speaking",0.24160143733024597,0.13982096314430237,0,0.014815168932340072,0.029289292324969775,1
+"sub_Baby cry, infant cry_P02Zdk3amjk_1+Sad music_I0q3IGmTkRo_1.wav","Baby cry, infant cry",Sad music,0.23120436072349548,0.167400062084198,0,0.015565673916010218,0.03734753911287748,1
+sub_Helicopter_9nsLTLNvOSw_1+Telephone bell ringing__xuq9rBndUE_1.wav,Helicopter,Telephone bell ringing,0.2349580079317093,0.18790365755558014,0,0.02953913877489413,0.022149481838608813,0
+"sub_Female speech, woman speaking_HPfBYRU8tVM_1+Telephone bell ringing_8bRQgDQyTNw_1.wav","Female speech, woman speaking",Telephone bell ringing,0.2102241814136505,0.17827099561691284,0,0.027981318023461578,0.03428080792696428,1
+"sub_Male speech, man speaking_mZ_z2lorJeY_1+Helicopter_6_NEAEGeFIw_1.wav","Male speech, man speaking",Helicopter,-0.02197234332561493,0.1179148480296135,1,0.01995634221517222,0.03224426745635446,1
+"sub_Female speech, woman speaking_J5_m9Ee6A6M_1+Helicopter_8Fut6ZU85Fs_1.wav","Female speech, woman speaking",Helicopter,0.06107553094625473,0.1863502562046051,1,0.008221909032821417,0.031190049155566505,1
+"sub_Baby cry, infant cry_ZnGO4o9SqHY_1+Helicopter_R1zoAMguO3A_1.wav","Baby cry, infant cry",Helicopter,0.17951032519340515,0.2648676037788391,1,0.02052144823027912,0.03446795801768726,1
+"sub_Male speech, man speaking_W4acKG-KSTE_1+Sad music_Y7SoAXBFUew_1.wav","Male speech, man speaking",Sad music,0.2639746069908142,0.07309752702713013,0,0.016383123342230077,0.035617225143571886,1
+"sub_Telephone bell ringing_cQci9o1C4UY_1+Male speech, man speaking_9wkgTdE7nz8_1.wav",Telephone bell ringing,"Male speech, man speaking",0.24241432547569275,0.2461727261543274,1,0.023322889394370418,0.027226992821161686,1
+sub_Sad music_eQTK2fo3RoE_1+Helicopter_q3W8UiycXe8_1.wav,Sad music,Helicopter,0.07471414655447006,0.2725178599357605,1,0.0235679678418862,0.027024928730496865,1
+sub_Sad music_fZjQBgPD1Ys_1+Telephone bell ringing_HhP9eZ8cNIY_1.wav,Sad music,Telephone bell ringing,0.154634028673172,0.18631279468536377,1,0.03712812221299464,0.026080087313384768,0
+"sub_Computer keyboard_PuvTDLP8lwM_1+Baby cry, infant cry_QhUa5vXLlCI_1.wav",Computer keyboard,"Baby cry, infant cry",0.09532952308654785,0.20123791694641113,1,0.013868379556728266,0.035361207469240014,1
+"sub_Bass drum_-bJPDtT31p0_1+Female speech, woman speaking_DpiGR6_i4Js_1.wav",Bass drum,"Female speech, woman speaking",0.1344626247882843,0.1872529536485672,1,0.026194569256150588,0.02007495085217987,0
+"sub_Female speech, woman speaking_1hba9jmspEQ_1+Telephone bell ringing_HhP9eZ8cNIY_1.wav","Female speech, woman speaking",Telephone bell ringing,0.24184013903141022,0.18631279468536377,0,0.011205365322814239,0.026080087313384768,1
+"sub_Helicopter_5slM2JWYnBw_1+Male speech, man speaking_BuIMVqz85uk_1.wav",Helicopter,"Male speech, man speaking",0.12392202019691467,0.22208231687545776,1,0.027147148312238953,0.034384155084835534,1
+"sub_Male speech, man speaking_Ky8aKwI522Q_1+Baby cry, infant cry_hC7sSMWLwDo_1.wav","Male speech, man speaking","Baby cry, infant cry",0.09816574305295944,0.42617666721343994,1,0.019951914097412596,0.01730174188439675,0
+sub_Telephone bell ringing_0ZAfYE4bgs8_1+Sad music_I0q3IGmTkRo_1.wav,Telephone bell ringing,Sad music,0.15856918692588806,0.167400062084198,1,0.011660886296134597,0.03734753911287748,1
+"sub_Sad music_Y7SoAXBFUew_1+Male speech, man speaking_W4acKG-KSTE_1.wav",Sad music,"Male speech, man speaking",0.07309752702713013,0.2639746069908142,1,0.035617225143571886,0.016383123342230077,0
+sub_Telephone bell ringing_8bRQgDQyTNw_1+Helicopter_GO_1gBjIR1c_1.wav,Telephone bell ringing,Helicopter,0.17827099561691284,0.19670447707176208,1,0.03428080792696428,0.04695372131513407,1
+"sub_Baby cry, infant cry_XZ5oHxjfHKY_1+Helicopter_GO_1gBjIR1c_1.wav","Baby cry, infant cry",Helicopter,0.3260090947151184,0.19670447707176208,0,0.012037681483777415,0.04695372131513407,1
+"sub_Bass drum_CeA8--FUxYg_1+Male speech, man speaking_Fihamhv6TJo_1.wav",Bass drum,"Male speech, man speaking",0.16762380301952362,0.12907478213310242,0,0.019618701383368096,0.02744716012223882,1

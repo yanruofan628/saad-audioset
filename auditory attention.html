@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博士研究：被动听觉注意与大模型 - 思维导图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #fafbfc 0%, #f1f3f4 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            color: #6b7280;
+            font-size: 1.1em;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+        }
+        .map-container {
+            flex: 1;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .details-panel {
+            width: 320px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            padding: 32px;
+            overflow-y: auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .details-panel h2 {
+            color: #1a1a1a;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 24px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        .phase {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 16px;
+            background: #fafbfc;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f3f4;
+        }
+        .phase:hover {
+            background: #f8fafc;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #e2e8f0;
+        }
+        .phase h3 {
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .phase-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 12px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        .tasks {
+            margin-top: 16px;
+            padding-left: 24px;
+            border-left: 3px solid #e2e8f0;
+        }
+        .task {
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 12px;
+            font-size: 0.9em;
+            color: #4b5563;
+            border: 1px solid #f1f3f4;
+            transition: all 0.2s ease;
+        }
+        .task:hover {
+            background: #f8fafc;
+            border-color: #e2e8f0;
+        }
+        #mindmap {
+            width: 100%;
+            height: 100%;
+            min-height: 600px;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #374151;
+        }
+        .color-box {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            .details-panel {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>被动听觉注意与大模型研究</h1>
+        <p class="subtitle">R1: 研究语音大模型是否有与人类被动听觉注意机制相同的“意外检测“机制。
+
+R2：理解大模型为何能模拟人类被动听觉，以指导更神经形态的模型设计。
+
+R3：开发能够代替人听觉被动注意功能的模型，并适合于集成到助听器。
+</p>
+    </div>
+
+    <div class="container">
+        <div class="map-container">
+            <div id="mindmap"></div>
+        </div>
+        <div class="details-panel">
+            <h2>研究阶段详情</h2>
+            <div class="phase" onclick="showDetails('phase1')">
+                <h3><span class="phase-number">1</span>阶段一：验证"惊喜度"桥梁</h3>
+                <div class="tasks">
+                    <div class="task">计算语音大模型惊喜度指标</div>
+                    <div class="task">Oddball范式音频输入与处理</div>
+                    <div class="task">惊喜度与MMN神经指标对齐验证</div>
+                </div>
+            </div>
+            <div class="phase" onclick="showDetails('phase2')">
+                <h3><span class="phase-number">2</span>阶段二：比较注意机制</h3>
+                <div class="tasks">
+                    <div class="task">设计双耳分听实验</div>
+                    <div class="task">人类与大模型行为对比</div>
+                    <div class="task">引入工作记忆与LLM调制</div>
+                </div>
+            </div>
+            <div class="phase" onclick="showDetails('phase3')">
+                <h3><span class="phase-number">3</span>阶段三：拟合与应用</h3>
+                <div class="tasks">
+                    <div class="task">使用人类数据微调大模型</div>
+                    <div class="task">分析关键预测特征</div>
+                    <div class="task">助听器应用场景探索</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #1f2937;"></div>
+            <span>阶段</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #059669;"></div>
+            <span>任务</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #dc2626;"></div>
+            <span>数据分析</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #7c3aed;"></div>
+            <span>验证方法</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-box" style="background-color: #ea580c;"></div>
+            <span>应用方向</span>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // 思维导图数据
+        const data = {
+            name: "被动听觉注意力研究",
+            children: [
+                {
+                    name: "阶段一：验证桥梁",
+                    description: "在语音大模型中建立'惊喜度'计算模型，并验证其与人类神经指标(MMN)的对齐程度",
+                    children: [
+                        {
+                            name: "定义惊喜度指标",
+                            description: "从预训练语音大模型(HuBERT, Wav2Vec2)中提取惊喜度指标",
+                            children: [
+                                { name: "定义惊喜度为负对数概率", description: "Surprisal = -log P(xt | x<t)" },
+                                { name: "提取各层惊喜度时间序列", description: "分析模型不同层级的惊喜度表现" }
+                            ]
+                        },
+                        {
+                            name: "Oddball范式实验",
+                            description: "制备标准与偏差刺激的音频序列",
+                            children: [
+                                { name: "设计纯音频率Oddball", description: "1000Hz标准刺激与1200Hz偏差刺激" },
+                                { name: "设计语音Oddball范式", description: "使用不同音素或音节的偏差刺激" }
+                            ]
+                        },
+                        {
+                            name: "神经数据获取",
+                            description: "收集人类MMN脑电数据",
+                            children: [
+                                { name: "自行采集EEG数据", description: "招募被试进行Oddball实验并记录脑电" },
+                                { name: "使用公开EEG数据集", description: "利用现有脑电数据库中的MMN数据" }
+                            ]
+                        },
+                        {
+                            name: "惊喜度与MMN对齐",
+                            description: "验证模型惊喜度与人类MMN的相关性",
+                            children: [
+                                { name: "时间序列对齐分析", description: "将惊喜度时间序列与MMN波形在时间上对齐" },
+                                { name: "相关性统计分析", description: "计算 trial-level 惊喜度峰值与MMN波幅的相关性" },
+                                { name: "确定最佳模型层级", description: "找到与MMN关联最强的模型层级" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "阶段二：比较机制",
+                    description: "在双耳分听任务中比较人类和语音大模型在被动听觉注意上的异同",
+                    children: [
+                        {
+                            name: "双耳分听实验设计",
+                            description: "设计左右耳不同音频的被动聆听任务",
+                            children: [
+                                { name: "准备双耳音频材料", description: "选择有声书、词语列表等作为刺激材料" },
+                                { name: "确定实验流程", description: "设计被动聆听与后续行为测试方案" }
+                            ]
+                        },
+                        {
+                            name: "人类数据采集",
+                            description: "记录人类行为与脑电数据",
+                            children: [
+                                { name: "行为数据收集", description: "记录被试选择的注意偏向通道" },
+                                { name: "脑电数据记录", description: "同步采集被试的EEG数据" },
+                                { name: "工作记忆评估", description: "通过额外任务评估被试工作记忆容量" }
+                            ]
+                        },
+                        {
+                            name: "大模型模拟",
+                            description: "使用大模型处理双耳音频并计算注意指标",
+                            children: [
+                                { name: "分别处理双耳通道", description: "将左右耳音频分别输入模型计算惊喜度" },
+                                { name: "引入工作记忆模拟", description: "设计滑动窗口机制模拟人类记忆限制" },
+                                { name: "与LLM合作获取语义特征", description: "使用LLM分析内容关注度与熟悉度" }
+                            ]
+                        },
+                        {
+                            name: "对比分析",
+                            description: "系统比较人类与模型的注意机制",
+                            children: [
+                                { name: "行为预测准确率计算", description: "评估模型预测人类选择的能力" },
+                                { name: "神经相关性分析", description: "比较模型指标与脑电成分的关联" },
+                                { name: "机制差异探究", description: "分析人与模型关注特征的差异" },
+                                { name: "可视化分析", description: "使用显著性图展示模型关注区域" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "阶段三：拟合与应用",
+                    description: "使用人类数据微调大模型，探索其在助听器等场景的应用",
+                    children: [
+                        {
+                            name: "模型微调",
+                            description: "使用人类注意数据训练模型",
+                            children: [
+                                { name: "准备训练数据", description: "使用人类行为选择作为标签" },
+                                { name: "设计轻量预测头", description: "在预训练模型上添加分类网络" },
+                                { name: "训练与验证", description: "训练模型并评估其预测性能" }
+                            ]
+                        },
+                        {
+                            name: "特征重要性分析",
+                            description: "探究模型预测人类注意的关键特征",
+                            children: [
+                                { name: "消融实验", description: "分析各特征对预测性能的贡献" },
+                                { name: "使用Grad-CAM/VICE/SHAP/LIME解释预测", description: "解释模型个体预测的依据" },
+                                { name: "确定关键预测特征", description: "识别最影响预测的特征维度" }
+                            ]
+                        },
+                        {
+                            name: "助听器应用探索",
+                            description: "探索研究成果在助听设备上的应用",
+                            children: [
+                                { name: "设计注意力选择算法", description: "基于模型预测优先放大注意流" },
+                                { name: "个性化适配探索", description: "研究如何适应个体差异" }
+                            ]
+                        },
+                        {
+                            name: "讨论与展望",
+                            description: "总结研究成果与未来方向",
+                            children: [
+                                { name: "学术贡献总结", description: "提炼研究的理论与实践价值" },
+                                { name: "应用前景讨论", description: "讨论在临床、AR等场景的应用可能" },
+                                { name: "局限性分析", description: "诚实讨论研究的限制与不足" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // 初始化思维导图
+        const width = document.getElementById('mindmap').clientWidth;
+        const height = document.getElementById('mindmap').clientHeight;
+
+        const svg = d3.select("#mindmap")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${width/2}, ${height/2})`);
+
+        // 创建树状布局
+        const root = d3.hierarchy(data);
+        const treeLayout = d3.tree().size([height * 0.9, width * 0.8]);
+        treeLayout(root);
+
+        // 节点颜色映射 - Nature风格配色
+        const colorMap = {
+            "阶段": "#1f2937",
+            "任务": "#059669",
+            "数据分析": "#dc2626",
+            "验证方法": "#7c3aed",
+            "应用方向": "#ea580c"
+        };
+
+        // 绘制连接线
+        svg.selectAll('line')
+            .data(root.links())
+            .enter()
+            .append('line')
+            .attr('x1', d => d.source.y)
+            .attr('y1', d => d.source.x)
+            .attr('x2', d => d.target.y)
+            .attr('y2', d => d.target.x)
+            .attr('stroke', '#d1d5db')
+            .attr('stroke-width', 2)
+            .attr('opacity', 0.8);
+
+        // 绘制节点
+        const nodes = svg.selectAll('g')
+            .data(root.descendants())
+            .enter()
+            .append('g')
+            .attr('transform', d => `translate(${d.y}, ${d.x})`)
+            .on('click', (event, d) => {
+                showDetails(d.data.name, d.data.description);
+            });
+
+        nodes.append('circle')
+            .attr('r', d => d.depth === 0 ? 16 : 10)
+            .attr('fill', d => {
+                if (d.depth === 0) return colorMap["阶段"];
+                if (d.data.name.includes("分析") || d.data.name.includes("计算")) return colorMap["数据分析"];
+                if (d.data.name.includes("验证") || d.data.name.includes("对齐")) return colorMap["验证方法"];
+                if (d.data.name.includes("应用") || d.data.name.includes("助听器")) return colorMap["应用方向"];
+                return colorMap["任务"];
+            })
+            .attr('stroke', '#fff')
+            .attr('stroke-width', 3)
+            .attr('opacity', 0.9);
+
+        // 添加节点文本
+        nodes.append('text')
+            .text(d => d.data.name)
+            .attr('text-anchor', d => d.children ? 'end' : 'start')
+            .attr('dx', d => d.children ? -20 : 20)
+            .attr('dy', 4)
+            .attr('font-size', d => d.depth === 0 ? '16px' : '13px')
+            .attr('font-weight', d => d.depth === 0 ? '700' : '500')
+            .attr('fill', d => d.depth === 0 ? '#1a1a1a' : '#374151')
+            .attr('font-family', 'Inter, -apple-system, BlinkMacSystemFont, sans-serif');
+
+        // 缩放行为
+        const zoom = d3.zoom()
+            .scaleExtent([0.3, 3])
+            .on('zoom', (event) => {
+                svg.attr('transform', event.transform);
+            });
+
+        d3.select("svg").call(zoom);
+
+        // 添加节点悬停效果
+        nodes.on('mouseover', function(event, d) {
+            d3.select(this).select('circle')
+                .transition()
+                .duration(200)
+                .attr('r', d.depth === 0 ? 20 : 12)
+                .attr('opacity', 1);
+        })
+        .on('mouseout', function(event, d) {
+            d3.select(this).select('circle')
+                .transition()
+                .duration(200)
+                .attr('r', d.depth === 0 ? 16 : 10)
+                .attr('opacity', 0.9);
+        });
+
+        // 显示详细信息函数
+        function showDetails(title, description) {
+            const panel = document.querySelector('.details-panel');
+            panel.innerHTML = `
+                <h2>${title}</h2>
+                <p>${description || '点击其他节点查看详细信息'}</p>
+            `;
+
+            if (description) {
+                panel.innerHTML += `
+                    <div style="margin-top: 20px; padding: 10px; background: #f8f9fa; border-radius: 8px;">
+                        <h3>研究任务</h3>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>设计实验方案与流程</li>
+                            <li>数据采集与预处理</li>
+                            <li>模型训练与优化</li>
+                            <li>数据分析与验证</li>
+                            <li>结果可视化与解释</li>
+                        </ul>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

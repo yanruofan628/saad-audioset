@@ -1,0 +1,902 @@
+===== LINE 249 StrReplace =====
+    return balanced_trials
+
+
+def normalize_cv_scheme(cv_scheme=None):
+    """校验并返回交叉验证方案名称。"""
+    if cv_scheme is None:
+        cv_scheme = CV_SCHEME
+    cv_scheme = str(cv_scheme).lower().strip()
+    if cv_scheme not in CV_SCHEMES:
+        raise ValueError(
+            f"未知 CV_SCHEME: {cv_scheme!r}。可选: {list(CV_SCHEMES)}"
+        )
+    return cv_scheme
+
+
+def resolve_n_folds(cv_scheme=None, n_folds=None):
+    """根据 CV 方案返回折数（category_heldout 默认 6 折）。"""
+    cv_scheme = normalize_cv_scheme(cv_scheme)
+    if n_folds is not None:
+        return int(n_folds)
+    if cv_scheme == 'category_heldout':
+        return N_FOLDS_CATEGORY_HELDOUT
+    return N_FOLDS
+
+
+def describe_cv_scheme(cv_scheme=None):
+    """返回当前 CV 方案的可读描述。"""
+    cv_scheme = normalize_cv_scheme(cv_scheme)
+    descriptions = {
+        'mirror': (
+            'Mirror-constrained split: 同一 dichotic 对的 AB/BA 镜像 trial 必须在同一 fold，'
+            f'{N_FOLDS}-fold CV'
+        ),
+        'random': (
+            'Trial-level random split: 随机打乱 trial 后切分，'
+            f'{N_FOLDS}-fold CV'
+        ),
+        'category_heldout': (
+            'Category-held-out split: 按 24 类 subcategory pairing type 分组，'
+            f'每折 held-out {N_FOLDS_CATEGORY_HELDOUT} 折中各 4 类，'
+            f'{N_FOLDS_CATEGORY_HELDOUT}-fold CV'
+        ),
+    }
+    return descriptions[cv_scheme]
+
+
+def get_pairing_type_key(pair_name):
+    """从 pair_name 提取无序 subcategory pairing type: tuple(sorted([left_cat, right_cat]))。"""
+    if not pair_name:
+        return None
+    parse_result = parse_pair_name(pair_name)
+    if parse_result is None:
+        return None
+    left_cat, _, right_cat, _, _ = parse_result
+    if left_cat is None or right_cat is None:
+        return None
+    return tuple(sorted([left_cat, right_cat]))
+
+
+def build_global_pairing_type_fold_map(pair_names, n_folds=None, seed=None):
+    """
+    将全部 pair_name 中的 subcategory pairing type 划分为 n_folds 组（默认 6 组 × 4 类）。
+
+    返回:
+        type_to_fold: {pairing_type: fold_idx}
+        fold_type_groups: list[list[tuple]]，每组为 held-out 的 pairing types
+    """
+    if n_folds is None:
+        n_folds = N_FOLDS_CATEGORY_HELDOUT
+    if seed is None:
+        seed = CV_SEED
+
+    all_types = sorted({
+        key for pn in pair_names
+        if (key := get_pairing_type_key(pn)) is not None
+    })
+    if not all_types:
+        raise ValueError("无法从 pair_names 提取任何 subcategory pairing type")
+
+    rng = np.random.RandomState(seed)
+    types_shuffled = list(all_types)
+    rng.shuffle(types_shuffled)
+    fold_type_groups = [list(g) for g in np.array_split(types_shuffled, n_folds)]
+
+    type_to_fold = {}
+    for fold_idx, group in enumerate(fold_type_groups):
+        for pairing_type in group:
+            type_to_fold[pairing_type] = fold_idx
+
+    print(f"\n=== 构建 Category-held-out pairing type 划分 ===")
+    print(f"  唯一 pairing type 数: {len(all_types)}")
+    print(f"  折数: {n_folds}, seed={seed}")
+    for fold_idx, group in enumerate(fold_type_groups, 1):
+        preview = ', '.join(f"{a}×{b}" for a, b in group[:4])
+        suffix = f" ... (+{len(group) - 4})" if len(group) > 4 else ""
+        print(f"    Fold {fold_idx} held-out types ({len(group)}): {preview}{suffix}")
+
+    return type_to_fold, fold_type_groups
+
+
+def build_category_heldout_folds(consistent_trials, pairing_type_fold_map, n_folds=None):
+    """
+    Category-held-out 交叉验证：每折将 4 类 pairing type 的全部 trial 作为测试集。
+
+    同一 pairing type 下的 AB/BA 镜像 trial 自动同折（类型相同）。
+    """
+    if n_folds is None:
+        n_folds = N_FOLDS_CATEGORY_HELDOUT
+
+    print(f"\n=== 构建 Category-held-out 交叉验证划分 ===")
+    print(f"  总 trials 数: {len(consistent_trials)}")
+
+    fold_indices = {i: [] for i in range(n_folds)}
+    unknown_indices = []
+
+    for idx, trial in enumerate(consistent_trials):
+        pair_name = trial.get('pair_name') or trial.get('original_name')
+        pairing_type = get_pairing_type_key(pair_name)
+        if pairing_type is None or pairing_type not in pairing_type_fold_map:
+            unknown_indices.append(idx)
+            continue
+        fold_indices[pairing_type_fold_map[pairing_type]].append(idx)
+
+    if unknown_indices:
+        print(f"  警告: {len(unknown_indices)} 个 trial 无法映射 pairing type，各折训练时保留、测试时排除")
+
+    folds = [
+        np.array(fold_indices[i], dtype=np.int32)
+        for i in range(n_folds)
+    ]
+    shuffled_indices = np.arange(len(consistent_trials), dtype=np.int32)
+
+    print(f"  各 fold 测试集大小:")
+    for fold_idx, fold in enumerate(folds, 1):
+        print(f"    Fold {fold_idx}: {len(fold)} 个 trials")
+
+    return folds, shuffled_indices
+
+
+def build_cv_folds(consistent_trials, cv_scheme=None, n_folds=None, seed=None,
+                   pairing_type_fold_map=None):
+    """
+    统一 CV 入口：按 CV_SCHEME 选择 mirror / random / category_heldout 划分。
+
+    返回:
+        folds: list[np.ndarray]，每折的验证/测试 trial 索引
+        shuffled_indices: np.ndarray，全部 trial 索引（random 为打乱序，其余为 0..n-1）
+    """
+    cv_scheme = normalize_cv_scheme(cv_scheme)
+    n_folds = resolve_n_folds(cv_scheme, n_folds)
+    if seed is None:
+        seed = CV_SEED
+
+    print(f"\n=== CV 划分: {cv_scheme} ===")
+    print(f"  {describe_cv_scheme(cv_scheme)}")
+
+    if cv_scheme == 'mirror':
+        return build_pair_consistent_folds(consistent_trials, n_folds=n_folds, seed=seed)
+    if cv_scheme == 'random':
+        folds, shuffled_indices = build_consistent_folds(
+            len(consistent_trials), seed=seed, k=n_folds
+        )
+        print(f"  各 fold 大小: {[len(f) for f in folds]}")
+        return folds, shuffled_indices
+    if cv_scheme == 'category_heldout':
+        if pairing_type_fold_map is None:
+            raise ValueError("category_heldout 划分需要提供 pairing_type_fold_map")
+        return build_category_heldout_folds(
+            consistent_trials, pairing_type_fold_map, n_folds=n_folds
+        )
+    raise ValueError(f"未实现的 CV_SCHEME: {cv_scheme}")
+
+
+def build_pair_consistent_folds(consistent_trials, n_folds=5, seed=42):
+
+===== LINE 265 StrReplace =====
+def get_pairing_type_key(pair_name):
+    """从 pair_name 提取无序 subcategory pairing type: tuple(sorted([left_cat, right_cat]))。"""
+    if pair_name is None:
+        return None
+    if isinstance(pair_name, bytes):
+        pair_name = pair_name.decode('utf-8', errors='ignore')
+    pair_name = str(pair_name)
+    if not pair_name:
+        return None
+    parse_result = parse_pair_name_for_type(pair_name)
+    if parse_result is None:
+        return None
+    left_cat, _, right_cat, _, _ = parse_result
+    if left_cat is None or right_cat is None:
+        return None
+    return tuple(sorted([str(left_cat), str(right_cat)]))
+
+===== LINE 864 StrReplace =====
+AM_FM_CONTENT_PRIO_LOSS_WEIGHT = DEFAULT_CONTENT_PRIO_LOSS_WEIGHT
+
+AM_FM_CONTENT_PRIORITY_MODELS = frozenset({
+    'am_fm_content_priority',
+    'am_fm_content_priority_fm',
+    'am_fm_content_priority_fm_cw',
+    'am_fm_gated_priority',
+})
+
+AM_FM_PURE_AUDIO_MODELS = frozenset({
+    'am_fm_salience', 'am_fm_salience_proto',
+}) | AM_FM_CONTENT_PRIORITY_MODELS
+
+===== LINE 864 StrReplace =====
+        'am_fm_content_priority', 'am_fm_content_priority_fm',
+        'am_fm_content_priority_fm_cw', 'am_fm_gated_priority',
+        'salience_beta',
+
+===== LINE 865 StrReplace =====
+    allowed = {
+        'simple', 'audio_only', 'am_fm_salience', 'am_fm_salience_proto',
+        'am_fm_content_priority', 'am_fm_content_priority_fm',
+        'am_fm_content_priority_fm_cw', 'am_fm_gated_priority',
+        'salience_beta',
+
+===== LINE 865 StrReplace =====
+    if 'am_fm_content_priority' in models_to_train:
+        if n_mels is None:
+            raise ValueError("am_fm_content_priority 需要 n_mels（来自 AM+FM 缓存）")
+        all_models['am_fm_content_priority'] = AMFMSalienceContentPriorityClassifier(n_mels=n_mels)
+    if 'am_fm_content_priority_fm' in models_to_train or 'am_fm_content_priority_fm_cw' in models_to_train:
+        if n_mels is None:
+            raise ValueError("am_fm_content_priority_fm 需要 n_mels（来自 AM+FM 缓存）")
+        fm_cls = AMFMSalienceContentPriorityFMClassifier(n_mels=n_mels)
+        if 'am_fm_content_priority_fm' in models_to_train:
+            all_models['am_fm_content_priority_fm'] = fm_cls
+        if 'am_fm_content_priority_fm_cw' in models_to_train:
+            all_models['am_fm_content_priority_fm_cw'] = AMFMSalienceContentPriorityFMClassifier(n_mels=n_mels)
+    if 'am_fm_gated_priority' in models_to_train:
+        if n_mels is None:
+            raise ValueError("am_fm_gated_priority 需要 n_mels（来自 AM+FM 缓存）")
+        all_models['am_fm_gated_priority'] = AMFMSalienceGatedPriorityClassifier(n_mels=n_mels)
+
+===== LINE 868 StrReplace =====
+def _content_priority_train_step(name, model, criterion, am_l, am_r, mel_l, mel_r, yb):
+    """CE + optional conflict-weighted margin for content-priority variants."""
+    logits, _, _, p_l, p_r = model(am_l, am_r, mel_l, mel_r, return_parts=True)
+    ce_loss = criterion(logits, yb)
+    if name == 'am_fm_content_priority_fm_cw':
+        s_l = am_envelope_rms(am_l)
+        s_r = am_envelope_rms(am_r)
+        prio_loss = content_priority_margin_loss(
+            p_l, p_r, yb, s_left=s_l, s_right=s_r,
+            conflict_weight=DEFAULT_CONFLICT_MARGIN_WEIGHT,
+            agree_weight=DEFAULT_AGREE_MARGIN_WEIGHT,
+        )
+    else:
+        prio_loss = content_priority_margin_loss(p_l, p_r, yb)
+    loss = ce_loss + AM_FM_CONTENT_PRIO_LOSS_WEIGHT * prio_loss
+    return loss, ce_loss.item(), prio_loss.item(), logits
+
+
+def train_fold_model(fold_data, all_audio_features, pair_name_to_idx, pair_names,
+
+===== LINE 871 StrReplace =====
+        'am_fm_salience', 'am_fm_salience_proto',
+        'am_fm_content_priority', 'am_fm_content_priority_fm',
+        'am_fm_content_priority_fm_cw', 'am_fm_gated_priority',
+        'salience_beta',
+
+===== LINE 875 Write =====
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Compare content-priority tiers A/B/C on mirror CV (5 subjects)."""
+
+from eeg_audio_residual import main_individual
+
+SUBJECTS_5 = [
+    'yanxingzhuo', 'jinxiaoyue', 'chenxianwei', 'yeziyuan', 'zhangzhiyao',
+]
+
+MODELS = [
+    'am_fm_content_priority',       # baseline: p <- z (AM+FM)
+    'am_fm_content_priority_fm',    # Tier A: p <- fm_h
+    'am_fm_content_priority_fm_cw',  # Tier B: FM + conflict-weighted margin
+    'am_fm_gated_priority',       # Tier C: explicit AM/FM gate
+]
+
+if __name__ == '__main__':
+    main_individual(
+        subjects_to_run=SUBJECTS_5,
+        models_to_train=MODELS,
+        filter_consistent=False,
+        cv_scheme='mirror',
+    )
+
+
+===== LINE 918 Write =====
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+PRIME 主实验队列：17 被试（跳过 hanglei），顺序跑两种 CV：
+  1) mirror (5-fold)
+  2) category_heldout (6-fold)
+
+模型（论文主表 + 关键消融基线）：
+  audio_only, am_fm_salience, am_fm_content_priority_fm, residual, residual_gated
+"""
+
+from __future__ import annotations
+
+import sys
+import time
+from datetime import datetime
+
+from eeg_audio_residual import SUBJECTS_CONFIG, main_individual
+
+# 与既往实验一致：跳过 hanglei
+ALL_SUBJECTS = [s for s in SUBJECTS_CONFIG.keys() if s != 'hanglei']
+
+PRIME_MODELS = [
+    'audio_only',
+    'am_fm_salience',
+    'am_fm_content_priority_fm',
+    'residual',
+    'residual_gated',
+]
+
+CV_QUEUE = [
+    ('mirror', 5),
+    ('category_heldout', 6),
+]
+
+
+def _log(msg: str) -> None:
+    line = f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
+    print(line, flush=True)
+
+
+def run_queue():
+    _log('=' * 72)
+    _log(f'PRIME 全被试 CV 队列启动 | n_subjects={len(ALL_SUBJECTS)}')
+    _log(f'被试: {", ".join(ALL_SUBJECTS)}')
+    _log(f'模型: {", ".join(PRIME_MODELS)}')
+    _log('=' * 72)
+
+    t0_all = time.time()
+    for cv_scheme, n_folds in CV_QUEUE:
+        _log('')
+        _log('#' * 72)
+        _log(f'开始 CV: {cv_scheme} ({n_folds} folds)')
+        _log('#' * 72)
+        t0_cv = time.time()
+        try:
+            main_individual(
+                subjects_to_run=ALL_SUBJECTS,
+                models_to_train=PRIME_MODELS,
+                filter_consistent=False,
+                cv_scheme=cv_scheme,
+            )
+        except Exception as exc:
+            _log(f'ERROR: {cv_scheme} 失败: {exc!r}')
+            raise
+        elapsed = time.time() - t0_cv
+        _log(f'完成 CV: {cv_scheme} | 用时 {elapsed / 3600:.2f} h')
+
+    total = time.time() - t0_all
+    _log('')
+    _log('=' * 72)
+    _log(f'全部队列完成 | 总用时 {total / 3600:.2f} h')
+    _log('=' * 72)
+
+
+if __name__ == '__main__':
+    try:
+        run_queue()
+    except KeyboardInterrupt:
+        _log('用户中断')
+        sys.exit(130)
+
+
+===== LINE 1015 Write =====
+CV,subject,audio_only,am_fm_salience,am_fm_content_priority_fm,residual,residual_gated
+mirror,yanxingzhuo,67.4,71.2,71.2,78.3,82.0
+mirror,jinxiaoyue,74.2,83.5,84.6,80.6,84.9
+mirror,chenxianwei,74.8,81.7,82.5,70.8,71.7
+mirror,yeziyuan,61.3,59.9,63.9,58.3,59.3
+mirror,zhangzhiyao,55.3,53.5,52.9,57.9,51.3
+mirror,haoxiang,72.9,76.3,76.8,69.4,74.0
+mirror,hehaohuai,67.7,73.0,74.4,71.0,63.1
+mirror,qiuhaiyun,82.2,85.8,87.1,80.9,83.5
+mirror,zhouyu,69.6,73.6,74.5,71.8,69.6
+mirror,honghaokai,75.3,81.5,84.0,76.8,78.5
+mirror,caolulu,65.3,65.2,67.2,82.6,80.7
+mirror,yanyinsong,75.2,77.4,80.3,72.7,68.5
+mirror,huangxiaohang,71.5,74.1,74.6,84.0,82.0
+mirror,xufan,76.2,74.3,77.7,79.5,75.9
+mirror,qiusiqi,69.4,76.6,74.7,78.9,78.5
+mirror,machenxiang,78.4,81.8,83.2,75.5,80.3
+mirror,lizhuhang,61.9,68.3,68.2,68.6,70.8
+mirror,MEAN,70.5,74.0,75.2,74.0,73.8
+category_heldout,yanxingzhuo,66.3,71.2,72.0,78.6,83.1
+category_heldout,jinxiaoyue,75.6,82.3,82.9,77.0,82.2
+category_heldout,chenxianwei,71.4,80.9,81.8,66.7,73.8
+category_heldout,yeziyuan,62.2,59.3,61.9,61.8,54.2
+category_heldout,zhangzhiyao,56.2,53.0,52.8,57.6,53.2
+category_heldout,haoxiang,72.4,77.9,80.3,65.3,74.0
+category_heldout,hehaohuai,72.0,69.4,75.0,71.9,72.8
+category_heldout,qiuhaiyun,78.4,85.6,85.9,77.3,84.4
+category_heldout,zhouyu,67.7,75.8,75.2,71.7,68.0
+category_heldout,honghaokai,71.5,79.5,81.5,72.5,77.9
+category_heldout,caolulu,68.0,65.6,67.3,80.5,82.9
+category_heldout,yanyinsong,73.4,78.4,79.6,73.0,73.9
+category_heldout,huangxiaohang,70.8,71.4,73.0,81.3,85.7
+category_heldout,xufan,75.5,76.4,77.6,74.8,77.0
+category_heldout,qiusiqi,70.9,75.7,76.4,77.8,77.4
+category_heldout,machenxiang,74.5,82.2,83.9,74.3,80.3
+category_heldout,lizhuhang,64.4,69.3,68.6,71.9,72.3
+category_heldout,MEAN,70.1,73.8,75.0,72.6,74.9
+
+
+===== LINE 1080 StrReplace =====
+"""
+PRIME 主实验队列：17 被试（跳过 hanglei），顺序跑两种 CV：
+  1) mirror (5-fold)
+  2) category_heldout (6-fold)
+
+模型：
+  audio_only, am_fm_salience, am_fm_content_priority_fm, residual,
+  residual_gated  (= content_priority_fm 声学 + 门控 EEG 残差)
+"""
+
+===== LINE 1104 StrReplace =====
+def resolve_n_folds(cv_scheme=None, n_folds=None):
+    """根据 CV 方案返回折数。"""
+    cv_scheme = normalize_cv_scheme(cv_scheme)
+    if n_folds is not None:
+        return int(n_folds)
+    if cv_scheme == 'category_heldout':
+        return N_FOLDS_CATEGORY_HELDOUT
+    if cv_scheme == 'pairing_type_heldout':
+        return N_FOLDS_PAIRING_TYPE_HELDOUT
+    return N_FOLDS
+
+
+def describe_cv_scheme(cv_scheme=None):
+    """返回当前 CV 方案的可读描述。"""
+    cv_scheme = normalize_cv_scheme(cv_scheme)
+    descriptions = {
+        'mirror': (
+            'Mirror-constrained split: 同一 dichotic 对的 AB/BA 镜像 trial 必须在同一 fold，'
+            f'{N_FOLDS}-fold CV'
+        ),
+        'random': (
+            'Trial-level random split: 随机打乱 trial 后切分，'
+            f'{N_FOLDS}-fold CV'
+        ),
+        'category_heldout': (
+            'True category-held-out: 每折 held-out 2 个粗类别，测试 trial 两侧均属 held-out，'
+            f'训练 trial 两侧均属其余类别；跨组 pairing 丢弃。{N_FOLDS_CATEGORY_HELDOUT}-fold'
+        ),
+        'pairing_type_heldout': (
+            'Pairing-type held-out（旧）: 按 24 类 subcategory pairing type 分组，'
+            f'{N_FOLDS_PAIRING_TYPE_HELDOUT}-fold；同类别可通过其他 pairing 泄漏到训练'
+        ),
+    }
+    return descriptions[cv_scheme]
+
+
+def coarsify_category(cat_name):
+    """将 parse_pair_name 的类别字符串映射到 8 个粗粒度 AudioSet 子类。"""
+    if cat_name is None:
+        return None
+    name = str(cat_name).strip()
+    if not name:
+        return None
+    for base in sorted(COARSE_AUDIO_CATEGORIES, key=len, reverse=True):
+        if name == base or name.startswith(base + '_'):
+            return base
+    for base in sorted(COARSE_AUDIO_CATEGORIES, key=len, reverse=True):
+        if name.startswith(base):
+            return base
+    return None
+
+
+def get_trial_coarse_categories(pair_name):
+    """返回 trial 两侧粗类别 frozenset；无法解析则 None。"""
+    if pair_name is None:
+        return None
+    if isinstance(pair_name, bytes):
+        pair_name = pair_name.decode('utf-8', errors='ignore')
+    parse_result = parse_pair_name_for_type(str(pair_name))
+    if parse_result is None:
+        return None
+    left_cat, _, right_cat, _, _ = parse_result
+    c_l = coarsify_category(left_cat)
+    c_r = coarsify_category(right_cat)
+    if c_l is None or c_r is None:
+        return None
+    return frozenset([c_l, c_r])
+
+
+def get_pairing_type_key(pair_name):
+    """从 pair_name 提取无序 subcategory pairing type: tuple(sorted([left_cat, right_cat]))。"""
+    if pair_name is None:
+        return None
+    if isinstance(pair_name, bytes):
+        pair_name = pair_name.decode('utf-8', errors='ignore')
+    pair_name = str(pair_name)
+    if not pair_name:
+        return None
+    parse_result = parse_pair_name_for_type(pair_name)
+    if parse_result is None:
+        return None
+    left_cat, _, right_cat, _, _ = parse_result
+    if left_cat is None or right_cat is None:
+        return None
+    return tuple(sorted([str(left_cat), str(right_cat)]))
+
+
+def build_global_pairing_type_fold_map(pair_names, n_folds=None, seed=None):
+    """
+    将全部 pair_name 中的 subcategory pairing type 划分为 n_folds 组（旧 pairing_type_heldout）。
+
+    返回:
+        type_to_fold: {pairing_type: fold_idx}
+        fold_type_groups: list[list[tuple]]，每组为 held-out 的 pairing types
+    """
+    if n_folds is None:
+        n_folds = N_FOLDS_PAIRING_TYPE_HELDOUT
+    if seed is None:
+        seed = CV_SEED
+
+    all_types = sorted({
+        key for pn in pair_names
+        if (key := get_pairing_type_key(pn)) is not None
+    })
+    if not all_types:
+        raise ValueError("无法从 pair_names 提取任何 subcategory pairing type")
+
+    rng = np.random.RandomState(seed)
+    types_shuffled = list(all_types)
+    rng.shuffle(types_shuffled)
+
+    base, rem = divmod(len(types_shuffled), n_folds)
+    fold_type_groups = []
+    start = 0
+    for fold_idx in range(n_folds):
+        size = base + (1 if fold_idx < rem else 0)
+        fold_type_groups.append(types_shuffled[start:start + size])
+        start += size
+
+    type_to_fold = {}
+    for fold_idx, group in enumerate(fold_type_groups):
+        for pairing_type in group:
+            type_to_fold[pairing_type] = fold_idx
+
+    print(f"\n=== 构建 Pairing-type-held-out pairing type 划分 ===")
+    print(f"  唯一 pairing type 数: {len(all_types)}")
+    print(f"  折数: {n_folds}, seed={seed}")
+    for fold_idx, group in enumerate(fold_type_groups, 1):
+        preview = ', '.join(f"{a}×{b}" for a, b in group[:4])
+        suffix = f" ... (+{len(group) - 4})" if len(group) > 4 else ""
+        print(f"    Fold {fold_idx} held-out types ({len(group)}): {preview}{suffix}")
+
+    return type_to_fold, fold_type_groups
+
+
+def build_pairing_type_heldout_folds(consistent_trials, pairing_type_fold_map, n_folds=None):
+    """
+    旧协议：每折将若干 pairing type 的全部 trial 作为测试集。
+    同一 pairing type 下的 AB/BA 自动同折。类别可通过其他 pairing 泄漏。
+    """
+    if n_folds is None:
+        n_folds = N_FOLDS_PAIRING_TYPE_HELDOUT
+
+    print(f"\n=== 构建 Pairing-type-held-out 交叉验证划分 ===")
+    print(f"  总 trials 数: {len(consistent_trials)}")
+
+    fold_indices = {i: [] for i in range(n_folds)}
+    unknown_indices = []
+
+    for idx, trial in enumerate(consistent_trials):
+        pair_name = trial.get('pair_name') or trial.get('original_name')
+        pairing_type = get_pairing_type_key(pair_name)
+        if pairing_type is None or pairing_type not in pairing_type_fold_map:
+            unknown_indices.append(idx)
+            continue
+        fold_indices[pairing_type_fold_map[pairing_type]].append(idx)
+
+    if unknown_indices:
+        print(f"  警告: {len(unknown_indices)} 个 trial 无法映射 pairing type，各折训练时保留、测试时排除")
+
+    folds = [
+        np.array(fold_indices[i], dtype=np.int32)
+        for i in range(n_folds)
+    ]
+    shuffled_indices = np.arange(len(consistent_trials), dtype=np.int32)
+
+    print(f"  各 fold 测试集大小:")
+    for fold_idx, fold in enumerate(folds, 1):
+        print(f"    Fold {fold_idx}: {len(fold)} 个 trials")
+
+    return folds, shuffled_indices, None
+
+
+def build_true_category_heldout_folds(consistent_trials, heldout_pairs=None):
+    """
+    真·类别留出：每折 held-out 2 个粗类别。
+
+    - 测试：两侧粗类别均属于 held-out 集合（即该 dichotic 对类型）
+    - 训练：两侧粗类别均属于其余 6 类
+    - 跨组（一侧 held-out、一侧 train）：本折丢弃，严禁进训练
+
+    返回:
+        folds: list[np.ndarray] 各折测试索引
+        shuffled_indices: 0..n-1
+        fold_train_indices: list[np.ndarray] 各折训练索引（显式，不做 all-test）
+    """
+    if heldout_pairs is None:
+        heldout_pairs = CATEGORY_HELDOUT_PAIRS
+
+    n_trials = len(consistent_trials)
+    print(f"\n=== 构建 True Category-held-out 交叉验证划分 ===")
+    print(f"  总 trials 数: {n_trials}")
+    print(f"  粗类别: {list(COARSE_AUDIO_CATEGORIES)}")
+    print(f"  折数: {len(heldout_pairs)}（每折 held-out 2 类，类别集互斥）")
+
+    folds = []
+    fold_train_indices = []
+    all_cats = set(COARSE_AUDIO_CATEGORIES)
+
+    for fold_idx, (c1, c2) in enumerate(heldout_pairs, 1):
+        held = {c1, c2}
+        train_cats = all_cats - held
+        test_idx = []
+        train_idx = []
+        discard_idx = []
+        unknown_idx = []
+
+        for i, trial in enumerate(consistent_trials):
+            pair_name = trial.get('pair_name') or trial.get('original_name')
+            cats = get_trial_coarse_categories(pair_name)
+            if cats is None:
+                unknown_idx.append(i)
+                continue
+            if cats.issubset(held):
+                test_idx.append(i)
+            elif cats.issubset(train_cats):
+                train_idx.append(i)
+            else:
+                discard_idx.append(i)
+
+        test_arr = np.array(test_idx, dtype=np.int32)
+        train_arr = np.array(train_idx, dtype=np.int32)
+        folds.append(test_arr)
+        fold_train_indices.append(train_arr)
+
+        # verify disjoint coarse categories
+        test_seen = set()
+        train_seen = set()
+        for i in test_idx:
+            pn = consistent_trials[i].get('pair_name') or consistent_trials[i].get('original_name')
+            test_seen |= set(get_trial_coarse_categories(pn) or [])
+        for i in train_idx:
+            pn = consistent_trials[i].get('pair_name') or consistent_trials[i].get('original_name')
+            train_seen |= set(get_trial_coarse_categories(pn) or [])
+        leak = test_seen & train_seen
+
+        print(
+            f"  Fold {fold_idx}: held-out={c1} × {c2} | "
+            f"test={len(test_arr)}, train={len(train_arr)}, "
+            f"discard_cross={len(discard_idx)}, unknown={len(unknown_idx)} | "
+            f"cat_overlap={sorted(leak) if leak else 'NONE'}"
+        )
+        if leak:
+            raise RuntimeError(f"Category leakage in fold {fold_idx}: {leak}")
+
+    shuffled_indices = np.arange(n_trials, dtype=np.int32)
+    return folds, shuffled_indices, fold_train_indices
+
+
+def build_cv_folds(consistent_trials, cv_scheme=None, n_folds=None, seed=None,
+                   pairing_type_fold_map=None):
+    """
+    统一 CV 入口：mirror / random / category_heldout / pairing_type_heldout。
+
+    返回:
+        folds: list[np.ndarray]，每折验证/测试 trial 索引
+        shuffled_indices: np.ndarray
+        fold_train_indices: list[np.ndarray]|None
+            category_heldout 时为显式训练集（排除跨组 pairing）；其余方案为 None（用 all-test）
+    """
+    cv_scheme = normalize_cv_scheme(cv_scheme)
+    n_folds = resolve_n_folds(cv_scheme, n_folds)
+    if seed is None:
+        seed = CV_SEED
+
+    print(f"\n=== CV 划分: {cv_scheme} ===")
+    print(f"  {describe_cv_scheme(cv_scheme)}")
+
+    if cv_scheme == 'mirror':
+        folds, shuffled = build_pair_consistent_folds(
+            consistent_trials, n_folds=n_folds, seed=seed
+        )
+        return folds, shuffled, None
+    if cv_scheme == 'random':
+        folds, shuffled_indices = build_consistent_folds(
+            len(consistent_trials), seed=seed, k=n_folds
+        )
+        print(f"  各 fold 大小: {[len(f) for f in folds]}")
+        return folds, shuffled_indices, None
+    if cv_scheme == 'category_heldout':
+        return build_true_category_heldout_folds(consistent_trials)
+    if cv_scheme == 'pairing_type_heldout':
+        if pairing_type_fold_map is None:
+            raise ValueError("pairing_type_heldout 需要提供 pairing_type_fold_map")
+        return build_pairing_type_heldout_folds(
+            consistent_trials, pairing_type_fold_map, n_folds=n_folds
+        )
+    raise ValueError(f"未实现的 CV_SCHEME: {cv_scheme}")
+
+===== LINE 1125 Write =====
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+PRIME · Leave-One-Category-Out (LOCO) 队列：
+  17 被试 × category_heldout (8-fold LOCO)
+
+模型与主实验一致（residual_gated = content_priority_fm + 门控 EEG）。
+"""
+
+from __future__ import annotations
+
+import os
+import sys
+import time
+from datetime import datetime
+
+os.environ.setdefault('KMP_DUPLICATE_LIB_OK', 'TRUE')
+
+from eeg_audio_residual import SUBJECTS_CONFIG, main_individual
+
+ALL_SUBJECTS = [s for s in SUBJECTS_CONFIG.keys() if s != 'hanglei']
+
+PRIME_MODELS = [
+    'audio_only',
+    'am_fm_salience',
+    'am_fm_content_priority_fm',
+    'residual',
+    'residual_gated',
+]
+
+
+def _log(msg: str) -> None:
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}", flush=True)
+
+
+def main():
+    _log('=' * 72)
+    _log(f'PRIME LOCO 队列 | n_subjects={len(ALL_SUBJECTS)} | 8-fold leave-one-category-out')
+    _log(f'被试: {", ".join(ALL_SUBJECTS)}')
+    _log(f'模型: {", ".join(PRIME_MODELS)}')
+    _log('=' * 72)
+    t0 = time.time()
+    main_individual(
+        subjects_to_run=ALL_SUBJECTS,
+        models_to_train=PRIME_MODELS,
+        filter_consistent=False,
+        cv_scheme='category_heldout',
+    )
+    _log(f'完成 | 用时 {(time.time() - t0) / 3600:.2f} h')
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        _log('用户中断')
+        sys.exit(130)
+
+
+===== LINE 1437 Write =====
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+对比：content_priority_fm / residual_gated(QK) / residual_scalar_gate(无QK+标量g)
+默认 mirror CV；可用环境变量 SUBJECTS / CV_SCHEME 覆盖。
+"""
+from __future__ import annotations
+
+import os
+import sys
+
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+from eeg_audio_residual import SUBJECTS_CONFIG, main_individual, OUTPUT_DIR
+
+MODELS = [
+    "am_fm_content_priority_fm",
+    "residual_gated",
+    "residual_scalar_gate",
+]
+
+DEFAULT_SUBJECTS = [
+    "yanxingzhuo",
+    "jinxiaoyue",
+    "chenxianwei",
+    "qiuhaiyun",
+    "haoxiang",
+    "honghaokai",
+]
+
+
+def main():
+    cv_scheme = os.environ.get("CV_SCHEME", "mirror")
+    subj_env = os.environ.get("SUBJECTS", "").strip()
+    if subj_env:
+        subjects = [s.strip() for s in subj_env.split(",") if s.strip()]
+    else:
+        subjects = [s for s in DEFAULT_SUBJECTS if s in SUBJECTS_CONFIG]
+
+    out_dir = os.path.join(OUTPUT_DIR, "individual", f"scalar_gate_compare_{cv_scheme}")
+    print("=" * 72)
+    print(f"CV={cv_scheme} | subjects={subjects}")
+    print(f"models={MODELS}")
+    print(f"out={out_dir}")
+    print("=" * 72)
+    main_individual(
+        subjects_to_run=subjects,
+        filter_consistent=False,
+        models_to_train=MODELS,
+        cv_scheme=cv_scheme,
+        output_base_dir=out_dir,
+    )
+
+
+if __name__ == "__main__":
+    sys.exit(main() or 0)
+
+
+===== LINE 1999 Write =====
+from pathlib import Path
+import re
+from collections import defaultdict
+
+p = Path(r"d:/D/research/audioset下载/download_audioset-master/download_audioset-master/scalar_gate_compare_mirror_bs16.log")
+raw = p.read_bytes()
+# detect utf-16
+if raw[:2] in (b"\xff\xfe", b"\xfe\xff") or (b"\x00" in raw[:100]):
+    text = raw.decode("utf-16")
+else:
+    text = raw.decode("utf-8", errors="ignore")
+
+out = Path(r"d:/D/research/audioset下载/download_audioset-master/download_audioset-master/_sg_summary.txt")
+
+# subject blocks
+subj_pat = re.compile(r"交叉验证: mirror.*?被试 (\w+)")
+fold_pat = re.compile(
+    r"Fold \d+ 结果: am_fm_content_priority_fm=([0-9.]+), residual_gated=([0-9.]+), residual_scalar_gate=([0-9.]+)"
+)
+# per-subject mean lines often look like 平均准确率
+mean_pat = re.compile(r"(am_fm_content_priority_fm|residual_gated|residual_scalar_gate).*?(准确率|ACC|BACC|平衡).*?([0-9.]+)")
+
+subjects = []
+folds = defaultdict(list)
+cur = None
+for line in text.splitlines():
+    m = subj_pat.search(line)
+    if m:
+        cur = m.group(1)
+        subjects.append(cur)
+    m = fold_pat.search(line)
+    if m and cur:
+        folds[cur].append(tuple(map(float, m.groups())))
+
+lines = []
+lines.append(f"subjects found: {subjects}")
+lines.append(f"n subjects with folds: {len(folds)}")
+for s, fs in folds.items():
+    if not fs:
+        continue
+    a = sum(x[0] for x in fs) / len(fs)
+    b = sum(x[1] for x in fs) / len(fs)
+    c = sum(x[2] for x in fs) / len(fs)
+    lines.append(f"{s}: nfold={len(fs)} am_fm={a:.4f} gated={b:.4f} scalar={c:.4f}")
+
+if folds:
+    all_a = [sum(x[0] for x in fs)/len(fs) for fs in folds.values() if fs]
+    all_b = [sum(x[1] for x in fs)/len(fs) for fs in folds.values() if fs]
+    all_c = [sum(x[2] for x in fs)/len(fs) for fs in folds.values() if fs]
+    import statistics as st
+    lines.append("--- group ---")
+    lines.append(f"am_fm_content_priority_fm: {st.mean(all_a):.4f} ± {st.stdev(all_a) if len(all_a)>1 else 0:.4f} (n={len(all_a)})")
+    lines.append(f"residual_gated:            {st.mean(all_b):.4f} ± {st.stdev(all_b) if len(all_b)>1 else 0:.4f}")
+    lines.append(f"residual_scalar_gate:      {st.mean(all_c):.4f} ± {st.stdev(all_c) if len(all_c)>1 else 0:.4f}")
+
+# also find any printed subject summaries
+for i, line in enumerate(text.splitlines()):
+    if "群体" in line or "跨被试" in line or "所有被试" in line or "summary" in line.lower():
+        lines.append(f"L{i}: {line}")
+    if "平均准确率" in line or "平均平衡" in line:
+        lines.append(f"L{i}: {line}")
+
+out.write_text("\n".join(lines), encoding="utf-8")
+print(out.read_text(encoding="utf-8")[:3000])
+

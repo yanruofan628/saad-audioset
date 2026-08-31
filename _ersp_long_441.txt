@@ -1,0 +1,142 @@
+两端竖条是 Morlet 小波在数据边界的边缘效应。只画 Fz/Cz/Pz/C3，并裁掉边缘后再出图。
+[StrReplace d:\PycharmProjects\Attention_switch\plot_ersp_all_trial_saad.py]
+NEW:
+CHANNELS = ["Fz", "Cz", "Pz", "C3", "C4", "T7", "T8"]
+# 总览主图只保留前四个中线/左侧通道
+OVERVIEW_CHANNELS = ["Fz", "Cz", "Pz", "C3"]
+FREQS = np.arange(2.0, 31.0, 1.0)
+N_CYCLES = np.clip(FREQS / 2.0, 1.5, 8.0)
+
+TMIN_REL = -3.0
+TMAX_REL = 2.0
+BASELINE = (-2.0, -0.5)
+# 展示窗：两端各裁掉约 1 s，避开 Morlet 边缘伪迹（计算仍用完整 −3…+2）
+DISPLAY_TMIN = -2.0
+DISPLAY_TMAX = 1.0
+VMIN, VMAX = -3.0, 3.0
+BATCH = 80  # trials per Morlet batch
+
+
+def crop_display(Z: np.ndarray, times: np.ndarray, tmin: float = DISPLAY_TMIN, tmax: float = DISPLAY_TMAX):
+    """裁掉时频图两端，减少小波边缘伪迹对展示的影响。"""
+    m = (times >= tmin) & (times <= tmax)
+    return Z[:, m], times[m]
+[StrReplace d:\PycharmProjects\Attention_switch\plot_ersp_all_trial_saad.py]
+NEW:
+def plot_overview(
+    ersp_map: dict,
+    times: np.ndarray,
+    out: Path,
+    channels: list[str] | None = None,
+    display_crop: bool = True,
+):
+    labs = [c for c in (channels or OVERVIEW_CHANNELS) if c in ersp_map]
+    n = len(labs)
+    ncols = n
+    nrows = 1
+
+    # 与 GFP/GMD 图一致：Arial，标签/刻度 18
+    plt.rcParams["font.family"] = "Arial"
+    plt.rcParams["font.size"] = 18
+    fs = 18
+
+    fig, axes = plt.subplots(
+        nrows, ncols, figsize=(3.6 * ncols, 3.4), sharex=True, sharey=True, facecolor="white"
+    )
+    axes = np.atleast_1d(axes)
+    im = None
+    for i, lab in enumerate(labs):
+        ax = axes[i]
+        Z, t_plot = (crop_display(ersp_map[lab], times) if display_crop else (ersp_map[lab], times))
+        im = ax.imshow(
+            Z,
+            aspect="auto",
+            origin="lower",
+            extent=[t_plot[0], t_plot[-1], FREQS[0], FREQS[-1]],
+            cmap="RdBu_r",
+            vmin=VMIN,
+            vmax=VMAX,
+            interpolation="nearest",
+        )
+        ax.axvline(0.0, color="k", ls="--", lw=0.8)
+        # 基线阴影仅在展示窗内可见部分
+        b0, b1 = max(BASELINE[0], t_plot[0]), min(BASELINE[1], t_plot[-1])
+        if b1 > b0:
+            ax.axvspan(b0, b1, color="0.5", alpha=0.08, lw=0)
+        ax.set_title("")  # 去掉子图横标题（通道名改图内标注）
+        ax.text(
+            0.04,
+            0.94,
+            lab,
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=fs,
+            fontname="Arial",
+            color="k",
+            fontweight="normal",
+        )
+        ax.set_xlabel("Time (s rel. stim)", fontsize=fs, fontname="Arial")
+        if i == 0:
+            ax.set_ylabel("Frequency (Hz)", fontsize=fs, fontname="Arial")
+        ax.tick_params(axis="both", labelsize=fs)
+        for tick_lab in ax.get_xticklabels() + ax.get_yticklabels():
+            tick_lab.set_fontname("Arial")
+            tick_lab.set_fontsize(fs)
+    fig.tight_layout(rect=[0, 0, 0.90, 1.0])
+    if im is not None:
+        cax = fig.add_axes([0.92, 0.18, 0.018, 0.65])
+        cb = fig.colorbar(im, cax=cax)
+        cb.set_label("dB", fontsize=fs, fontname="Arial")
+        cb.ax.tick_params(labelsize=fs)
+        for tick_lab in cb.ax.get_yticklabels():
+            tick_lab.set_fontname("Arial")
+            tick_lab.set_fontsize(fs)
+    fig.savefig(out, dpi=180, facecolor="white", bbox_inches="tight")
+    plt.close(fig)
+[Write d:\PycharmProjects\Attention_switch\_replot_ersp_overview.py]
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""重画 ERSP 总览：仅 Fz/Cz/Pz/C3，并裁掉两端 Morlet 边缘伪迹。"""
+from __future__ import annotations
+
+import numpy as np
+
+from plot_ersp_all_trial_saad import (
+    CACHE,
+    DISPLAY_TMAX,
+    DISPLAY_TMIN,
+    OUT,
+    OVERVIEW_CHANNELS,
+    plot_overview,
+)
+
+
+def main():
+    z = np.load(CACHE)
+    times = z["times"]
+    ersp_map = {lab: z[f"ersp_{lab}"] for lab in OVERVIEW_CHANNELS if f"ersp_{lab}" in z.files}
+    # 干净展示版（裁边）
+    plot_overview(
+        ersp_map,
+        times,
+        OUT / "ersp_all_overview_clean.png",
+        channels=OVERVIEW_CHANNELS,
+        display_crop=True,
+    )
+    # 主文件也用四通道裁边版
+    plot_overview(
+        ersp_map,
+        times,
+        OUT / "ersp_all_overview.png",
+        channels=OVERVIEW_CHANNELS,
+        display_crop=True,
+    )
+    print("channels:", OVERVIEW_CHANNELS)
+    print(f"display window: {DISPLAY_TMIN} … {DISPLAY_TMAX} s (Morlet edge crop)")
+    print("Saved", OUT / "ersp_all_overview_clean.png")
+    print("Saved", OUT / "ersp_all_overview.png")
+
+
+if __name__ == "__main__":
+    main()

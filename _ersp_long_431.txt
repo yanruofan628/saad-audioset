@@ -1,0 +1,66 @@
+[StrReplace d:\PycharmProjects\Attention_switch\plot_ersp_all_trial_saad.py]
+NEW:
+def plot_overview(ersp_map: dict, times: np.ndarray, out: Path):
+    labs = [c for c in CHANNELS if c in ersp_map]
+    n = len(labs)
+    ncols = 4
+    nrows = int(np.ceil(n / ncols))
+
+    # 与 GFP/GMD 图一致：Arial，标签/刻度 18
+    plt.rcParams["font.family"] = "Arial"
+    plt.rcParams["font.size"] = 18
+    fs = 18
+
+    fig, axes = plt.subplots(nrows, ncols, figsize=(14, 3.1 * nrows), sharex=True, sharey=True, facecolor="white")
+    axes = np.atleast_2d(axes)
+    im = None
+    for i, lab in enumerate(labs):
+        r, c = divmod(i, ncols)
+        ax = axes[r, c]
+        im = ax.imshow(
+            ersp_map[lab],
+            aspect="auto",
+            origin="lower",
+            extent=[times[0], times[-1], FREQS[0], FREQS[-1]],
+            cmap="RdBu_r",
+            vmin=VMIN,
+            vmax=VMAX,
+            interpolation="nearest",
+        )
+        ax.axvline(0.0, color="k", ls="--", lw=0.8)
+        ax.axvspan(BASELINE[0], BASELINE[1], color="0.5", alpha=0.08, lw=0)
+        ax.set_title("")  # 去掉子图横标题
+        # 通道名放在图内左上角（非 title）
+        ax.text(
+            0.03,
+            0.95,
+            lab,
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=fs,
+            fontname="Arial",
+            color="k",
+        )
+        if r == nrows - 1:
+            ax.set_xlabel("Time (s rel. stim)", fontsize=fs, fontname="Arial")
+        if c == 0:
+            ax.set_ylabel("Frequency (Hz)", fontsize=fs, fontname="Arial")
+        ax.tick_params(axis="both", labelsize=fs)
+        for tick_lab in ax.get_xticklabels() + ax.get_yticklabels():
+            tick_lab.set_fontname("Arial")
+            tick_lab.set_fontsize(fs)
+    for j in range(n, nrows * ncols):
+        r, c = divmod(j, ncols)
+        axes[r, c].set_visible(False)
+    fig.tight_layout(rect=[0, 0, 0.92, 1.0])
+    if im is not None:
+        cax = fig.add_axes([0.935, 0.2, 0.015, 0.55])
+        cb = fig.colorbar(im, cax=cax)
+        cb.set_label("dB", fontsize=fs, fontname="Arial")
+        cb.ax.tick_params(labelsize=fs)
+        for tick_lab in cb.ax.get_yticklabels():
+            tick_lab.set_fontname("Arial")
+            tick_lab.set_fontsize(fs)
+    fig.savefig(out, dpi=180, facecolor="white", bbox_inches="tight")
+    plt.close(fig)

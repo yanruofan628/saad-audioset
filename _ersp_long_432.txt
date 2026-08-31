@@ -1,0 +1,14 @@
+按 GFP 图同样处理：直接去掉标题，不在图内另加通道名。
+[StrReplace d:\PycharmProjects\Attention_switch\plot_ersp_all_trial_saad.py]
+NEW:
+        ax.axvline(0.0, color="k", ls="--", lw=0.8)
+        ax.axvspan(BASELINE[0], BASELINE[1], color="0.5", alpha=0.08, lw=0)
+        ax.set_title("")  # 去掉子图横标题
+        if r == nrows - 1:
+            ax.set_xlabel("Time (s rel. stim)", fontsize=fs, fontname="Arial")
+        if c == 0:
+            ax.set_ylabel("Frequency (Hz)", fontsize=fs, fontname="Arial")
+        ax.tick_params(axis="both", labelsize=fs)
+        for tick_lab in ax.get_xticklabels() + ax.get_yticklabels():
+            tick_lab.set_fontname("Arial")
+            tick_lab.set_fontsize(fs)

@@ -1,0 +1,2329 @@
+Pages: 26
+
+--- PAGE 1 ---
+Nature Neuroscience
+nature neuroscience
+https://doi.org/10.1038/s41593-026-02281-5
+Article
+Real-time brain-controlled selective hearing 
+enhances speech perception in multi-talker 
+environments
+ 
+Vishal Choudhari 
+  1,2, Maximilian Nentwich 
+  3,4, Sarah Johnson3,4, 
+Jose L. Herrero 
+  3,4, Stephan Bickel 
+  3,4, Ashesh D. Mehta3,4, 
+Daniel Friedman 
+  5, Adeen Flinker 
+  5, Edward F. Chang 
+  6 & 
+Nima Mesgarani 
+  1,2 
+Understanding speech in noisy environments is difficult for many people, 
+and current hearing aids often fail because they amplify all sounds rather 
+than the talker of interest. Auditory attention decoding (AAD) offers a 
+potential solution by using the listener’s brain signals to identify and 
+enhance the attended speaker, but it has been unclear whether this can 
+provide real-time perceptual benefits. Here we used high-resolution 
+intracranial electroencephalography in patients undergoing neurosurgical 
+procedures to implement a closed-loop system that achieves the decoding 
+fidelity necessary to dynamically amplify the attended talker. Across 
+multiple experiments, the system improved speech intelligibility, reduced 
+listening effort and was consistently preferred by subjects. It also tracked 
+both instructed and self-initiated attention shifts. By providing direct 
+evidence that a real-time, brain-controlled hearing system can enhance 
+perception, this work establishes a key performance benchmark for future 
+auditory brain–computer interfaces and advances AAD from a theoretical 
+concept to a validated solution for personalized assistive hearing.
+Understanding speech in crowded environments remains one of the 
+most difficult challenges in auditory neuroscience and hearing technol-
+ogy1. In these situations, listeners rely on selective attention to focus 
+on a target talker while suppressing competing voices and background 
+noise2,3. Current hearing aids often fail because they cannot infer the 
+listener’s intent. As a result, they amplify all sounds indiscriminately, 
+leading to degraded performance in real-world settings and contribut-
+ing to low user adoption and social isolation1,4.
+AAD is a brain–computer interface (BCI) approach that decodes 
+a listener’s attentional focus from their neural signals to selec-
+tively enhance the attended talker5,6. This approach is grounded in 
+foundational work showing that the human auditory cortex produces 
+a distinct neural signature for the attended talker7–10. Over the past 
+decade, hundreds of studies have focused on improving decoding 
+accuracy6,11–14, while only a few have attempted real-time decoding15–17 
+and control in closed-loop settings18–20 (Supplementary Table 1). Yet 
+one key question has remained unanswered: whether a real-time, 
+brain-controlled hearing system can actually help someone hear 
+better. The absence of perceptual validation reflects a deeper chal-
+lenge. A real-time AAD system must achieve a high-performance 
+threshold of speed, stability and accuracy; a system that falls short 
+can degrade the listening experience rather than improve it20. 
+Received: 1 October 2025
+Accepted: 26 March 2026
+Published online: xx xx xxxx
+ Check for updates
+1Department of Electrical Engineering, Columbia University, New York, NY, USA. 2Mortimer B. Zuckerman Mind Brain Behavior Institute, New York, NY, USA. 
+3Hofstra Northwell School of Medicine, Uniondale, NY, USA. 4The Feinstein Institutes for Medical Research, Manhasset, NY, USA. 5New York University 
+School of Medicine, New York, NY, USA. 6Department of Neurological Surgery, University of California San Francisco, San Francisco, CA, USA.  
+ e-mail: nima@ee.columbia.edu
+
+--- PAGE 2 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+Envelope 
+reconstruction
+rC2 = 0.1
+Left conversation
+Right conversation
+Stimulus
+comparison
+Selective 
+amplification
+a Experimental paradigm
+b
+c
+Left lateral
+Right lateral
+Subject electrode coverage
+Single electrode attention
+decoding accuracy
+Posterior
+Left lateral
+Right lateral
+Posterior
+50
+85
+Superior
+Superior
+d
+0.51
+2
+4
+6
+8
+10
+12
+Decoding duration (s)
+70
+80
+90
+100
+Accuracy (%)
+Oﬀline AAD accuracy vs
+decoding duration
+Oﬀline AAD accuracy vs
+no. of best electrodes
+60
+1
+10
+20
+75
+85
+95
+Accuracy (%)
+5
+15
+e
+No. of best electrodes
+65
+Linear
+regression
+C1
++9dB
+C2
++9dB
+0dB
+rC1 = 0.4
+HF
+LF
+S1
+S2
+S3
+S4
+S1
+S2
+S3
+S4
+S1
+S2
+S3
+S4
+Envelope
+Accuracy
+Fig. 1 | Experimental paradigm and offline AAD performance. a, Experimental 
+paradigm. Participants with intracranial electrodes listened to two competing, 
+spatially separated conversations. Their neural signals were recorded and fed 
+into a real-time processing system. The system uses a linear regression model to 
+reconstruct the temporal envelope of the attended speech from low-frequency 
+(LF) and high-gamma (HF) neural features. The reconstructed envelope is then 
+compared to the envelopes of the two conversations to determine the listener’s 
+focus, which in turn drives the selective amplification of the attended speaker.  
+b, Subject electrode coverage. The four-panel plot shows the combined 
+locations of all speech-responsive electrodes for the four participants (S1–S4) 
+on a template brain, viewed from four different angles to ensure clarity. Each 
+participant is represented by a different color. c, Single electrode decoding 
+accuracy. The same four-panel brain plot is shown, but here each electrode is 
+colored by its individual AAD accuracy, with warmer colors indicating higher 
+performance. This demonstrates the spatial distribution of the most informative 
+electrodes, which are concentrated in the superior temporal gyrus. d, AAD 
+accuracy versus decoding duration. The accuracy of the AAD decoder (averaged 
+across all subjects) improves as the duration of the temporal window used  
+for analysis increases. e, AAD accuracy versus number of best electrodes. The 
+AAD accuracy improves as more of the top-performing electrodes are included in 
+the decoding model, based on a forward selection procedure.
+
+--- PAGE 3 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+Successfully demonstrating a clear behavioral benefit has therefore 
+remained a critical and unachieved milestone for the field of assistive 
+auditory neurotechnology.
+Here, we address this longstanding gap using high-resolution 
+intracranial electroencephalography (iEEG) to establish a 
+gold-standard benchmark. We developed a closed-loop AAD system 
+that dynamically amplifies the attended talker in real time. We eval-
+uated its performance across three complementary experiments: 
+(1) testing perceptual benefit when the system is activated mid-trial; 
+(2) measuring responsiveness to instructed attention switches; and 
+(3) assessing the ability to track natural, self-initiated shifts of atten-
+tion. The system significantly improved speech intelligibility, reduced 
+listening effort and was consistently preferred over the baseline. By 
+providing the first definitive proof of behavioral benefit, this work 
+moves brain-controlled hearing from theoretical promise to validated 
+technology, establishing a critical performance and viability bench-
+mark that confirms the fundamental promise of auditory BCIs and 
+laying the foundation for next-generation assistive and augmented 
+listening technologies.
+Results
+Four participants (S1–S4) undergoing epilepsy monitoring with iEEG 
+took part in the study (Fig. 1a). All participants had self-reported normal 
+hearing. Electrode coverage varied across individuals based on clinical 
+needs, with recordings spanning the superior temporal gyrus and sur-
+rounding auditory cortex, regions known to encode speech-selective 
+neural responses8,21 (Fig. 1b and Extended Data Fig. 1).
+To simulate real-world listening conditions, we constructed 
+multi-talker scenes containing two simultaneous conversations, spa-
+tially separated at ±15° azimuth. Each conversation was a naturalistic 
+dialogue between two talkers who took turns speaking about topics 
+such as food, travel and exercise. The gender composition of the com-
+peting talkers was varied to produce three levels of acoustic similarity: 
+different gender (male vs female), mixed gender and same gender 
+(male vs male or female vs female), with a balanced number of trials 
+for each. To further increase ecological realism, each trial included 
+either pedestrian noise or multi-talker babble, randomized across tri-
+als. To monitor attentional engagement, both conversations included 
+repeated words, but participants were instructed to respond only to 
+repeats in the attended conversation by pressing a button. Participants 
+S2–S4 were native English speakers; S1 was a non-native speaker.
+A two-phase design was used to train and test the system. In the 
+offline phase, participants were instructed to attend to a cued talker 
+while ignoring the other as their neural responses were recorded. 
+Trials were presented with the attended talker set at either +9 dB, 
+0 dB or –6 dB target-to-masker ratio (TMR). Behavioral perfor-
+mance confirmed that participants reliably tracked the attended 
+conversation (Extended Data Fig. 2). Using these data, we trained 
+and validated a participant-specific AAD model. The model is a linear 
+regression decoder based on a stimulus reconstruction approach5,8,22 
+that learns to reconstruct the temporal envelope of the attended 
+speech from neural activity. It uses a rich feature set combining 
+high-gamma (70–150 Hz) and low-frequency (1–30 Hz) neural enve-
+lopes (Fig. 1a and Extended Data Fig. 3) from all speech-responsive 
+electrodes (Fig. 1b). The attended speech envelope at each time 
+point was reconstructed using the preceding 400 ms of neural 
+data. To make a stable decoding decision, the Pearson correlation 
+between this continuously reconstructed envelope and the actual 
+speech envelopes was then calculated over a 4 s sliding window, 
+which was updated with a 0.5 s hop size. AAD accuracy was defined 
+as the percentage of windows in which the decoded talker matched 
+the cued target. This window size of 4 s was selected based on offline 
+performance to balance real-time responsiveness with decoding 
+stability (Fig. 1d and Extended Data Fig. 3). Single-electrode decod-
+ing performance is shown in Fig. 1c (see Extended Data Fig. 4 for 
+subject-level maps). All participants showed decoding accuracy 
+well above chance, with average performance ranging from 72.0% 
+to 90.3% (Extended Data Fig. 5). This variability could be attributed 
+to multiple factors, including subject-specific differences in elec-
+trode coverage as well as trial-by-trial variations in a participant’s 
+attentional engagement23.
+In the subsequent online phase, the frozen AAD model decoded 
+attention in real time. To test for generalization across both linguistic 
+and acoustic contexts, the speech material used in this phase was differ-
+ent, and of the eight talkers presented, four were new to the model and 
+had not been included in the offline training set. For each sliding win-
+dow, the model reconstructed the attended speech envelope from neu-
+ral activity and computed its Pearson correlation with the envelopes 
+of the two competing speech conversations5,8. The conversation with 
+the higher correlation was assumed to be attended, and this decision 
+was used to guide gain control. To prevent abrupt or distracting vol-
+ume shifts, we implemented a five-state Markov model that smoothed 
+transitions in the TMR24. The system could dynamically shift gain by 
+up to ±9 dB, with intermediate steps used to create natural, gradual 
+changes. Gain was adjusted by changing the relative levels of the two 
+talkers while holding overall power constant (Methods). Instructed 
+attention trials used a visual cue (Fig. 1a), and participants were not 
+informed that their neural signals were being used to control the audio. 
+Depending on the experiment, trials were divided into segments to 
+allow comparison between baseline and AAD-enhanced conditions, 
+attention-switching periods or natural shifts in focus.
+Experiment 1: real-time AAD provides significant and 
+multifaceted perceptual benefits
+We first tested the perceptual benefit of the real-time AAD system in 
+an experiment in which the system was activated mid-trial (Fig. 2a). To 
+account for the known build-up of auditory attention, the initial 10 s 
+of each trial served as a stabilization period and were excluded from 
+analysis (unrated segment, gray bar in Fig. 2a). This 10 s window was 
+chosen conservatively, as prior studies have shown that neural atten-
+tion tracking typically stabilizes within 3–5 s of stimulus onset25,26. 
+Participants then heard a ‘system off’ segment, during which the target 
+speech was presented at a challenging −6 dB TMR27. In the following 
+‘system on’ segment, the closed-loop system was activated, selectively 
+amplifying the neurally decoded attended speech up to +9 dB TMR 
+(Supplementary Video 1). At the end of each trial, participants reported 
+which segment they preferred and answered two intelligibility ques-
+tions probing the target conversation in each condition.
+The real-time AAD system accurately tracked attentional focus. 
+The resulting single-trial and average correlation differences between 
+the neurally reconstructed speech envelope and the envelope of each 
+of the two competing conversations showed consistent separation 
+between the attended and unattended conversations (Fig. 2b), yielding 
+an average attention decoding accuracy that was significantly above 
+chance level for all subjects (Fig. 2c). This effective neural decoding 
+directly translated into the system’s gain control; a trial-by-trial analysis 
+confirmed that average AAD accuracy in each trial was a significant 
+predictor of the resulting average TMR (adjusted R2 = 0.98, P < 0.001; 
+Extended Data Fig. 6), leading to an average TMR boost of +12 dB 
+between the ‘off’ and ‘on’ segments (Fig. 2d).
+This brain-controlled gain change led to clear and multifaceted 
+perceptual benefits. Participants demonstrated a strong preference 
+for the listening experience when the system was active. A generalized 
+linear mixed-effects model (GLMM) on trial-level ratings, with subjects 
+as random effects, revealed a highly significant preference for the ‘sys-
+tem on’ condition (estimate = 1.55, SE = 0.29, P < 0.001), with individual 
+preference rates for the ‘system on’ condition ranging from 75% to 95% 
+(Fig. 2e). This subjective benefit was mirrored by improved objective 
+performance: a GLMM on the question–answer responses showed that 
+when intelligibility changed between segments, it was significantly 
+
+--- PAGE 4 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+more likely to improve (estimate = 0.73, SE = 0.035, P < 0.05; Fig. 2f). 
+Finally, a trial-by-trial analysis of pupil dilation revealed a significant 
+reduction in the ‘system on’ condition for both participants with avail-
+able data (S2: P < 0.001; S3: P < 0.05; two-sided Wilcoxon signed-rank 
+test), consistent with decreased listening effort23,28–30, in the ‘system 
+on’ compared to ‘system off’ condition (Fig. 2g).
+Decoding accuracy and envelope correlation remained consist-
+ent across acoustic conditions that varied in talker acoustic similarity, 
+including trials with same-gender and different-gender competing 
+conversations (P > 0.05; Extended Data Fig. 7). Similarly, decoding 
+performance was stable across background noise types, with no 
+significant differences between babble and pedestrian conditions 
+(P > 0.05; Extended Data Fig. 7). Finally, no significant difference was 
+observed in the decoding accuracy for unseen versus seen speakers 
+(Kruskal-Wallis test, P > 0.05). These results confirm that decoding 
+generalizes well across realistic acoustic variability.
+To understand the source of trial-by-trial performance variabil-
+ity and its perceptual consequences, we performed two regression 
+analyses. We first tested the hypothesis that the system’s decoding 
+accuracy was directly related to the user’s own attentional engage-
+ment. A linear mixed-effect model revealed a significant positive rela-
+tionship between a participant’s attention tracking performance (the 
+S1
+S2
+S3
+S4
+Average 
+accuracy (%)
+e
+100
+50
+0
+50
+100
+Percentage of trials
+S1
+S4
+S2
+S3
+95%
+5%
+85%
+15%
+75%
+25%
+75%
+25%
+Prefer on
+Prefer oﬀ
+Subject (sorted)
+f
+Direction of change in intelligibility
+100
+50
+0
+50
+100
+Percentage of changed trials 
+S3
+S1
+S2
+S4
+86%
+14%
+70%
+30%
+64%
+36%
+56%
+44%
+On > Oﬀ
+On < Oﬀ
+Subject (sorted)
+0
+38
+Conversation 1
+Conversation 2
+a
+Participant preference: on vs oﬀ
+Experiment 1: system turns on mid-trial
+Time (s)
+24
+10
+System on
+System oﬀ
+Unrated
+Normalized pupil dilation
+g
+–2
+–1
+0
+1
+2
+3
+–2
+–1
+0
+1
+2
+Normalized pupil size
+S3, P < 0.05
+S2, P < 0.001
+Oﬀ
+On
+Oﬀ
+On
+b
+Single trial and average
+correlation diﬀerence
+0
+38
+0
+0.3
+24
+10
+Correlation
+diﬀerence
+20
+40
+60
+80
+Trial
+C1
+C2
+0
+–0.3
+0.3
+Correlation
+diﬀerence
+S1
+S2
+S3
+S4
+Time (s)
+20
+40
+60
+80
+Trial 
+0
+38
+Time (s)
+–8
+0
+8
+Average
+TMR (dB)
+24
+10
+–9
+0
++9
+TMR (dB)
+–6
++6
+d
+Single trial and average
+attended talker TMR
+c
+Average AAD accuracy per subject
+20
+40
+60
+80
+100
+S1
+S2
+S3
+S4
+Subject
+Segment
+Attention
+Fig. 2 | Real-time, brain-controlled hearing enhancement improves speech 
+perception and reduces listening effort. a, Experimental paradigm for 
+experiment 1. After a 10 s unrated ‘build-up’ period, participants compared 
+a ‘system off’ segment with a ‘system on’ segment. b, Single-trial and average 
+correlation difference between the neurally reconstructed envelope and the 
+two speech streams for all 80 trials across four subjects, showing a clear shift 
+in decoding after the system is activated at 24 s. Error bars, s.e.m. c, Average 
+AAD accuracy per subject. All participants performed significantly above the 
+50% chance level (dashed line). Box plots show the median and interquartile 
+range (IQR) across trials, with whiskers extending to the most extreme data 
+points within 1.5 × IQR (n = 20 trials per subject). d, Single-trial and average 
+TMR. The system’s gain control successfully translated the neural decoding 
+into a significant TMR boost, switching from −6 dB in the ‘off’ segment to a 
+positive TMR in the ‘on’ segment. Error bars, s.e.m. (n = 80 trials). e, Participant 
+preference. Participants overwhelmingly preferred the ‘system on’ condition. 
+The diverging bar chart shows the percentage of trials each subject preferred  
+the ‘on’ versus ‘off’ condition (n = 20 trials per subject). f, Direction of change  
+in intelligibility. For trials in which intelligibility changed, it was significantly 
+more likely to be an improvement in the ‘on’ condition for every participant.  
+g, Pupil size, a physiological proxy for listening effort, was significantly reduced 
+in the ‘system on’ condition compared to the ‘system off’ condition for the two 
+participants with available data (S2 and S3), indicating a lower cognitive load. 
+Statistical significance was assessed using a two-sided Wilcoxon signed-rank 
+test (n = 20 trials per subject). The exact results were: S2, P = 0.0008 (reported 
+as P < 0.001 in the text) and S3, P = 0.042 (reported as P < 0.05 in the text). Box 
+plots show the median and IQR across trials, with whiskers extending to the most 
+extreme data points within 1.5× IQR. No adjustments were made for multiple 
+comparisons as these were independent tests for each subject.
+
+--- PAGE 5 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+repeat-word detection score) and the AAD accuracy on that trial (esti-
+mate = 1.36, P < 0.001; Fig. 3a). This result suggests that variability in 
+system performance is not necessarily a failure of attention decoding, 
+but rather reflects the user’s own internal cognitive state; in trials during 
+which a participant’s attention may have lapsed, the neural signature 
+was correspondingly less distinct, leading to lower decoding accuracy.
+Crucially, we found that fluctuations in decoder fidelity had a 
+direct and meaningful impact on the user’s subjective experience. A 
+trial-level GLMM analysis revealed that single-trial AAD accuracy was 
+a highly significant predictor of user preference (estimate = 0.042, 
+SE = 0.013, t78 = 3.36, P = 0.0008). This positive coefficient indicates 
+that for every 1% increase in decoding accuracy, the odds of a partici-
+pant preferring the ‘system on’ condition increased by 4.3%. As visual-
+ized in Fig. 3b, trials with higher decoding accuracy were associated 
+with an increasing probability of preferring the ‘system on’ condition. 
+For example, in trials in which the system achieved high accuracy 
+(>75%), participants consistently preferred the system, whereas pref-
+erence dropped closer to chance levels when accuracy was lower. 
+This confirms that achieving high-fidelity neural decoding, whether 
+through better models or higher quality signals, is not merely a tech-
+nical objective, but is essential for delivering a consistently beneficial 
+and preferred user experience. Together, these results provide behav-
+ioral and physiological evidence that real-time, brain-controlled gain 
+modulation can reliably improve the overall listening experience in 
+challenging acoustic environments.
+Experiment 2: the system tracks instructed attention switches
+In real-world conversations, listeners often shift attention between talk-
+ers. A key concern for closed-loop AAD systems is whether amplifying 
+the currently attended talker in real time might hinder the listener’s 
+ability to switch attention to another, now less audible talker. Specifi-
+cally, we wondered whether users still switch focus, and whether the 
+system can detect and adapt to the new talker with sufficient speed to 
+support a seamless experience. Our next experiment tested whether 
+the AAD system could track such instructed attention switches and 
+dynamically update the gain in real time.
+In each trial, participants were initially cued to attend to one of 
+two overlapping speech streams. Midway through the trial, a visual 
+cue instructed them to switch their focus to the other stream, while 
+the system remained active throughout (Fig. 4a and Supplementary 
+Video 2). The system successfully tracked this shift in focus. As shown 
+in Fig. 4b, single-trial and average correlation differences exhibited a 
+clear transition in neural tracking following the switch cue, resulting 
+in a successful decoding of attentional focus (Fig. 4c). Given that the 
+decoding output controls gain dynamically, the system’s TMR shifted 
+accordingly, favoring the first conversation before the switch and 
+the second conversation after it (Fig. 4d). We quantified the system’s 
+responsiveness using ‘switch time’, defined as the time required for 
+the average TMR to reach 0 dB following the switch cue. Across par-
+ticipants, the mean switch time was 5.1 s (S1, 7.0 s; S2, 4.5 s; S3, 5.0 s; 
+S4, 4.0 s). This latency reflects both the listener’s cognitive response, 
+but more prominently, the system’s design choices, including the 4 s 
+sliding window and the five-state Markov model that smoothed gain 
+transitions to ensure perceptual stability.
+To confirm that participants successfully followed the instructed 
+switch, we analyzed their performance on the repeat-word detection 
+task. The results, visualized in Fig. 4e, show a clear interaction. The plot 
+displays the overall mean performance for each condition (bars) and 
+the average trend for each individual subject (colored lines). A clear 
+‘X’ pattern is visible: performance for conversation 1 (attended first) 
+is high pre-switch and drops after the cue, while performance for con-
+versation 2 (attended second) is low pre-switch and rises after the cue. 
+To further test this pattern, we performed a linear mixed-effects model 
+analysis. The model included fixed effects for the trial segment (pre vs 
+post switch), the conversation (conversation 1 vs conversation 2) and, 
+critically, their interaction, with subject included as a random effect 
+Probability of preferring 'system on'
+0
+20
+40
+60
+80
+100
+Repeat-word detection score (%)
+0
+20
+40
+60
+80
+100
+Single-trial AAD accuracy (%)
+Adjusted R2 = 0.23, P < 0.001
+Attention tracking performance
+predicts decoding accuracy
+User preference increases with
+system accuracy
+Prefer
+oﬀ
+50%
+Prefer
+on
+GLMM fit: P < 0.001
+0
+20
+40
+60
+80
+100
+Single-trial AAD accuracy (%)
+Binned average (±s.e.m.)
+Linear trend
+Single trials
+a
+b
+Fig. 3 | The user’s attentional state is a key source of system performance 
+variability, which in turn predicts subjective benefit. This figure presents 
+two complementary regression analyses that trace the source and perceptual 
+consequence of trial-by-trial performance variability. a, System accuracy is 
+predicted by the subject’s attentional tracking performance. To evaluate the 
+relationship between objective task engagement and system performance, a two-
+sided linear mixed-effects model was used to model single-trial AAD accuracy as 
+a function of the participant’s repeat-word detection score. The model included 
+a random intercept for each subject to account for individual differences in 
+baseline performance. System accuracy was significantly predicted by the user’s 
+attentional tracking (estimate = 0.35, SE = 0.09, adjusted R2 = 0.23, t58 = 3.75,  
+95% CI = [0.16, 0.54], P = 0.0004). The shaded region indicates the 95% 
+confidence interval of the fixed effect, and markers represent single-trial results 
+(n = 80 trials). b, Single-trial AAD accuracy predicts user preference. A two-sided 
+GLMM with a binomial distribution and logit link function was used to determine 
+whether single-trial AAD accuracy predicted the binary preference outcome 
+(prefer on vs prefer off). The model included a random intercept for each subject 
+to account for individual differences in baseline preference. Objective decoding 
+accuracy was found to be a highly significant predictor of subjective preference 
+(estimate = 0.042, SE = 0.013, t78 = 3.36, P = 0.0008). Data were grouped into 
+three predefined accuracy bins (0–40%, 40–75% and 75–100%), and the mean 
+probability of preferring the ‘system on’ was computed within each bin. Black 
+circles indicate bin-wise means; error bars, s.e.m across trials. Gray dots 
+represent individual trial outcomes (n = 80 trials), jittered vertically for visibility.
+
+--- PAGE 6 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+to account for individual differences. The analysis revealed a highly 
+significant interaction between the trial segment and the attended 
+conversation (estimate = 161.67, SE = 6.92, P < 0.001). This significant 
+interaction shows that participants were able to flexibly and success-
+fully shift their attentional focus on command.
+Experiment 3: the system successfully tracks self-initiated 
+attention switches
+In natural listening, attention shifts are often internally driven rather 
+than externally cued31. This experiment tested whether the AAD system 
+could detect and respond to such self-initiated shifts in attentional 
+focus, without any external timing signal (Fig. 5a). Participants freely 
+redirected their attention between two competing talkers while the 
+system remained active throughout. To provide a behavioral refer-
+ence, participants indicated their current focus by pointing to the 
+loudspeaker they were attending to. Although this involved a motor 
+gesture, the signal driving the decoder was based on speech envelope 
+tracking, and we confirmed that the motor behavior was uncorrelated 
+with the speech envelopes and therefore could not systematically influ-
+ence the decoding process (Extended Data Fig. 8).
+The system successfully tracked voluntary shifts in attention. 
+As shown in Fig. 5b, single-trial and average correlation differences 
+between the reconstructed and actual speech envelopes exhibited 
+clear transitions aligned with participants’ self-reported focus. The cor-
+responding TMR adapted in real time, enhancing the newly attended 
+stream while attenuating the previously attended one (Fig. 5c). These 
+results demonstrate that real-time AAD can flexibly and accurately 
+follow endogenous changes in attention without requiring external 
+cues (Supplementary Video 3).
+To further test the system’s perceptual impact, we introduced a 
+control condition in which gain control was intentionally reversed with-
+out informing the participant. In this condition, the system amplified 
+the unattended speaker and suppressed the attended one. Participants 
+immediately reported increased difficulty and a degraded listening 
+experience (Supplementary Video 4). This condition serves as a critical 
+control: if correct AAD-based gain improves perception, then revers-
+ing it should, and did, disrupt it. This further confirms the behavioral 
+relevance and robustness of attention-driven enhancement.
+Evaluation by individuals with hearing loss
+To assess the translational potential of our system, we conducted a 
+perceptual validation study with 40 individuals with hearing loss. 
+This experiment evaluated whether the AAD-enhanced audio, gen-
+erated from the neural signals of our iEEG participants with normal 
+hearing, would be perceived as beneficial by this clinically relevant 
+population. Although prior work has shown that increasing the TMR 
+–20
+20
+System continually on
+a
+Attention
+Instructed
+switch
+Conversation 1
+Conversation 2
+Time (s)
+10
+20
+30
+40
+Trial 
+Correlation
+diﬀerence
+C1
+C2
+0
+–0.3
+0.3
+Time (s)
+–0.3
+0
+0.3
+Correlation
+diﬀerence
+–20
+20
+–10
+0
+10
+Time (s)
+–7
+0
+7
+Average 
+TMR (dB)
+–20
+20
+–10
+0
+10
+10
+20
+30
+40
+Trial 
+–9
+0
++9
+TMR (dB)
+–6
++6
+Pre-switch
+Post-switch
+0
+20
+40
+60
+80
+100
+Repeat-word 
+detection accuracy (%)
+C1 (attended first)
+C2 (attended second)
+b
+d
+e
+S1
+S2
+S3
+Segment
+c
+Experiment 2: instructed
+attention switch mid-trial
+Single trial and average
+correlation diﬀerence
+Single-trial and average
+attended talker TMR
+Repeated word detection accuracy
+Average AAD accuracy per subject
+S1
+S2
+S3
+S4
+S1
+S2
+S3
+S4
+40
+60
+80
+100
+S1
+S2
+S3
+S4
+Average 
+accuracy (%)
+Subject
+Fig. 4 | The AAD system successfully tracks instructed shifts in a listener’s 
+attention. a, Experimental paradigm for experiment 2. Participants were 
+instructed to attend to conversation 1 and then, following a visual cue mid-trial, 
+switch their attention to conversation 2, while the system operated continuously. 
+b, Single-trial and average correlation difference. The heatmap shows the 
+trial-by-trial neural tracking for each subject, with the average trace below 
+confirming a clear and rapid reversal in decoding following the switch cue at 
+time 0. Error bars, s.e.m. (n = 40). c, Average AAD accuracy per subject. The box 
+plot summarizes the overall decoding accuracy for each participant, showing 
+that all subjects performed well above the 50% chance level (dashed line). Box 
+plots show the median and IQR across trials, with whiskers extending to the most 
+extreme data points within 1.5× IQR (n = 10 trials per subject). d, Single-trial and 
+average attended talker TMR. The system’s gain control successfully followed 
+the decoded attention, with the TMR enhancement flipping from conversation 
+1 to conversation 2 after the switch, as shown in both the trial-by-trial heatmap 
+and the average trace below. Error bars, s.e.m. (n = 40 trials). e, Repeated word 
+detection accuracy. The behavioral performance (repeat-word detection) for 
+conversation 1 (attended first) was high pre-switch and low post-switch, while 
+the opposite was true for conversation 2. The bars represent the mean detection 
+accuracy across all trials and subjects for each of the four conditions. The lines 
+connect the average performance for each individual subject. Error bars, s.e.m. 
+(n = 40 trials).
+
+--- PAGE 7 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+can aid speech comprehension32, it was not clear whether our system’s 
+moment-by-moment, imperfect gain modulation would improve or 
+disrupt perception in listeners with hearing loss. These participants 
+listened to the entire trial output audio from experiment 1, including 
+both the ‘system off’ and ‘system on’ conditions, in which the TMR was 
+dynamically controlled by prior real-time neural decoding of attention 
+from iEEG participants. The results provided a clear validation of the 
+system’s perceptual output (Extended Data Fig. 9). The hearing loss 
+cohort showed a strong subjective preference for the ‘system on’ con-
+dition (t39 = 17.53, P < 0.001, Cohen’s d = 1.36), and they demonstrated 
+significantly greater objective improvement in speech intelligibil-
+ity than the normal-hearing iEEG group (t39 = 9.50, P < 0.001, Cohen’s 
+d = 1.06), probably because the task was more challenging for the 
+hearing-loss group and therefore more sensitive to the perceptual 
+benefits of increased TMR. This finding confirms that brain-driven TMR 
+modulation remains perceptually robust even when applied to an inde-
+pendent population with hearing impairment. Combined with prior 
+evidence that AAD is feasible for individuals with hearing loss18,33,34, 
+these results support the potential of brain-guided enhancement as 
+a future hearing aid.
+Discussion
+Establishing a benchmark for brain-controlled hearing
+This study addresses a critical and longstanding gap in auditory BCIs by 
+providing the first direct evidence that a real-time, closed-loop AAD sys-
+tem can improve speech perception in multi-talker environments. This 
+work represents a key milestone, demonstrating that brain signals can 
+be used not only to decode attentional focus but also to enhance intel-
+ligibility, increase subjective preference and reduce listening effort, 
+advancing AAD from a theoretical concept to a validated perceptual 
+technology. By showing that the system adapts to both instructed and 
+self-directed attention shifts, we establish its flexibility in dynamic 
+listening conditions, an essential requirement for real-world usability. 
+Finally, the finding that the same brain-controlled output enhanced 
+comprehension in individuals with hearing loss highlights the system’s 
+translational potential.
+A key aspect of this study was the use of high-resolution intracra-
+nial recordings, which provided the signal quality needed to answer 
+the central question of whether a brain-controlled hearing system can 
+yield behavioral benefits. Although iEEG is not an immediate practical 
+solution for widespread use, it was a scientifically necessary choice to 
+establish a gold-standard benchmark for the field. This approach is 
+consistent with other grand challenge problems in BCI research, includ-
+ing recent landmark studies in speech prosthesis development35–38. 
+Our findings define an upper bound on AAD performance—what is 
+achievable when attentional intent is decoded with high fidelity—and 
+offer a reference point for future, less invasive systems that can be 
+scaled to larger populations. At the same time, the neurotechnology 
+landscape is evolving rapidly toward implantable devices for a variety of 
+neurological and psychiatric conditions, including epilepsy39, depres-
+sion40 and movement disorders41. Given that disabling hearing loss 
+negatively affects more than 430 million people worldwide42, a safe, 
+–0.3
+0
+0.3
+Correlation
+diﬀerence
+Switch
+–10
+10
+1
+3
+–10
+10
+System continually on
+Attention
+Self-initiated
+switch
+Conversation 1
+Conversation 2
+Experiment 3: self-initiated attention switch
+Trial 
+Correlation
+diﬀerence
+C1
+C2
+0
+–0.3
+0.3
+Time (s)
+13
+1
+Trial
+–0.3
+0
+0.3
+Correlation
+diﬀerence
+Correlation
+diﬀerence
+C1
+C2
+0
+–0.3
+0.3
+Switch
+–10
+10
+–10
+10
+–8
+0
+8
+Average 
+TMR (dB)
+13
+1
+Trial
+–8
+0
+8
+Trial
+1
+3
+–10
+10
+TMR (dB)
+–9
+0
++9
+TMR (dB)
+–6
++6
+Switch
+Single trial and average
+correlation diﬀerence
+Single trial and average 
+attended talker TMR
+Switch
+Single trial and average correlation 
+diﬀerence, reverse gain
+Single trial and average attended 
+talker TMR, reverse gain
+–9
+0
++9
+TMR (dB)
+a
+d
+b
+c
+e
+Fig. 5 | The AAD system successfully tracks natural, self-initiated shifts in a 
+listener’s attention. a, Experimental paradigm for experiment 3. Participants 
+were instructed to freely switch their attention between the two conversations 
+at will, while the system operated continuously. b, Single-trial and average 
+correlation difference. In the standard condition, the system successfully 
+tracked the participants’ self-initiated attention shifts. The heatmap shows clear 
+transitions in the trial-by-trial neural decoding that align with the participant’s 
+indicated focus, an effect confirmed by the average trace below. Error bars, s.e.m. 
+(n = 13 trials). c, Single-trial and average attended talker TMR. The system’s gain 
+control followed the decoded attention, with the TMR enhancement flipping to 
+favor the newly attended speaker after a self-initiated switch. Error bars, s.e.m. 
+(n = 13 trials). d, Single-trial and average correlation difference in reverse AAD 
+condition. In this control condition, the system’s gain was intentionally reversed 
+without the participant’s knowledge, suppressing the attended talker. The neural 
+decoding shows an oscillatory tracking pattern, reflecting the disorienting 
+nature of the reversed feedback. Error bars, s.e.m. (n = 3 trials). e, Single-trial and 
+average attended talker TMR in reverse AAD condition. The heatmap and average 
+trace confirm that in the reverse-gain condition, the system incorrectly applied 
+a negative TMR to the attended speaker, making the conversation more difficult 
+to follow and validating that the benefit is tied to correct decoding. Error bars, 
+s.e.m. (n = 3 trials).
+
+--- PAGE 8 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+implantable solution is both plausible and proportionate in scope. 
+This work provides a direct precursor to such a system and establishes 
+a critical benchmark for future translational efforts.
+Validation in listeners with hearing loss
+Our supplementary validation study provides important evidence 
+for the clinical potential of this technology. Participants with hearing 
+impairment listened to audio that had been dynamically modulated 
+in real time based on the neural signals of a separate user, resulting in 
+moment-by-moment gain adjustments. These brain-driven modula-
+tions are inherently variable and would not necessarily improve per-
+ception if they were unstable or mistimed20. The finding that listeners 
+with hearing impairment not only preferred the brain-driven audio 
+but also derived a greater objective benefit than individuals with nor-
+mal hearing is a significant outcome. Consistent with this finding, we 
+observed that objective intelligibility gains were most pronounced for 
+individuals with moderate-to-severe hearing loss, whereas participants 
+with mild hearing loss who operated near the ceiling of performance 
+showed smaller gains, even though they consistently preferred the 
+system-enabled condition. The feasibility of a future closed-loop 
+system for this population is supported by prior work establishing 
+that the necessary neural signatures for AAD are robustly present in 
+hearing-impaired listeners18,33,34, and that decoding can remain effective 
+even when speech intelligibility is severely degraded23,43,44. Together, 
+these findings suggest that closed-loop neural decoding systems are 
+viable for this population and may offer the greatest objective benefit 
+to those with the most to gain. As such, they represent a promising 
+direction for the future of assistive hearing technology.
+Real-world viability with mixed audio
+A critical prerequisite for the translation of any AAD-based hearing 
+device is the ability to operate on mixed audio signals, as clean source 
+signals are unavailable in real-world environments. Although this has 
+long posed a barrier for the field, recent breakthroughs in real-time 
+speech separation45–49 have made this goal increasingly achievable. 
+Prior work has shown that AAD can be integrated with low-latency sepa-
+ration algorithms to operate on mixed audio without a significant loss 
+in decoding accuracy12–14,50–53. In the present study, we used separated 
+sources strategically to isolate and definitively answer the more funda-
+mental question of whether a brain-controlled system could provide 
+behavioral benefit. To confirm the broader viability of this approach, 
+a control analysis showed that decoding performance was virtually 
+unchanged when using algorithmically separated sources46 instead 
+of clean sources (r = 0.97, P < 0.001; Extended Data Fig. 10). Neverthe-
+less, significant challenges remain in ensuring robust performance in 
+complex, real-world conditions, including highly reverberant spaces 
+and scenes with multiple competing talkers54. In such scenarios, speech 
+extraction, focusing on enhancing a target speaker rather than fully 
+separating all sources, may offer a more practical and computationally 
+efficient solution51. The translational potential for AAD-based sys-
+tems is further supported by ongoing progress in deploying machine 
+learning-based enhancement methods on modern, power-efficient 
+hearing aid hardware, making real-time implementation of AI-driven 
+auditory interfaces increasingly feasible55.
+Neural mechanisms and decoding strategies
+In this study, we deliberately used a simple linear decoding model5,22, 
+chosen for its computational efficiency, transparency and robust-
+ness in real-time closed-loop operation. Given the high signal-to-noise 
+ratio of iEEG recordings, this approach allowed us to reconstruct the 
+speech envelope from broadband neural responses and compare it to 
+candidate streams using Pearson correlation, a well-established and 
+interpretable framework in auditory neuroscience. Using a lightweight 
+model also minimized the risk of instability or unintended behavior 
+in the feedback loop, ensuring that any observed perceptual benefit 
+could be directly attributed to attentional decoding. Our results further 
+showed that trial-by-trial variations in AAD accuracy were significantly 
+correlated with user preference, reinforcing the importance of decoder 
+performance for perceptual outcomes. To rule out non-auditory con-
+founds, we confirmed that neither the visual cue (experiment 2) nor 
+the motor pointing behavior (experiment 3) correlated with the actual 
+or reconstructed speech envelopes (Extended Data Fig. 8). Moreo-
+ver, most behavioral outcomes were collected in experiment 1, dur-
+ing which no motor input was present and the visual arrow remained 
+fixed throughout each trial. Finally, we observed that informative elec-
+trodes were not restricted to the left superior temporal gyrus but were 
+also found in the right hemisphere and dorsal frontoparietal regions 
+(Fig. 1c). This suggests that the linear decoder can leverage signals from 
+a distributed cortical network, probably recruiting higher-order atten-
+tional resources in addition to sensory processing, which contributes 
+to the robustness of the system.
+Building on the importance of decoder fidelity, nonlinear and 
+end-to-end models have shown clear potential for improving decod-
+ing performance and speed, particularly in lower signal-to-noise ratio 
+environments or more spatially constrained recording settings12,34,56–62. 
+However, we note that more complex nonlinear models often incur 
+higher computational costs, which could increase system latency to a 
+point that diminishes the behavioral benefit. Other approaches have 
+also emerged, such as decoding based on distinct neural population 
+responses rather than temporal correlation between stimulus and 
+response63. These methods may help extend AAD to a broader range of 
+signal modalities, including emerging minimally invasive and wearable 
+technologies that fall between traditional invasive and non-invasive 
+categories64. Theoretical work further suggests that current AAD 
+algorithms operate below information-theoretic limits65, pointing to 
+substantial headroom for future gains.
+System latency and stability constraints
+A deeper understanding of how decoding accuracy, latency and model 
+complexity translate into perceptual benefit will be essential for guid-
+ing system design and enabling clinical translation. For example, the 
+5.1 s switching time observed in our attention-switching task is not a 
+neurophysiological limit8, but a direct consequence of parameters 
+chosen to prioritize stability: a 4 s decoding window contributes an 
+inherent 2 s latency, and a five-state Markov smoothing filter adds 
+more delay to the transition time. This illustrates the fundamental 
+speed–accuracy trade-off that must be carefully optimized in any 
+practical AAD system. The implementation of such systems must also 
+carefully balance speech enhancement with environmental awareness. 
+Our findings suggest that an approximate gain adjustment of +6 dB in 
+TMR significantly improves intelligibility without fully isolating the 
+listener from their surroundings. However, real-world applications 
+will introduce additional complexities, including complex sound 
+scenes with non-speech sources and unpredictable attention shifts66,67. 
+Addressing these challenges through further experimental and com-
+putational refinement will be vital for successful deployment. We also 
+acknowledge that the fixed trial structure in experiment 1 (‘system off’ 
+followed by ‘system on’) introduces a potential confound regarding 
+attentional build-up. Although we excluded the initial 10 s to account 
+for the rapid formation of auditory streams, it is possible that reduced 
+listening effort in the second segment partially reflects temporal adap-
+tation to the task. However, given the substantial magnitude of the 
+improvement in both intelligibility (+12 dB TMR boost) and subjective 
+preference, we attribute the primary benefit to the system-driven 
+enhancement.
+Neural decoding overcomes the limits of external cues
+A natural question is whether simpler external cues, such as eye-gaze, 
+head orientation or manual gestures, could provide the same steering 
+information without neural sensing. Although these external cues 
+
+--- PAGE 9 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+can be useful in specific scenarios, each has fundamental limitations 
+that a direct neural interface overcomes. Gaze direction, for exam-
+ple, fails when competing talkers are co-located, when there is no 
+visual target accompanying the listening target (for example, visual 
+occlusion or a public-address system). Furthermore, gaze and audi-
+tory attention routinely dissociate; listeners often covertly attend to 
+one talker while looking elsewhere68. Moreover, as listening becomes 
+effortful, eye movements decrease and spatial gaze width narrows, 
+increasing the difficulty of inferring where attention is deployed from 
+gaze69. In live conversations, gaze also serves social functions, regulat-
+ing turn-taking70, reflecting one’s speaking and listening role, which 
+changes with group size71, further weakening any mapping from gaze 
+direction to attentional focus. The presence of individual gaze differ-
+ences adds another layer of unpredictability72. Related external cues 
+face similar issues: head pose and pointing gestures are constrained by 
+visibility, social norms and task demands, and they impose an explicit 
+behavioral burden that is fatiguing and ill-suited to rapid turn-taking. By 
+contrast, neural attention decoding is covert, continuous and agnostic 
+to spatial arrangement; it seamlessly follows the listener’s internal focus 
+even when gaze and head pose provide no reliable spatial cue, and it 
+requires no behavioral modification in addition to ordinary listening. 
+Moreover, brain signals carry information about higher-order listening 
+goals—what stream is semantically relevant and what sounds are to be 
+suppressed—that eye or head trackers cannot access. Decoding those 
+higher-level intentions opens a path toward future devices that not 
+only amplify the currently attended talker but also can flexibly remix 
+complex soundscapes73. By demonstrating that brain-based steering 
+delivers a perceptual benefit under realistic conditions, we lay the criti-
+cal groundwork for next-generation assistive technologies that adapt 
+to the listener’s true cognitive intent rather than to an observable, and 
+often unreliable, surrogate.
+Subject experience and system perception
+In addition to the quantitative behavioral metrics, participant feed-
+back provided valuable insights into the usability of the closed-loop 
+system (Supplementary Video 5). In post-experiment debriefings, 
+users consistently described the adaptive gain control as feeling 
+natural and intuitive, noting that they could shift their attention 
+freely without perceiving the system as resistant or lagging. Cru-
+cially, participants reported that the enhanced audio aligned well 
+with their intended focus, reinforcing the objective finding that the 
+decoder accurately tracked their attentional state. These qualitative 
+reports suggest that despite the inherent technical latency of the 
+system, the perceptual experience remained seamless, a critical fac-
+tor for the long-term adoption of any future neuro-steered hearing 
+technology.
+This work also opens broader avenues for integrating cognitive 
+states into assistive hearing technologies, shifting the paradigm from 
+passive amplification to active, personalized, intent-driven auditory 
+enhancement. By establishing the critical performance and viability 
+benchmark for a functional auditory BCI, this study provides a prin-
+cipled framework for designing future systems that may incorporate 
+additional cognitive dimensions, such as perceived effort, listening 
+intent or situational context, enabled by emerging AI frameworks that 
+fuse neural decoding with adaptive machine listening63. By aligning 
+auditory processing more closely with the user’s internal goals, this 
+approach offers a path toward more intuitive, responsive and effective 
+hearing support in everyday environments.
+Online content
+Any methods, additional references, Nature Portfolio reporting sum-
+maries, source data, extended data, supplementary information, 
+acknowledgements, peer review information; details of author contri-
+butions and competing interests; and statements of data and code avail-
+ability are available at https://doi.org/10.1038/s41593-026-02281-5.
+References
+1.	
+Chung, K. Challenges and recent developments in hearing aids: 
+Part I. Speech understanding in noise, microphone technologies 
+and noise reduction algorithms. Trends Amplif. 8, 83–124 (2004).
+2.	
+Cherry, E. C. Some experiments on the recognition of speech, with 
+one and with two ears. J. Acoust. Soc. Am. 25, 975–979 (1953).
+3.	
+McDermott, J. H. The cocktail party problem. Curr. Biol. 19, 
+R1024–R1027 (2009).
+4.	
+Shukla, A. et al. Hearing loss, loneliness, and social isolation: a 
+systematic review. Otolaryngol. Neck Surg. 162, 622–633 (2020).
+5.	
+O’Sullivan, J. A. et al. Attentional selection in a cocktail party 
+environment can be decoded from single-trial EEG. Cereb. Cortex 
+25, 1697–1706 (2015).
+6.	
+Geirnaert, S. et al. Electroencephalography-based auditory 
+attention decoding: toward neurosteered hearing devices.  
+IEEE Signal Process. Mag. 38, 89–102 (2021).
+7.	
+Power, A. J., Foxe, J. J., Forde, E. J., Reilly, R. B. & Lalor, E. C. At what 
+time is the cocktail party? A late locus of selective attention to 
+natural speech. Eur. J. Neurosci. 35, 1497–1503 (2012).
+8.	
+Mesgarani, N. & Chang, E. F. Selective cortical representation of 
+attended speaker in multi-talker speech perception. Nature 485, 
+233–236 (2012).
+9.	
+Ding, N. & Simon, J. Z. Emergence of neural encoding of auditory 
+objects while listening to competing speakers. Proc. Natl Acad. 
+Sci. USA 109, 11854–11859 (2012).
+10.	 Golumbic, E. M. Z. et al. Mechanisms underlying selective 
+neuronal tracking of attended speech at a “cocktail party”. 
+Neuron 77, 980–991 (2013).
+11.	
+de Cheveigné, A. et al. Decoding the auditory brain with 
+canonical component analysis. Neuroimage 172, 206–216 (2018).
+12.	 Pan, Z., Borsdorf, M., Cai, S., Schultz, T. & Li, H. NeuroHeed: 
+neuro-steered speaker extraction using EEG signals. IEEEACM 
+Trans. Audio Speech Lang. Process. 32, 4456–4470 (2024).
+13.	 O’Sullivan, J. et al. Neural decoding of attentional selection in 
+multi-speaker environments without access to clean sources.  
+J. Neural Eng. 14, 056001 (2017).
+14.	 Han, C. et al. Speaker-independent auditory attention decoding 
+without access to clean speech sources. Sci. Adv. 5, eaav6134 
+(2019).
+15.	 Ha, J., Baek, S.-C., Lim, Y. & Chung, J. H. Validation of cost-efficient 
+EEG experimental setup for neural tracking in an auditory 
+attention task. Sci. Rep. 13, 22682 (2023).
+16.	 Baek, S.-C., Chung, J. H. & Lim, Y. Implementation of an online 
+auditory attention detection model with electroencephalography 
+in a dichotomous listening experiment. Sensors 21, 531 (2021).
+17.	 Zink, R., Baptist, A., Bertrand, A., Van Huffel, S. & De Vos, M. 
+On-line detection of auditory attention in a neurofeedback 
+application. In Proc. 8th International Workshop on Biosignal 
+Interpretation (eds Yamamoto, Y. et al.) 1–4 (2016); https://www. 
+p.u-tokyo.ac.jp/~bsi2016/proceedings.php
+18.	 Hjortkjær, J. et al. Real-time control of a hearing instrument with 
+EEG-based attention decoding. J. Neural Eng. 22, 016027 (2025).
+19.	 Haro, S., Beauchene, C., Quatieri, T. F., & Smalt, C. J. A brain- 
+computer interface for improving auditory attention in 
+multi-talker environments. IEEE Access https://doi.org/10.1109/
+ACCESS.2025.3623842 (2025).
+20.	 Aroudi, A., Fischer, E., Serman, M., Puder, H. & Doclo, S. 
+Closed-loop cognitive-driven gain control of competing sounds 
+using auditory attention decoding. Algorithms 14, 287 (2021).
+21.	 O’Sullivan, J. et al. Hierarchical encoding of attended auditory objects 
+in multi-talker speech perception. Neuron 104, 1195–1209.e3 (2019).
+22.	 Mesgarani, N., David, S. V., Fritz, J. B. & Shamma, S. A. Influence 
+of context and behavior on stimulus reconstruction from neural 
+activity in primary auditory cortex. J. Neurophysiol. 102,  
+3329–3339 (2009).
+
+--- PAGE 10 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+23.	 He, X., Raghavan, V. X. & Mesgarani, N. Neural speech tracking 
+in noise reflects the opposingin fluence of SNR on intelligibility 
+and attentional effort. Imaging Neurosci. (Camb.) 126, IMAG.a.126 
+(2025).
+24.	 Geirnaert, S., Francart, T. & Bertrand, A. An interpretable 
+performance metric for auditory attention decoding algorithms 
+in a context of neuro-steered gain control. IEEE Trans. Neural Syst. 
+Rehabil. Eng. 28, 307–317 (2020).
+25.	 Elhilali, M., Xiang, J., Shamma, S. A. & Simon, J. Z. Interaction 
+between attention and bottom-up saliency mediates the 
+representation of foreground and background in an auditory 
+scene. PLoS Biol. 7, e1000129 (2009).
+26.	 Lu, K., Dutta, K., Mohammed, A., Elhilali, M. & Shamma, S. 
+Temporal-coherence induces binding of responses to sound 
+sequences in ferret auditory cortex. iScience 28, 111991 (2025).
+27.	 Brungart, D. S., Simpson, B. D., Ericson, M. A. & Scott, K. R. 
+Informational and energetic masking effects in the perception of 
+multiple simultaneous talkers. J. Acoust. Soc. Am. 110, 2527–2538 
+(2001).
+28.	 Egeth, H. & Kahneman, D. Attention and effort. Am. J. Psychol. 88, 
+339 (1975).
+29.	 Neagu, M.-B. et al. Investigating the reliability of pupillometry 
+as a measure of individualized listening effort. Trends Hear. 27, 
+23312165231153288 (2023).
+30.	 McCloy, D. R., Larson, E. & Lee, A. K. C. Auditory attention 
+switching with listening difficulty: behavioral and pupillometric 
+measures. J. Acoust. Soc. Am. 144, 2764–2771 (2018).
+31.	 Tang, X., Wu, J. & Shen, Y. The interactions of multisensory 
+integration with endogenous and exogenous attention.  
+Neurosci. Biobehav. Rev. 61, 208–224 (2016).
+32.	 MacPherson, A. & Akeroyd, M. A. Variations in the slope of the 
+psychometric functions for speech intelligibility: a systematic 
+survey. Trends Hear. 18, 2331216514537722 (2014).
+33.	 Fuglsang, S. A., Märcher-Rørsted, J., Dau, T. & Hjortkjær, J. Effects 
+of sensorineural hearing loss on cortical synchronization to 
+competing speech during selective attention. J. Neurosci. 40, 
+2562–2572 (2020).
+34.	 Tanveer, M. A., Skoglund, M. A., Bernhardsson, B. & Alickovic, E. 
+Deep learning-based auditory attention decoding in listeners with 
+hearing impairment. J. Neural Eng. 21, 036022 (2024).
+35.	 Anumanchipalli, G. K., Chartier, J. & Chang, E. F. Speech synthesis from 
+neural decoding of spoken sentences. Nature 568, 493–498 (2019).
+36.	 Willett, F. R. et al. A high-performance speech neuroprosthesis. 
+Nature 620, 1031–1036 (2023).
+37.	 Metzger, S. L. et al. A high-performance neuroprosthesis for speech 
+decoding and avatar control. Nature 620, 1037–1046 (2023).
+38.	 Akbari, H., Khalighinejad, B., Herrero, J. L., Mehta, A. D. & 
+Mesgarani, N. Towards reconstructing intelligible speech from 
+the human auditory cortex. Sci. Rep. 9, 874 (2019).
+39.	 Chen, W.-M. et al. A fully integrated 8-channel closed-loop 
+neural-prosthetic CMOS SoC for real-time epileptic seizure 
+control. IEEE J. Solid-State Circuits 49, 232–247 (2014).
+40.	 Dandekar, M. P., Fenoy, A. J., Carvalho, A. F., Soares, J. C. & 
+Quevedo, J. Deep brain stimulation for treatment-resistant 
+depression: an integrative review of preclinical and clinical findings 
+and translational implications. Mol. Psychiatry 23, 1094–1112 (2018).
+41.	 Benabid, A. L. Deep brain stimulation for Parkinson’s disease. Curr. 
+Opin. Neurobiol. 13, 696–706 (2003).
+42.	 Mathers, C., Fat, D. M. & Boerma, J. T. The Global Burden of 
+Disease: 2004 Update (World Health Organization, 2008).
+43.	 He, X., Raghavan, V. S. & Mesgarani, N. Decoding the 
+unintelligible: neural speech tracking in low signal-to-noise ratios. 
+In ICASSP 2025: IEEE International Conference on Acoustics, 
+Speech and Signal Processing (ICASSP) 1–5 (IEEE, 2025);  
+https://doi.org/10.1109/ICASSP49660.2025.10889263
+44.	 Das, N., Bertrand, A. & Francart, T. EEG-based auditory attention 
+detection: boundary conditions for background noise and 
+speaker positions. J. Neural Eng. 15, 066017 (2018).
+45.	 Luo, Y., Chen, Z. & Mesgarani, N. Speaker-independent speech 
+separation with deep attractor network. IEEEACM Trans. Audio 
+Speech Lang. Process. 26, 787–796 (2018).
+46.	 Luo, Y. & Mesgarani, N. Conv-TasNet: surpassing ideal time–
+frequency magnitude masking for speech separation. In IEEEACM 
+Transactions on Audio, Speech, and Language Processing  
+(ed Lee, T.) 1256–1266 (IEEE, 2019).
+47.	 Hershey, J. R., Chen, Z., Le Roux, J. & Watanabe, S. Deep 
+clustering: discriminative embeddings for segmentation and 
+separation. In IEEE International Conference on Acoustics, Speech 
+and Signal Processing (ICASSP) 31–35 (IEEE, 2016).
+48.	 Han, C., Luo, Y. & Mesgarani, N. Binaural speech separation of 
+moving speakers with preserved spatial cues. In Proc. Interspeech 
+2021 3505–3509 (ISCA, 2021); https://doi.org/10.21437/Interspeech. 
+2021-1372
+49.	 Han, C., Luo, Y. & Mesgarani, N. Online deep attractor network 
+for real-time single-channel speech separation. In ICASSP 2019: 
+IEEE International Conference on Acoustics, Speech and Signal 
+Processing (ICASSP) 361–365 (IEEE, 2019); https://doi.org/10.1109/
+ICASSP.2019.8682884
+50.	 Choudhari, V. et al. Brain-controlled augmented hearing for 
+spatially moving conversations in multi-talker environments.  
+Adv. Sci. 11, 2401379 (2024).
+51.	 Ceolini, E. et al. Brain-informed speech separation (BISS) for 
+enhancement of target speaker in multitalker speech perception. 
+Neuroimage 223, 117282 (2020).
+52.	 Borgström, B. J., Brandstein, M. S., Ciccarelli, G. A., Quatieri, T. F. 
+& Smalt, C. J. Speaker separation in realistic noise environments 
+with applications to a cognitively-controlled hearing aid. Neural 
+Netw. 140, 136–147 (2021).
+53.	 Van Eyndhoven, S., Francart, T. & Bertrand, A. EEG-informed 
+attended speaker extraction from recorded speech mixtures 
+with application in neuro-steered hearing prostheses. IEEE Trans. 
+Biomed. Eng. 64, 1045–1056 (2017).
+54.	 Zmolikova, K. et al. Neural target speech extraction: An overview. 
+IEEE Signal Process. Mag. 40, 8–29 (2023).
+55.	 Sonova, A. G. Phonak elevates sound quality with new Infinio 
+portfolio, introducing a paradigm shift with real-time AI for speech 
+clarity in noise in Audéo Sphere Infinio. Audiology 23, 35 (2024).
+56.	 Ciccarelli, G. et al. Comparison of two-talker attention decoding 
+from EEG with nonlinear neural networks and linear methods.  
+Sci. Rep. 9, 11538 (2019).
+57.	 Vandecappelle, S. et al. EEG-based detection of the locus of 
+auditory attention with convolutional neural networks. Elife 10, 
+e56481 (2021).
+58.	 EskandariNasab, M., Raeisi, Z., Lashaki, R. A. & Najafi, H. A GRU–
+CNN model for auditory attention detection using microstate and 
+recurrence quantification analysis. Sci. Rep. 14, 8861 (2024).
+59.	 Xu, Z. et al. Decoding selective auditory attention with EEG using 
+a transformer model. Methods 204, 410–417 (2022).
+60.	 Accou, B., Vanthornhout, J., Hamme, H. V. & Francart, T. Decoding 
+of the speech envelope from EEG using the VLAAI deep neural 
+network. Sci. Rep. 13, 812 (2023).
+61.	 Su, E., Cai, S., Xie, L., Li, H. & Schultz, T. STAnet: a spatiotemporal 
+attention network for decoding auditory spatial attention from 
+EEG. IEEE Trans. Biomed. Eng. 69, 2233–2242 (2022).
+62.	 Han, C., Choudhari, V., Li, Y. A. & Mesgarani, N. Improved decoding 
+of attentional selection in multi-talker environments with 
+self-supervised learned speech representation. In 45th Annual 
+International Conference of the IEEE Engineering in Medicine & 
+Biology Society (EMBC) 1–5 (IEEE, 2023); https://doi.org/ 
+10.1109/EMBC40787.2023.10340191
+
+--- PAGE 11 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+63.	 Jiang, X. et al. AAD-LLM: neural attention-driven auditory scene 
+understanding. In Proc. 63rd Annual Meeting of the Association  
+for Computational Linguistics Volume 1: Long Papers  
+https://doi.org/10.18653/v1/2025.acl-long.1257 (Association for 
+Computational Linguistics, 2025).
+64.	 Mahoney, T. B., Grayden, D. B. & John, S. E. Sub-scalp 
+brain-computer interface device design and fabrication. Preprint 
+at https://arxiv.org/abs/2504.12578 (2025).
+65.	 Abeysekara, R., Smalt, C. J., Karunathilake, I. D., Simon, J. Z. & 
+Babadi, B. Information-theoretic limits on the performance of 
+auditory attention decoders. In 57th Asilomar Conference on 
+Signals, Systems, and Computers 1479–1483 (IEEE, 2023).
+66.	 Apoux, F. et al. Effects of hearing loss and hearing aids on the 
+perception of natural sounds and soundscapes: a survey of 
+hearing care professional opinions. Am. J. Audiol. 34, 281–295 
+(2025).
+67.	 Lelic, D., Picou, E., Shafiro, V. & Lorenzi, C. Sounds of nature and 
+hearing loss: a call to action. Ear Hear. 46, 298–304 (2025).
+68.	 Foulsham, T. & Kingstone, A. Covert orienting: the dark matter of 
+social attention. Trends Cogn. Sci. 29, 597–599 (2025).
+69.	 Cui, M. E. & Herrmann, B. Eye movements decrease during 
+effortful speech listening. J. Neurosci. 43, 5856–5869 (2023).
+70.	 Degutyte, Z. & Astell, A. The role of eye gaze in regulating turn 
+taking in conversations: a systematized review of methods and 
+findings. Front. Psychol. 12, 616471 (2021).
+71.	 Maran, T. et al. Visual attention in real-world conversation: gaze 
+patterns are modulated by communication and group size. Appl. 
+Psychol. 70, 1602–1627 (2021).
+72.	 Rogers, S. L., Speelman, C. P., Guidetti, O. & Longmuir, M. Using 
+dual eye tracking to uncover personal gaze patterns during social 
+interaction. Sci. Rep. 8, 4271 (2018).
+73.	 Jiang, X., Han, C., Li, Y. A. & Mesgarani, N. Listen, chat, and 
+remix: text-guided soundscape remixing for enhanced auditory 
+experience. IEEE J. Sel. Topics Signal Process. https://doi.org/ 
+10.1109/JSTSP.2025.3570103 (2025).
+Publisher’s note Springer Nature remains neutral with regard to 
+jurisdictional claims in published maps and institutional affiliations.
+Open Access This article is licensed under a Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International License, 
+which permits any non-commercial use, sharing, distribution and 
+reproduction in any medium or format, as long as you give appropriate 
+credit to the original author(s) and the source, provide a link to the 
+Creative Commons licence, and indicate if you modified the licensed 
+material. You do not have permission under this licence to share 
+adapted material derived from this article or parts of it. The images 
+or other third party material in this article are included in the article’s 
+Creative Commons licence, unless indicated otherwise in a credit 
+line to the material. If material is not included in the article’s Creative 
+Commons licence and your intended use is not permitted by statutory 
+regulation or exceeds the permitted use, you will need to obtain 
+permission directly from the copyright holder. To view a copy of this 
+licence, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2026
+
+--- PAGE 12 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+Methods
+Inclusion and ethics
+All participants provided informed written consent before partici-
+pation in accordance with protocols approved by Columbia Univer-
+sity’s Institutional Review Board and the respective hospitals’ ethics 
+committees. Participants in the iEEG experiments were adult patients 
+undergoing clinical monitoring for epilepsy with implanted intracranial 
+electrodes. The study adhered to all relevant ethical regulations and 
+guidelines for research involving human participants.
+Subjects
+Four participants (S1–S4; three males aged 24, 29 and 38 years and one 
+female aged 21 years) who were undergoing clinical monitoring for 
+epilepsy with implanted intracranial electrodes (iEEG) were recruited 
+for this study, following approval by the institutional review boards of 
+the participating hospitals. No financial compensation was provided 
+for participation in the experiments. Informed consent was obtained 
+from all participants before enrollment. Electrode coverage varied 
+across individuals. Subjects S1 and S3 had stereoelectroencephalog-
+raphy (sEEG)-depth electrodes and an electrocorticography grid over 
+the left hemisphere, primarily targeting the temporal lobe. Subject S2 
+had sEEG-depth electrodes in the right hemisphere, while subject S4 
+had bilateral sEEG-depth coverage. Speech-responsive electrodes were 
+identified based on neural activity recorded during the offline phase. 
+High-gamma power (70–150 Hz) was extracted from each electrode, 
+and speech responsiveness was assessed using t-tests comparing activ-
+ity during speech versus silence. Based on this analysis, the number of 
+speech-responsive electrodes used in subsequent analyses for each 
+participant was 48 for S1, 38 for S2, 42 for S3 and 21 for S4.
+For evaluation in individuals with hearing loss, 40 participants 
+were recruited through the online platform Prolific. Participants were 
+compensated USD $10 for approximately 30 min of participation. All 
+participants were native English speakers. The mean age of participants 
+was 40 years (s.d. = 13 years), with an age range of 20–73 years. The 
+cohort included 25 male participants.
+Experimental design and stimuli
+The experiment consisted of two phases: an offline phase to collect 
+training data for the AAD model, and an online phase in which the 
+trained model was used in a real-time closed-loop setting. In both 
+phases, participants listened to two spatially separated conversations 
+presented simultaneously through external loudspeakers positioned at 
+±15° azimuth. Each conversation comprised scripted dialogue between 
+two speakers who took turns discussing everyday topics (for example, 
+food, travel), recorded by professional voice actors to ensure natural-
+istic but controlled stimuli.
+To control acoustic difficulty, trials varied in the gender composi-
+tion of the competing talkers. Talker pairs were selected to produce 
+three levels of overlap: easy (male vs female), medium (mixed-gender 
+across conversations) and hard (same-gender talkers). The distribution 
+was balanced across the experiment. All dialogues were matched for 
+duration and loudness across conditions. To simulate realistic acoustic 
+environments, diotic background noise was added to each trial, using 
+either pedestrian noise or multi-talker babble (randomized across tri-
+als). The background noise level was set 15 dB below the target speech 
+in trials with 0 dB TMR and remained constant across phases. Each trial 
+also included a one-back task: repeated words were inserted into both 
+conversations, and participants were instructed to press a button when-
+ever they detected a repetition in the attended stream. This ensured 
+engagement and compliance with attentional instructions. A central 
+display provided visual cues (an arrow) to instruct participants which 
+stream to attend. In experiment 1, this cue remained static throughout 
+the trial, whereas in experiment 2, it changed mid-trial to signal an 
+attention switch. Additionally, in experiment 3, participants used a 
+hand gesture to indicate their attentional focus for post hoc analysis. 
+A potential concern is that neural activity related to these visual or 
+motor events could contaminate the auditory decoding. However, this 
+is theoretically implausible, as our stimulus reconstruction decoder is 
+trained to reconstruct the temporal envelope of speech, a signal that is 
+not temporally correlated with the change in visual cue (experiment 2) 
+or motor action (experiment 3). We confirmed this empirically by 
+showing a lack of significant correlation between the visual cue signal 
+and the speech envelopes (P > 0.5; Extended Data Fig. 8).
+To equalize loudness across trials and talkers, individual speech 
+recordings were first normalized to a root-mean-square amplitude of 
+1.0, concatenated into full conversation streams and then scaled to 
+−25 dBFS to prevent clipping and maintain consistent signal power. 
+The final mixed audio was presented at 65 dB sound pressure level. In 
+real-time conditions, the gain of each stream was dynamically adjusted 
+to implement the desired TMR, while total acoustic power was held 
+constant across transitions.
+Offline phase: data collection and model training
+The offline phase was designed to collect labeled training data for 
+subject-specific AAD models. Participants completed 26 trials, each 
+lasting approximately 38 s. To ensure the decoder would generalize 
+across a range of signal conditions, the trial order was randomized 
+across three TMR configurations: in ten trials, the TMR shifted from 
+−6 dB to +9 dB; in another ten trials, it shifted from +9 dB to −6 dB; 
+and in the remaining six trials, the TMR was held constant at 0 dB. At 
+the start of each trial, a visual arrow cued the participant to attend 
+to one of the two conversations, and no attentional switches were 
+prompted. For analysis, data from trials with TMR changes were divided 
+into two TMR-specific segments, while trials without TMR changes 
+were treated as a single segment. Neural data were normalized across 
+all segments, whereas stimulus envelopes were normalized within 
+each segment. Decoders were then trained and evaluated using a 
+leave-one-segment-out cross-validation procedure. Throughout this 
+phase, participants performed the one-back repeat-word detection 
+task, and their behavioral performance confirmed they reliably tracked 
+the attended conversation (Extended Data Fig. 2).
+Online experiment
+The AAD model trained during the offline phase was deployed to 
+decode attention and enhance the attended conversation in real time. 
+Participants were informed that the online phase was a continuation 
+of the listening task but were not told that their brain activity would 
+control the system, ensuring a blinded experimental design. The 
+online phase included three types of trials: binary forced-choice tri-
+als (experiment 1), instructed attention-switching trials (experiment 2) 
+and self-initiated attention-switching trials (experiment 3).
+Experiment 1: binary forced-choice trials. Participants completed 
+20 trials, each lasting 38 s. The initial 10 s of each trial served as an 
+unrated stabilization period to allow for the build-up of auditory atten-
+tion. Following this period, an on-screen prompt explicitly marked the 
+beginning of ‘segment 1’ (the 14 s ‘system off’ period), during which the 
+TMR was fixed at −6 dB. At the 24 s mark, a second prompt marked the 
+beginning of ‘segment 2’ (the 14 s ‘system on’ period), during which the 
+closed-loop system was activated, dynamically amplifying the attended 
+talker by up to +9 dB TMR. At the end of each trial, participants were 
+asked to rate which of these two explicitly marked segments was easier 
+to follow and answered two multiple-choice comprehension questions. 
+Throughout the trial, they also performed the one-back repeat-word 
+detection task.
+Experiment 2: instructed attention-switching trials. In ten additional 
+trials, participants were cued to shift attention from one talker to the 
+other midway through each trial. A continuously displayed arrow on 
+the central screen indicated the cued talker and flipped direction at a 
+
+--- PAGE 13 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+predetermined time. Trials lasted 38–47 s. Speech began at 0 dB TMR, 
+and closed-loop gain control was activated 5 s after onset to allow 
+model stabilization before the switch.
+Experiment 3: self-initiated switching and control condition. In a 
+third condition, participants were allowed to switch attention between 
+talkers freely and at will, without any external cue. To monitor atten-
+tional state, they pointed to the loudspeaker they were attending to, 
+providing a behavioral reference for evaluating the decoder. These 
+trials tested whether the system could track endogenous attention 
+shifts and dynamically adjust enhancement in real time.
+As a control condition, some of these trials included a reversal 
+of the gain logic: the system was configured to amplify the unat-
+tended talker and suppress the attended one, without informing 
+the participant.
+At the end of the session, participants were debriefed and informed 
+that their brain activity had controlled the gain modulation in real time. 
+They were asked about their experience and whether they would con-
+sider using such a system in real-world listening scenarios.
+Regression analyses of performance and preference
+To understand the relationship between user engagement, system 
+performance and subjective preference (Fig. 3), we performed two 
+complementary regression analyses using mixed-effects models 
+to account for within-subject correlations. First, to investigate the 
+source of trial-by-trial variability in system performance (Fig. 3a), we 
+used a linear mixed-effects model. We modeled single-trial AAD accu-
+racy as the dependent variable, with the participant’s repeat-word 
+detection score (a proxy for attentional engagement) as the fixed 
+effect. A random intercept for each subject was included to account 
+for individual differences in baseline decoding performance. Second, 
+to quantify the impact of system performance on subjective prefer-
+ence (Fig. 3b), we used a GLMM. The binary preference outcome 
+(prefer on vs prefer off) was modeled as a function of single-trial AAD 
+accuracy (fixed effect), with a random intercept for each subject. The 
+model specified a binomial distribution with a logit link function. For 
+visualization purposes in Fig. 3b, trials were grouped into three bins 
+based on AAD accuracy. We calculated the proportion of ‘prefer on’ 
+responses within each bin (mean ± s.e.m.) to display the empirical 
+probability of preference across the accuracy range without impos-
+ing a sigmoidal curve fit.
+Pupillometry
+Pupil size was used as a physiological proxy for listening effort, a 
+well-established metric in auditory neuroscience23,28–30. Larger pupil 
+dilations are associated with increased cognitive load, while smaller 
+dilations reflect reduced effort. In the context of AAD-driven speech 
+enhancement, we reasoned that pupil dilation would be lower when 
+the system successfully enhanced the attended stream (that is, under 
+positive TMR conditions) compared to trials in which the system was 
+inactive or misaligned (negative TMR).
+Pupil diameter was recorded using a Tobii Pro Nano eye tracker 
+(60 Hz sampling rate) positioned at chin level beneath the display. 
+Raw traces from the left and right pupils were averaged and aligned 
+to the audio onset. Baseline correction was performed for each 
+trial by computing the mean dilation during the 1 s period preced-
+ing trial onset and rescaling the pupil data accordingly. Reliable 
+pupillometry data were obtained from two participants (S2 and S3) 
+across all 20 binary forced-choice trials. Data from the remaining 
+two participants (S1 and S4) were excluded from analysis because 
+of technical limitations in eye-tracker positioning that prevented 
+consistent tracking.
+Reporting summary
+Further information on research design is available in the Nature 
+Portfolio Reporting Summary linked to this article.
+Data availability
+The data that support the findings of this study are available on request 
+from the corresponding author. The data are not publicly available 
+owing to privacy and ethical restrictions. Source data are provided 
+with this paper.
+Code availability
+The code for stimulus reconstruction and the offline analyses presented 
+in this study is publicly available as part of the NapLib toolbox74,75. 
+MATLAB R2023a was used to perform all data analysis. The custom 
+code used to run the real-time, closed-loop online experiments 
+has been made available on GitHub at https://github.com/naplab/
+Real-Time-Brain-Controlled-Hearing.
+References
+74.	 Khalighinejad, B., Nagamine, T., Mehta, A. & Mesgarani, N. NAPLib: 
+an open source toolbox for real-time and offline neural acoustic 
+processing. In IEEE International Conference on Acoustics, Speech 
+and Signal Processing (ICASSP) 846–850 (IEEE, 2017); https://doi.
+org/10.1109/ICASSP.2017.7952275
+75.	 Mischler, G., Raghavan, V., Keshishian, M. & Mesgarani, N. 
+naplib-python: Neural acoustic data processing and analysis tools 
+in Python. Softw. Impacts 17, 100541 (2023).
+Acknowledgements
+This work was supported by the National Institute on Deafness and 
+Other Communication Disorders (NIH-NIDCD) grants R01DC014279 
+(N.M.) and DC018805 (NM). Additional support was provided by grants 
+from the Marie-Josée and Henry R. Kravis Foundation. The authors 
+would also like to acknowledge M. Farinella and D. C. Powell for their 
+help with illustrations and video editing.
+Author contributions
+V.C. and N.M. conceived the project, designed the experiments, 
+evaluated the results and wrote the manuscript. V.C. conducted the 
+experiments with support from M.N., S.J., J.H., S.B., D.F., A.F. and E.F.C. 
+E.F.C. and A.D.M. performed surgeries. N.M. supervised the project.  
+All authors commented on the manuscript.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Extended data is available for this paper at  
+https://doi.org/10.1038/s41593-026-02281-5.
+Supplementary information The online version contains supplementary 
+material available at https://doi.org/10.1038/s41593-026-02281-5.
+Correspondence and requests for materials should be addressed to 
+Nima Mesgarani.
+Peer review information Nature Neuroscience thanks Jonas Obleser 
+and the other, anonymous, reviewer(s) for their contribution to the 
+peer review of this work.
+Reprints and permissions information is available at  
+www.nature.com/reprints.
+
+--- PAGE 14 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+Left lateral
+Right lateral
+Posterior
+Superior
+Left lateral
+Right lateral
+Posterior
+Superior
+Left lateral
+Right lateral
+Posterior
+Superior
+Left lateral
+Right lateral
+Posterior
+Superior
+S1
+S2
+S3
+S4
+Extended Data Fig. 1 | Electrode coverage across participants. Anatomical 
+distribution of all speech-responsive electrodes for participants S1–S4, shown 
+on semi-transparent brain surfaces. Each dot represents a single electrode used 
+in decoding, color-coded by participant. Views are shown from lateral, superior, 
+and posterior perspectives to illustrate spatial coverage across cortical surfaces. 
+While coverage varied across individuals, all participants had electrodes over 
+auditory-responsive regions in the temporal lobe, enabling subject-specific 
+decoding models.
+
+--- PAGE 15 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+S1
+S2
+S3
+S4
+Subjects
+0
+20
+40
+60
+80
+100
+Repeat Detection Accuracy (%)
+Attended
+Unattended
+Offline behavior
+Extended Data Fig. 2 | Behavioral performance confirms attentional 
+compliance during repeat-word detection. Repeat-word detection accuracy for 
+each participant in the offline phase, separated by attended versus unattended 
+speech streams. Participants were instructed to press a button when they 
+heard repeated words in the attended conversation. Detection accuracy was 
+consistently high for attended speech and near floor for unattended speech, 
+confirming that participants followed attentional instructions.
+
+--- PAGE 16 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+0
+2
+4
+6
+8
+10
+12
+50
+60
+70
+80
+90
+100
+0
+2
+4
+6
+8
+10
+12
+50
+60
+70
+80
+90
+100
+S2
+0
+2
+4
+6
+8
+10
+12
+Window Size (s)
+50
+60
+70
+80
+90
+100
+Decoding Accuracy (%)
+S3
+LF + HG
+LF
+HG
+0
+2
+4
+6
+8
+10
+12
+50
+60
+70
+80
+90
+100
+S4
+Subject-wise AAD model accuracy vs window size
+S1
+Extended Data Fig. 3 | AAD decoding accuracy as a function of integration 
+window size and frequency band. Decoding accuracy plotted as a function of 
+window size (0–12 s) for each participant (S1–S4), using three feature types: low-
+frequency (LF, 0.5–30 Hz), high-gamma (HG, 70–150 Hz), and the combination of 
+both (LF + HG). Accuracy improves with longer windows across all subjects, and 
+models that combine LF and HG features consistently outperform single-band 
+models. This highlights the complementary information carried by low-
+frequency phase-locked activity and high-gamma power in tracking attention.
+
+--- PAGE 17 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+S1
+S2
+S3
+S4
+50
+85
+Decoding 
+Accuracy (%)
+Extended Data Fig. 4 | Spatial distribution of electrode-level decoding 
+accuracy. Brain maps of individual participants (S1–S4), showing the anatomical 
+location and performance of speech-responsive electrodes used for AAD 
+decoding. Each dot represents a single electrode, colored by its individual 
+decoding accuracy, with darker red indicating higher accuracy. Views are shown 
+from lateral (top) and dorsal (bottom) perspectives of both hemispheres. Data 
+reveal consistent clustering of high-performing electrodes in superior temporal 
+regions, particularly in S1–S3, with more distributed patterns in S4. Accuracy 
+scale ranges from 50% (chance) to 85%.
+
+--- PAGE 18 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+0
+20
+40
+60
+80
+100
+72.0%
+87.3%
+90.3%
+77.0%
+S1
+S2
+S3
+S4
+a)
+Average Offline AAD Accuracy per Subject
+Chance Level
+AAD Accuracy (%)
+Extended Data Fig. 5 | Average AAD decoding accuracy across participants  
+for the offline phase. a, Box plots showing AAD accuracies for each participant 
+(S1–S4) during the offline experiment. Mean AAD accuracy is shown on top.  
+All participants showed decoding performance well above chance level  
+(50%, red dashed line). Box plots show the median and interquartile range across 
+trials with whiskers extending to the most extreme data points within 1.5 × IQR 
+(n = 26 trials per subject).
+
+--- PAGE 19 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Single-Trial AAD Accuracy (%)
+-15
+-10
+-5
+0
+5
+10
+Resulting Single-Trial TMR (dB)
+System Gain Tracks AAD Accuracy, Adjusted R2 = 0.98, p << 0.001
+Extended Data Fig. 6 | Real-time gain is systematically modulated by decoding strength. Single-trial average AAD is a robust predictor of the average TMR  
+(n = 80 trials).
+
+--- PAGE 20 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+Easy
+Medium
+Hard
+Trial Difficulty
+75
+80
+85
+90
+Accuracy (%)
+a) AAD Accuracy
+Easy
+Medium Hard
+Trial Difficulty
+0.15
+0.2
+0.25
+0.3
+0.35
+Correlation (r)
+b) Correlation Difference
+Easy
+Medium
+Hard
+Trial Difficulty
+2
+3
+4
+5
+6
+7
+8
+9
+TMR (dB)
+c) Resulting TMR
+Babble
+Pedestrian
+Background Noise
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Accuracy (%)
+a) AAD Accuracy
+Babble
+Pedestrian
+Background Noise
+-0.2
+0
+0.2
+0.4
+0.6
+0.8
+Correlation (r)
+b) Correlation Difference
+Babble
+Pedestrian
+Background Noise
+-10
+-8
+-6
+-4
+-2
+0
+2
+4
+6
+8
+10
+TMR (dB)
+c) Resulting TMR
+Extended Data Fig. 7 | System performance is robust across trial difficulty 
+and background noise conditions. a–c, (Top): AAD decoding performance as a 
+function of trial difficulty, defined by the gender composition of the competing 
+talkers (easy = male vs. female; medium = mixed-gender; hard = same-gender). 
+Boxplots show (left to right): a, decoding accuracy, b, correlation between 
+reconstructed and attended speech envelopes, and c, average target-to-masker 
+ratio (TMR) achieved by the system. Decoder accuracy and envelope correlation 
+remained consistent across difficulty levels. A Kruskal-Wallis test revealed no 
+significant difference in AAD accuracy across the three talker-gender difficulty 
+conditions (p = 0.940, n = 80 trials), confirming the system’s robustness to 
+this acoustic challenge. a–c, (Bottom): AAD decoding performance under two 
+background noise conditions: babble and pedestrian noise. Boxplots show (left 
+to right): a, decoding accuracy, b, envelope correlation, and c, resulting TMR. 
+System performance was consistent across noise types, indicating robustness 
+of the decoding pipeline and gain control strategy. Red lines indicate medians; 
+boxes show interquartile range; whiskers represent 1.5× IQR. Similarly,  
+a Wilcoxon rank-sum test showed no significant difference in AAD accuracy 
+between trials with babble versus pedestrian background noise (p = 0.29,  
+n = 80 trials), demonstrating the system’s resilience to different noise types.
+
+--- PAGE 21 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+Cor ( s , rs )   = 0.41  , p << 0.001
+Cor ( sv , rs ) = -0.03 , p > 0.05
+Cor ( s , sv )  = 0.014 , p > 0.05
+-10s
+0
+10s
+0
+0.2
+0.4
+0.6
+0.8
+1
+Visual or Motor Input (sv)
+Actual attended speech envelope (s)
+Neurally reconstructed attended speech envelope (rs)
+Visual signal
+Motor signal
+Extended Data Fig. 8 | Visual and motor cues do not confound AAD decoding. 
+Time series showing the correlation between the actual attended speech 
+envelope (s, blue), the neurally reconstructed envelope (rs, red), and either 
+the visual cue or motor input signal (sv, green). The green trace reflects the 
+binary direction of the visual cue (Experiment 2) or the participant’s pointing 
+behavior (Experiment 3). A strong correlation was observed between the actual 
+and reconstructed speech envelopes (ρ = 0.41, p « 0.001), while no significant 
+correlation was found between the visual or motor signals and either s (ρ = 0.014, 
+p > 0.05) or rs (ρ = –0.03, p > 0.05). Importantly, behavioral data (for example, 
+preference ratings and intelligibility) were primarily collected in Experiment 1, 
+where the visual cue was fixed throughout each trial and no motor responses 
+were involved. In Experiment 2, the visual cue switched mid-trial to instruct an 
+attention shift, but no pointing was used. In Experiment 3, participants pointed 
+to indicate their attended talker, allowing motor-related activity to be separately 
+assessed. Together, these results confirm that decoding was not systematically 
+influenced by visual or motor confounds.
+
+--- PAGE 22 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+0.25
+0.5
+1
+2
+4
+8
+Frequency (kHz)
+0
+-10
+-20
+-30
+-40
+-50
+-60
+-70
+Hearing loss (dB)
+AAD Off
+AAD On
+AAD Off
+AAD On
+0
+20
+40
+60
+80
+100
+Preference (%)
+20
+40
+60
+80
+100
+Accuracy (%) 
+Left ear
+Right ear
+b) Preferred condition
+c) Intelligibility
+a)
+Average audiograms
+ 
+Condition
+Condition
+0
+***
+***
+Extended Data Fig. 9 | Perceptual validation of the system using individuals 
+with hearing loss. (a) Average audiograms for 40 participants with mild-to-
+moderate sensorineural hearing loss. Solid lines show mean hearing thresholds 
+across frequencies for the left and right ears; shaded areas represent standard 
+deviation. (b) Subjective preference ratings comparing the AAD “On” vs. “Off” 
+condition, where participants listened to the system-controlled output and 
+indicated which version was easier to understand. Box plots show the median 
+and interquartile range across trials with whiskers extending to the most extreme 
+data points within 1.5 × IQR. (c) Objective intelligibility scores for the same 
+stimuli, measured via multiple-choice comprehension questions. Each line 
+represents a single participant; **p < 0.001 for both comparisons (two-sided 
+paired t-tests, n = 40 subjects). Participants showed a strong preference for the 
+AAD-enhanced audio which significantly improved intelligibility, validating the 
+perceptual quality of the brain-controlled system output. Box plots show the 
+median and interquartile range across trials with whiskers extending to the most 
+extreme data points within 1.5 × IQR.
+
+--- PAGE 23 ---
+Nature Neuroscience
+Article
+https://doi.org/10.1038/s41593-026-02281-5
+20
+40
+60
+80
+100
+Clean Accuracy (cAAD)
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+Separated Accuracy (sAAD)
+Agreement Between Clean and Separated Models
+r = 0.974
+R2 = 0.948
+Line of Identity (y=x)
+Extended Data Fig. 10 | Decoding performance is preserved with separated 
+audio sources. Scatter plot comparing AAD accuracy using clean speech 
+envelopes (cAAD) versus algorithmically separated envelopes (sAAD) 
+across trials. Each point represents a trial from a single subject. The strong 
+linear relationship (Pearson’s r = 0.974, R2 = 0.948) indicates that decoding 
+performance is nearly identical between clean and separated audio conditions. 
+Dashed line shows the line of identity (y = x), confirming that gain decisions in 
+real-time deployment can rely on separated audio without degrading accuracy.
+
+--- PAGE 24 ---
+1
+nature portfolio  |  reporting summary
+April 2023
+Corresponding author(s):
+Nima Mesgarani (nima@ee.columbia.edu)
+Last updated by author(s): Feb 5, 2026
+Reporting Summary
+Nature Portfolio wishes to improve the reproducibility of the work that we publish. This form provides structure for consistency and transparency 
+in reporting. For further information on Nature Portfolio policies, see our Editorial Policies and the Editorial Policy Checklist.
+Statistics
+For all statistical analyses, confirm that the following items are present in the figure legend, table legend, main text, or Methods section.
+n/a Confirmed
+The exact sample size (n) for each experimental group/condition, given as a discrete number and unit of measurement
+A statement on whether measurements were taken from distinct samples or whether the same sample was measured repeatedly
+The statistical test(s) used AND whether they are one- or two-sided 
+Only common tests should be described solely by name; describe more complex techniques in the Methods section.
+A description of all covariates tested
+A description of any assumptions or corrections, such as tests of normality and adjustment for multiple comparisons
+A full description of the statistical parameters including central tendency (e.g. means) or other basic estimates (e.g. regression coefficient) 
+AND variation (e.g. standard deviation) or associated estimates of uncertainty (e.g. confidence intervals)
+For null hypothesis testing, the test statistic (e.g. F, t, r) with confidence intervals, effect sizes, degrees of freedom and P value noted 
+Give P values as exact values whenever suitable.
+For Bayesian analysis, information on the choice of priors and Markov chain Monte Carlo settings
+For hierarchical and complex designs, identification of the appropriate level for tests and full reporting of outcomes
+Estimates of effect sizes (e.g. Cohen's d, Pearson's r), indicating how they were calculated
+Our web collection on statistics for biologists contains articles on many of the points above.
+Software and code
+Policy information about availability of computer code
+Data collection
+For the iEEG participants, neural data were recorded using Tucker-Davis Technologies (TDT) hardware for subjects S1–S3 and Ripple 
+Grapevine Trek for S4. For evaluation with individuals with hearing loss, the participants were recruited through Prolific.
+Data analysis
+MATLAB R2023a was used to perform all data analysis, code at: https://github.com/naplab/Real-Time-Brain-Controlled-Hearing
+For manuscripts utilizing custom algorithms or software that are central to the research but not yet described in published literature, software must be made available to editors and 
+reviewers. We strongly encourage code deposition in a community repository (e.g. GitHub). See the Nature Portfolio guidelines for submitting code & software for further information.
+Data
+Policy information about availability of data
+All manuscripts must include a data availability statement. This statement should provide the following information, where applicable: 
+- Accession codes, unique identifiers, or web links for publicly available datasets 
+- A description of any restrictions on data availability 
+- For clinical datasets or third party data, please ensure that the statement adheres to our policy 
+ 
+The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available due to privacy and 
+ethical restrictions. 
+
+--- PAGE 25 ---
+2
+nature portfolio  |  reporting summary
+April 2023
+Research involving human participants, their data, or biological material
+Policy information about studies with human participants or human data. See also policy information about sex, gender (identity/presentation), 
+and sexual orientation and race, ethnicity and racism.
+Reporting on sex and gender
+iEEG participants: Sex (biological attribute) was recorded for all participants based on clinical records (three males and one 
+female; ages 21-38 years). Gender identity was not assessed. Given the limited sample size and the clinical constraints of 
+intracranial recordings, the study was not designed or powered to evaluate sex- or gender-related effects, and no stratified 
+analyses were performed. 
+ 
+Hearing loss participants: Sex (biological attribute) was self-reported by participants recruited through Prolific. The cohort 
+included 25 male and 15 female participants (ages 20–73 years; mean age = 40 years, s.d. = 13). Gender identity was not 
+assessed. Given that the study was not designed or powered to evaluate sex- or gender-related effects, no stratified analyses 
+were performed.
+Reporting on race, ethnicity, or 
+other socially relevant 
+groupings
+Race, ethnicity, or other socially relevant groupings were not a consideration in the study design. No data were collected or 
+used regarding these variables. The goal of the study was to evaluate the efficacy of a neural decoding algorithm based solely 
+on auditory attention, which is not known to vary systematically with race or ethnicity.
+Population characteristics
+iEEG participants: The study included four adult patients undergoing epilepsy monitoring with intracranial EEG electrodes as 
+part of their clinical care. All participants self-reported normal hearing. One participant was a non-native English speaker; all 
+others were native speakers. 
+ 
+Hearing loss participants: The study included 40 adults with self-reported hearing loss recruited through Prolific. Participants 
+were native English speakers. 
+Recruitment
+iEEG participants were recruited from patients already undergoing clinical intracranial monitoring for epilepsy treatment at 
+partner hospitals. All participants provided informed consent. Selection was based solely on the presence of suitable 
+electrode coverage in auditory cortex and the ability to participate in listening tasks. All participants provided informed 
+written consent prior to participation in accordance with protocols approved by Columbia University's Institutional Review 
+Board and the respective hospitals’ ethics committees. No financial compensation was provided for participation in the iEEG 
+experiments.   
+ 
+Hearing loss participants: Hearing loss participants were recruited via the online participant recruitment platform Prolific. 
+Eligibility criteria included self-reported hearing loss, native English proficiency, and the ability to complete an online listening 
+experiment. Participants provided informed consent electronically prior to participation. Participants were compensated USD 
+$10 for approximately 30 minutes of participation. The study protocol was approved by Columbia University’s Institutional 
+Review Board.
+Ethics oversight
+Columbia University's Institutional Review Board
+Note that full information on the approval of the study protocol must also be provided in the manuscript.
+Field-specific reporting
+Please select the one below that is the best fit for your research. If you are not sure, read the appropriate sections before making your selection.
+Life sciences
+Behavioural & social sciences
+ Ecological, evolutionary & environmental sciences
+For a reference copy of the document with all sections, see nature.com/documents/nr-reporting-summary-flat.pdf
+Behavioural & social sciences study design
+All studies must disclose on these points even when the disclosure is negative.
+Study description
+This study employed a quantitative, within-subject experimental design to assess behavioral and neural correlates of auditory 
+attention in participants undergoing intracranial EEG monitoring. iEEG Participants completed controlled listening tasks while neural 
+signals were decoded in real time to modulate auditory stimuli. Then, an independent online cohort of individuals with hearing loss 
+was used to listen to the brain-modulated stimuli and evaluate behavioral outcomes in the hearing loss group.
+Research sample
+The research sample consisted of four adult epilepsy patients (three males and one female; ages 21–38 years) undergoing clinical 
+intracranial EEG monitoring as part of their medical care. All participants self-reported normal hearing. One participant was a non-
+native English speaker; the remaining participants were native English speakers. The sample was selected based on clinical availability 
+and electrode coverage and is not intended to be representative of the general population. 
+ 
+An additional cohort comprised 40 adults with self-reported hearing loss recruited online through Prolific (25 male, 15 female; ages 
+20–73 years; mean age = 40 years, s.d. = 13). All participants were native English speakers and completed behavioral testing 
+remotely.
+Sampling strategy
+iEEG participants were recruited using convenience sampling from patients undergoing clinical intracranial monitoring at partner 
+
+--- PAGE 26 ---
+3
+nature portfolio  |  reporting summary
+April 2023
+Sampling strategy
+hospitals. Sample size was determined by the availability of suitable clinical cases and approved protocols. No formal sample-size 
+calculation was performed due to the rarity and invasiveness of iEEG recordings.  
+ 
+The hearing-loss cohort was recruited using online convenience sampling via Prolific, with inclusion criteria based on self-reported 
+hearing loss and English fluency.
+Data collection
+Data collection procedures differed across cohorts. iEEG data were collected in hospital settings using implanted intracranial EEG 
+electrodes, audio presentation systems, and eye-tracking equipment. Participants completed structured listening tasks while neural 
+and behavioral responses were recorded. No individuals other than the participant and research staff were present during data 
+collection. Participants were not informed during real-time sessions that neural decoding was actively modulating audio stimuli. 
+ 
+Behavioral data from the hearing-loss cohort were collected remotely via an online listening experiment completed using 
+participants’ own PCs.
+Timing
+iEEG Data were collected during participants’ clinical monitoring periods between 2023 and 2024. Each participant completed 
+multiple experimental sessions during their hospital stay. Online behavioral data from hearing-loss participants were collected during 
+the same overall study period.
+Data exclusions
+No behavioral or neural data were excluded based on performance. Pupillometry data from two participants (S1 and S4) were 
+excluded due to eye-tracker calibration issues and were not pre-specified for exclusion. All other data were analyzed as collected. No 
+additional exclusions were applied to the hearing-loss cohort.
+Non-participation
+No participants declined participation or withdrew from the study after enrollment.
+Randomization
+Participants were not randomly assigned to experimental conditions, as the study employed a within-subject design in which each 
+participant served as their own control. Experimental conditions were counterbalanced across trials where applicable.
+Reporting for specific materials, systems and methods
+We require information from authors about some types of materials, experimental systems and methods used in many studies. Here, indicate whether each material, 
+system or method listed is relevant to your study. If you are not sure if a list item applies to your research, read the appropriate section before selecting a response. 
+Materials & experimental systems
+n/a Involved in the study
+Antibodies
+Eukaryotic cell lines
+Palaeontology and archaeology
+Animals and other organisms
+Clinical data
+Dual use research of concern
+Plants
+Methods
+n/a Involved in the study
+ChIP-seq
+Flow cytometry
+MRI-based neuroimaging
+Novel plant genotypes
+Describe the methods by which all novel plant genotypes were produced. This includes those generated by transgenic approaches, 
+gene editing, chemical/radiation-based mutagenesis and hybridization. For transgenic lines, describe the transformation method, the 
+number of independent lines analyzed and the generation upon which experiments were performed. For gene-edited lines, describe 
+the editor used, the endogenous sequence targeted for editing, the targeting guide RNA sequence (if applicable) and how the editor 
+was applied.
+Seed stocks
+Report on the source of all seed stocks or other plant material used. If applicable, state the seed stock centre and catalogue number. If 
+plant specimens were collected from the field, describe the collection location, date and sampling procedures.
+Authentication
+Describe any authentication procedures for each seed stock used or novel genotype generated. Describe any experiments used to 
+assess the effect of a mutation and, where applicable, how potential secondary effects (e.g. second site T-DNA insertions, mosiacism, 
+off-target gene editing) were examined.
+Plants
+

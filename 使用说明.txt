@@ -1,0 +1,71 @@
+EEG音频融合分类 - 单人处理 使用说明
+======================================
+
+运行方式：
+----------
+
+方法1：双击运行（推荐）
+   双击 "run_eeg_audio_fusion.vbs" 文件
+
+方法2：命令行运行
+   打开命令行，运行：python eeg_audio_fusion_individual.py
+
+方法3：在Python IDE中运行
+   打开 eeg_audio_fusion_individual.py 文件，点击运行按钮
+
+选择不同的被试：
+--------------
+
+要处理其他被试，请修改 eeg_audio_fusion_individual.py 文件中的 SUBJECT_TO_PROCESS 变量：
+
+可选的被试：
+- 'hanglei'      (默认)
+- 'yanxingzhuo'
+- 'jinxiaoyue'
+- 'chenxianwei'
+- 'yeziyuan'
+
+例如，将这一行：
+SUBJECT_TO_PROCESS = 'hanglei'
+
+改为：
+SUBJECT_TO_PROCESS = 'yanxingzhuo'
+
+输出文件：
+--------
+
+结果将保存在 A:/standard_data_noica/fusion_results/ 目录下，
+文件名包含被试名称，例如：
+- fusion_classification_results_hanglei_simple.csv
+- fusion_classification_summary_hanglei.txt
+- fusion_classification_comparison_hanglei.csv
+
+处理流程：
+--------
+
+1. 加载指定被试的EEG数据
+2. 读取音频映射文件
+3. 筛选一致的trials（被试两次选择一致的）
+4. 提取EEG和音频特征
+5. 训练5种不同的融合模型
+6. 输出结果和对比分析
+
+包含的模型：
+----------
+
+1. Simple拼接    - 简单的特征拼接
+2. Attention融合  - 注意力机制融合
+3. Gated融合     - 门控机制融合
+4. 端到端融合    - 完整的端到端训练
+5. 仅音频特征    - 消融实验（仅用音频）
+6. 同步性融合    - EEG-音频同步性特征（可选）
+
+注意事项：
+--------
+
+- 确保Python已安装并添加到PATH
+- 确保数据路径正确（A:/standard_data_noica/[subject_name]/）
+- 确保音频文件路径正确
+- 首次运行需要提取特征，后续运行会使用缓存
+
+如有问题，请检查控制台输出或查看错误信息。

@@ -1,0 +1,20 @@
+subjects found: ['yanxingzhuo', 'jinxiaoyue', 'chenxianwei', 'qiuhaiyun', 'haoxiang', 'honghaokai']
+n subjects with folds: 6
+yanxingzhuo: nfold=5 am_fm=0.7229 gated=0.8146 scalar=0.8229
+jinxiaoyue: nfold=5 am_fm=0.8500 gated=0.8604 scalar=0.8625
+chenxianwei: nfold=5 am_fm=0.8375 gated=0.7958 scalar=0.8042
+qiuhaiyun: nfold=5 am_fm=0.8750 gated=0.8687 scalar=0.8771
+haoxiang: nfold=5 am_fm=0.7974 gated=0.7601 scalar=0.7583
+honghaokai: nfold=5 am_fm=0.8217 gated=0.8347 scalar=0.8252
+--- group ---
+am_fm_content_priority_fm: 0.8174 ± 0.0532 (n=6)
+residual_gated:            0.8224 ± 0.0410
+residual_scalar_gate:      0.8250 ± 0.0424
+L524:   汇总已保存: A:/standard_data_interp_ica_99/nme_fusion_results\individual\scalar_gate_compare_mirror_bs16\mirror\yanxingzhuo_residual_cv_summary.txt
+L1020:   汇总已保存: A:/standard_data_interp_ica_99/nme_fusion_results\individual\scalar_gate_compare_mirror_bs16\mirror\jinxiaoyue_residual_cv_summary.txt
+L1519:   汇总已保存: A:/standard_data_interp_ica_99/nme_fusion_results\individual\scalar_gate_compare_mirror_bs16\mirror\chenxianwei_residual_cv_summary.txt
+L2018:   汇总已保存: A:/standard_data_interp_ica_99/nme_fusion_results\individual\scalar_gate_compare_mirror_bs16\mirror\qiuhaiyun_residual_cv_summary.txt
+L2517:   汇总已保存: A:/standard_data_interp_ica_99/nme_fusion_results\individual\scalar_gate_compare_mirror_bs16\mirror\haoxiang_residual_cv_summary.txt
+L3014:   汇总已保存: A:/standard_data_interp_ica_99/nme_fusion_results\individual\scalar_gate_compare_mirror_bs16\mirror\honghaokai_residual_cv_summary.txt
+L3016: 所有被试汇总已保存: A:/standard_data_interp_ica_99/nme_fusion_results\individual\scalar_gate_compare_mirror_bs16\mirror\all_subjects_summary.csv
+L3019: 全部被试汇总（跨被试均值 ± 标准差）:

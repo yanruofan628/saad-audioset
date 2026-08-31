@@ -1,0 +1,61 @@
+**发表用的验证图：看所有试次（再跨被试）平均，不要拿单个 trial 当主图。**
+
+---
+
+## 怎么选
+
+| 画法 | 什么时候用 |
+|------|------------|
+| **单个 trial** | 仅 **肉眼看噪声、查坏试次、调试代码** |
+| **单被试内所有试次平均** | 看某人是否正常 |
+| **组水平 grand average（主文用这个）** | Technical Validation：**先每人平均 → 再 23 人平均**（或加权） |
+
+ERP / ERSP 信噪比低，**单 trial 几乎全是噪声**，看不出 N1，也看不出稳定 ERSP。
+
+---
+
+## 推荐流程（标准）
+
+```
+1) 每个被试：剔除坏试次
+2) 该被试：对所有保留试次 → ERP/ERSP 平均（evoked / TFR average=True）
+3) 组水平：23 条被试平均 → grand average
+4) 主图：画第 3 步
+```
+
+MNE 里：
+
+```python
+# 每人
+evoked_sub = epochs_sub.average()
+power_sub = tfr_morlet(epochs_sub, ..., average=True)
+
+# 组（示例）
+grand_evoked = mne.grand_average(evokeds)
+# 或对 power 逐被试平均后再 plot
+```
+
+---
+
+## 要不要分条件再平均？
+
+| 主文验证 | 探索 |
+|----------|------|
+| **全部合格试次** 一起平均 | 分 reported L/R、分 speech/music 等 |
+
+主文：**一种条件（all trials）** 即可。
+
+---
+
+## 单 trial 可以怎么用
+
+- 附图：**1 个典型试次** vs **该被试平均**（说明平均必要性）→ Supplementary  
+- 正文 **不要** 用单 trial 下结论  
+
+---
+
+## 一句话
+
+**主图 = 所有（合格）试次平均，再组平均；单 trial 只用于检查，不用于论证。**
+
+[REDACTED]

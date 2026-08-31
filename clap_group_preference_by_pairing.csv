@@ -1,0 +1,25 @@
+﻿pairing_type,human_p_choose_leximin,clap_p_choose_leximin,rms_p_choose_leximin,human_n_trials_all
+"Baby cry, infant cry | Bass drum",0.8,1.0,0.5,0.6439169139465876
+"Baby cry, infant cry | Computer keyboard",0.85,1.0,0.8,0.7237237237237237
+"Baby cry, infant cry | Female speech, woman speaking",0.45,0.9,0.9,0.49393939393939396
+"Baby cry, infant cry | Helicopter",0.8,0.9,0.3,0.6011904761904762
+"Baby cry, infant cry | Male speech, man speaking",0.2,0.9,0.4,0.36936936936936937
+"Baby cry, infant cry | Sad music",0.6,1.0,0.2,0.5269461077844312
+Bass drum | Computer keyboard,0.85,0.6,0.9,0.6306306306306306
+"Bass drum | Female speech, woman speaking",0.1,0.4,0.5,0.3333333333333333
+Bass drum | Helicopter,0.6,0.6,0.3,0.5402985074626866
+"Bass drum | Male speech, man speaking",0.05,0.5,0.5,0.3392857142857143
+Bass drum | Telephone bell ringing,0.2,0.2,0.6,0.33827893175074186
+"Computer keyboard | Female speech, woman speaking",0.0,0.3,0.2,0.23738872403560832
+"Computer keyboard | Male speech, man speaking",0.0,0.5,0.1,0.24404761904761904
+Computer keyboard | Sad music,0.05,0.5,0.1,0.24776119402985075
+Computer keyboard | Telephone bell ringing,0.05,0.5,0.1,0.2289156626506024
+"Female speech, woman speaking | Helicopter",0.8,0.8,0.1,0.6291793313069909
+"Female speech, woman speaking | Sad music",0.5,0.9,0.0,0.5240963855421686
+"Female speech, woman speaking | Telephone bell ringing",0.45,0.6,0.4,0.46987951807228917
+"Helicopter | Male speech, man speaking",0.15,0.4,0.8,0.3373493975903614
+Helicopter | Sad music,0.1,0.6,0.6,0.3484848484848485
+Helicopter | Telephone bell ringing,0.1,0.6,1.0,0.3018292682926829
+"Male speech, man speaking | Sad music",0.85,0.7,0.2,0.6467065868263473
+"Male speech, man speaking | Telephone bell ringing",0.65,0.6,0.5,0.5481927710843374
+Sad music | Telephone bell ringing,0.4,0.2,0.6,0.42136498516320475

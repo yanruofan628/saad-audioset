@@ -1,0 +1,10 @@
+
+======== CLAP 零样本 vs 人 / RMS | yanxingzhuo n=480 ========
+text: involuntarily attention-capturing sound while ignoring audio during a silent movie
+model: D:\D\research\audioset下载\download_audioset-master\download_audioset-master\pretrained_clap\clap-htsat-unfused
+CLAP  Acc=0.5375  BACC=0.5376  AUC(vs人选右)=0.5126
+RMS   Acc=0.5792  BACC=0.5793
+CLAP 与 RMS 预测一致率=0.5000
+人类 L/R = 230/250
+CLAP 预测 L/R = 240/240
+结果 CSV: D:\D\research\audioset下载\download_audioset-master\download_audioset-master\clap_zero_shot_passive_yanxingzhuo.csv

@@ -1,0 +1,460 @@
+
+===== PAGE 1 =====
+                                                                       IEEE TRANSACTIONS AND JOURNALS TEMPLATE     
+ 
+From Neural Representations to Brain-Inspired 
+Architecture: Decoding Auditory Target Perception in 
+Complex Scenes 
+Jianting Shi, Luzheng Bi*, Jiaqi Wang, Jiarong Wang, Aberham Genetu Feleke and Weijie Fei 
+ 
+Abstract— In complex acoustic scenarios, the human 
+auditory system excels at rapidly and accurately identifying 
+target sounds. A deeper understanding of its mechanisms in 
+such environments could significantly enhance the 
+robustness and generalization capabilities of  sound event 
+detection systems. This paper investigates the neural 
+representations and decoding of target sound perception in 
+complex auditory scenes using non-invasive neural signals. 
+We propose a novel experimental paradigm that simulates 
+complex acoustic conditions by varying parameters such as 
+target sound characteristics, background noise levels, and 
+interfering events. Multi- view neural representations —
+including time, frequency, and source domains— are 
+extracted and analyzed using statistical methods to examine 
+their relationships with these variables. To decode these 
+neural activities, we propose the Auditory Cortex- inspired 
+Dual Attention Network (AC -DANet), an architecture 
+functionally inspired by known attentional pathways in the 
+auditory cortex. The model achieves robust three -class 
+Electroencephalogram (EEG) decoding for target sound 
+perception in challenging auditory scenes, with experimental 
+results demonstrating strong performance and cross -
+subject generalization. This study advances our 
+understanding of the neural information transmission 
+process underlying sound target perception in complex 
+acoustic environments. It offers novel insights into the 
+cognitive functions of the human auditory system, while 
+providing a theoretical foundation and technical framework 
+for the development of advanced sound event detection 
+systems in challenging acoustic settings. 
+Index Terms—Sound Target Perception, Complex 
+Acoustic Scenario , Low SNR , EEG, Noninvasive Neural 
+Signals, Neural signature.  
+I. INTRODUCTION 
+uman hearing offers a unique and powerful advantage 
+in natural, complex acoustic scenes, and is able to 
+quickly and accurately identify target sounds in noisy 
+environments [1-3]. This ability not only depends on the 
+primary acoustic coding of the outer ear, middle ear and cochlea, 
+but also involves the deep processing and parsing of the higher 
+auditory center and the auditory perception cortex [4] [5].  
+Although existing sound target detection methods have shown 
+some success under ideal conditions, their performance often 
+deteriorates in complex and dynamic acoustic environments.  
+Specifically, traditional algorithms exhibit significant 
+shortcomings in robustness and generalization when confronted 
+with complex conditions such as low signal -to-noise ratios, 
+strong background noise, and interfering events [6 -8]. In our 
+context, interfering events refer to accidental non-target sounds 
+ 
+This work was supported by the National Natural Science Foundation 
+of China (Grant No. 62573053). (Corresponding author: Luzheng Bi) 
+that distract attention in real-world scenes. This stands in stark 
+contrast to the exceptional adaptability of  the human auditory 
+system in dynamic environments, highlighting the limitations of 
+current technologies in handling complex acoustic fields. 
+Therefore, a deeper exploration of the internal mechanism of the 
+human auditory system, especially its functioning in complex 
+acoustic scenes, holds the potential to offer new ways to improve 
+the robustness and generalization of sound target recognition. 
+To date, the fundamental composition of the auditory 
+cognitive pathway has been preliminarily established [9]. The 
+mainstream view is that the human auditory pathway is 
+composed of the cochlea, thalamus and brain stem, auditory 
+cortex and higher-order cognitive areas of the brain. Currently, 
+several studies have explored the specific transmission process of 
+auditory information in auditory pathways during the perception 
+of auditory targets. 
+Tsunada et al. [10]  summarized part of the research on the 
+neural mechanism of human auditory content classification and 
+pointed out that the human a uditory cortex is divided into core 
+auditory cortex and belt region. When classifying the heard sound, 
+neurons in the core auditory cortex encode simple sounds, while 
+when sounds become more complex, the core auditory cortex 
+encodes their acoustic features and complex sounds are classified 
+by the belt area and the ventral prefrontal cortex. Helene et al. [11] 
+pointed out in their article that auditory target perception includes 
+two processes, namely, lowering the detection threshold of target 
+sound and actively filtering irrelevant sound. These two 
+processes not only require the participation of auditory cortex, 
+but also affect the frontal cortex, bilateral precentral area, left 
+postcentral area and supplementary motor area of the brain. 
+Through the study of Magnetoencephalography (MEG) 
+information in the area near the auditory cortex, Ding et al. [12] 
+pointed out that the neural representation of the auditory cortex 
+would remain phase-locked with the envelope of the target sound 
+and have a similar waveform to the envelope of the target sound 
+in complex sound scenes. Elena et al. [13]  used invasive 
+electroencephalogram (ECoG) to further investigate the selective 
+attention of human hearing, which involved the neural signal 
+components of two frequency bands. Among them, the neurons 
+with selectivity to the target sound were mainly distributed in the 
+prefrontal lobe and the precentral area. It also confirms the role 
+of the hierarchical structure of the auditory pathway and the top-
+down neuromodulation mechanism in auditory selective 
+attention. Wang et al. [14]  used Electroencephalogram ( EEG) 
+The authors are with the School of Mechanical Engineering,  Beijing 
+Institute of Technology, Beijing 100081, China (e-mail: 
+jat_shi@bit.edu.cn; bhxblz@bit.edu.cn; 3120240415@bi t.edu.cn; 
+jiarongw@bit.edu.cn; 7620220003@bit.edu.cn; bitfwj@bit.edu.cn).  
+H 
+This article has been accepted for publication in IEEE Journal of Biomedical and Health Informatics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JBHI.2026.3679603
+© 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted,
+but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Hong Kong Polytechnic University. Downloaded on May 21,2026 at 07:44:05 UTC from IEEE Xplore.  Restrictions apply. 
+===== PAGE 2 =====
+ 
+ 
+signals to detect drone sounds and achieved an average accuracy 
+of 81%, demonstrating the feasibility of using a uditory brain-
+computer interface for target detection. Beyond target detection, 
+the field of auditory attention decoding (AAD) has recently 
+advanced from simple binary classification to multi -speaker 
+tracking using deep learning frameworks [15]. These 
+advancements provide a broader context for understanding how 
+the brain filters relevant information in multi- source 
+environments [16]. 
+However, although these studies offer valuable insights, they 
+still have limitations in explaining the neural mechanisms of 
+sound target perception in complex acoustic scenes, and the 
+specific neural information transmission process  of how low 
+signal-to-noise ratios (SNR) environments and interfering events 
+affect the neural representation of the brain still remain to  be 
+further explored. 
+This paper investigates the neural underpinnings of sound 
+target perception in complex acoustic scenarios, leveraging 
+noninvasive EEG signals. We designed a novel experimental 
+paradigm with a rich set of target sounds, background noises, and 
+interfering events at varying signal -to-noise ratios to simulate 
+realistic listening conditions. While participants performed the 
+auditory task, their EEG signals were recorded. From this data, 
+we extracted and analyzed multi -view neural representations 
+across the time,  frequency, and source domains. Through 
+statistical analysis, we systematically uncovered the neural 
+coding principles that govern how the brain processes target 
+sounds amidst noise and distraction. Another central innovation 
+of this work is to translate these neural principles directly into the 
+design of a novel, brain- inspired network architecture, termed 
+Auditory Cortex- inspired Dual Attention Network  (AC-
+DANet). Rather than creating a generic high-performance model, 
+we developed AC -DANet to functionally  inspired by known 
+attentional pathways in the auditory cortex revealed in our 
+analysis. We then validated this principled approach by 
+performing a three -class EEG decoding of target sounds, 
+interfering events, and background noise. The results 
+demonstrate that this neurophysiologically-grounded model not 
+only achieves excellent performance in both within-subject and 
+cross-subject experiments but also validates our initial 
+neuroscientific hypotheses, showcasing the power of this 
+integrated approach. 
+The contributions of this paper are therefore twofold. At a 
+neuroscientific level, it addresses a gap in understanding the 
+neural information processing of sound target perception in 
+complex scenes, enhancing our knowledge of the human auditory 
+system's high-level cognitive functions. From a computational 
+and application standpoint, this study proposes a new blueprint 
+for developing high- performance neural decoders.  Instead of 
+treating the brain as a black box, we demonstrate that a model 
+grounded in physiological mechanisms can achieve robust 
+generalization. This work provides not only theoretical support 
+but also a concrete technical prototype for a new generation of 
+more interpretable and effective brain -computer interfaces 
+designed for real-world environments. 
+II.
+ PARADIGM AND DATA ACQUISITION 
+A. Experimental Paradigm and Procedure 
+Twelve healthy, gender -balanced subjects (aged 22- 27) 
+participated in a target perception experiment designed to 
+simulate complex acoustic scenes. The study was conducted in 
+accordance with the 2013 Declaration of Helsinki and received 
+ethical approval from the Research Ethics Committee of 
+Beijing Institute of Technology (No. BIT -EC-H-2024150). All 
+participants provided written informed consent and confirmed 
+they had no history of neurological diseases nor had recently 
+consumed substances that could affect the results, such as 
+alcohol, tobacco, or psychoactive drugs.  Fig. 1. is a schematic 
+diagram of the paradigm for the sound target perception 
+experiment. Fig. 2. shows the experimental scenario. 
+Each experimental trial consisted of 50 sound clips (1000ms 
+duration, 200ms inter -stimulus interval), presented in a 
+randomized order. Within each trial, 30 clips contained only 
+background wind noise, while the remaining 20 contained 
+embedded sound events. Of these events, two were designated 
+as targets and 18 as interferers. The acoustic events were 
+sourced from the UrbanSound8K dataset [17 ] and included ten 
+categories of everyday sounds (e.g., car horn, dog bark, siren). 
+"Gunshot" served as the target event, with the other nine 
+categories acting as interferers. To simulate complex acoustic 
+environments, all sound events were embedded in bac kground 
+wind noise at two signal-to-noise ratios (SNRs): high (0dB) and 
+low (-10dB), with an equal number of events presented in each 
+condition. Stimuli were delivered binaurally through 
+headphones (Sony WH-1000XM5, Japan). 
+Participants were fitted with an EEG cap and seated in front 
+of a display in a quiet room. Each trial began with a 5- second 
+preparation period. During the stimulus presentation, 
+participants were instructed to maintain fixation on the screen's 
+center and p ress the 'space' key as quickly as possible upon 
+hearing the target sound. The system recorded stimulus onsets, 
+key presses, and reaction times (RT s), which were 
+synchronized with the EEG data via serial communication. 
+Each subject completed 75 trials, with a 1 -minute rest period 
+between each trial. The entire experimental paradigm was 
+designed and implemented using PsychoPy [18]. 
+B. Data Acquisition 
+We utilized the 64-channel EEG amplifier system (NeuroScan 
+SynAmps2, NeuroScan, America) to acquire EEG signals from 
+participants. The electrode positions were determined according 
+to the international 10 -20 system standard, with the forehead 
+ground electrode placed at AFz and the reference electrode at 
+CPz. The sampling rate was set at 1000 Hz to ensure hig h 
+temporal resolution of neural activities. Additionally, electrode 
+impedance was calibrated to less than 10 kΩ to minimize noise 
+and enhance signal quality. 
+To synchronize EEG recordings with the presentation of target 
+sounds, we controlled the timing of sound presentation using 
+PsychoPy and sent corresponding trigger signals to the EEG  
+acquisition device via serial communication. This ensured 
+precise alignment between neural activities and auditory stimuli. 
+This article has been accepted for publication in IEEE Journal of Biomedical and Health Informatics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JBHI.2026.3679603
+© 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted,
+but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Hong Kong Polytechnic University. Downloaded on May 21,2026 at 07:44:05 UTC from IEEE Xplore.  Restrictions apply. 
+===== PAGE 3 =====
+ 
+ 
+Unique trigger signals were assigned to different types of 
+auditory stimuli. Specifically, two target sounds with varying 
+SNRs, two interfering events  with varying SNRs, pure 
+background wind noise, and button presses were configured as 
+six distinct trigger signals. This setup facilitated the extraction of 
+EEG epochs under different conditions, enabling detailed 
+analysis of neural responses evoked by various auditory stimuli 
+in complex acoustic scenarios. 
+Participants' RTs were defined as the interval between the 
+onset of the target sound and the time they pressed the button to 
+respond. Given that subsequent analyses will involve the study of 
+neural representations and the establishment of decoding models, 
+we t ook [- 0.2,1.2] second of EEG segments time -locked to 
+stimulus onset time.  
+ 
+Fig. 1. Experimental paradigm of sound target perception. 
+ 
+Fig. 2. Experimental scenario. 
+III. DATA ANALYSIS 
+A. EEG Preprocessing 
+Baseline correction was applied to raw EEG signals (using the 
+mean of the first 10% of each trial  to eliminate zero drift), and 
+trials with maximum absolute amplitudes exceeding 200 μV 
+were excluded. The signals were then down-sampled to 200 Hz 
+and subjected to a FIR band-pass filter within the range of 0.5-49 
+Hz. Subsequently, the ICA algorithm was applied to the data 
+filtered between 2-49 Hz to remove ocular and muscular artifacts, 
+with optimization based on [1 9]. The ICLabel algorithm was 
+utilized to label and remove ocular and muscular components 
+with a confidence level greater than 90% [20]. Finally, the EEG 
+data were re-referenced to a common average reference (CAR).  
+All of the above pre -processing processes were completed 
+through EEGLAB [21]. 
+B. Time-Domain Analysis 
+We adopted a time-domain analysis method to deeply explore 
+the EEG data in the target perception experiment in complex 
+acoustic scenes. We averaged the extracted epochs to separate the 
+stimulation-related event-related potential ( ERP) components 
+from the background noise, thus more clearly revealing the 
+differences in brain responses to target stimuli under different 
+conditions. In the analysis of ERP components, we focused on  
+the central region and the parietal lobe. As an important part of 
+the cerebral cortex, the central region is closely related to a 
+variety of sensory functions. The parietal lobe is more related to 
+cognitive process. We quantitatively compared the ERP 
+components in different conditions by analyzing the waveform 
+characteristics, latency and amplitude of ERP. The differences in 
+these parameters not only reflect the speed and intensity of brain 
+response to target stimuli, but also reveal the synergistic 
+mechanism of different regions for target perception in complex 
+acoustic scenes. 
+C. Time-Frequency Analysis 
+We focus on the process of sound target perception in complex 
+acoustic scenes, and analyze the relevant EEG data from the 
+perspective of time- frequency domain. This helps us to 
+understand more fully how the brain recognizes and processes 
+sound targets in complex acoustic environments, and can reveal 
+the dynamic mechanisms and spectral characteristics of brain 
+activity. It has been clearly shown that the process of target 
+recognition has a significant impact on the EEG signal spectrum 
+in different regions of  the brain  [14]. We used e vent-related 
+spectral perturbation (ERSP) to analyze the perturbation 
+characteristics of the time -frequency perturbation [22]. The 
+mathematical form of this method is as follows: 
+After wavelet transform, the time-frequency decomposition of 
+the EEG signal for the 𝑘𝑘th trial is denoted as 𝐹𝐹
+𝑘𝑘(𝑓𝑓, 𝑡𝑡), where 𝑓𝑓 
+represents frequency, 𝑡𝑡 represents time. ERSP first calculates the 
+Event-Related Spectrum (ERS): 
+ERS = 1
+𝑛𝑛� |𝐹𝐹𝑘𝑘(𝑓𝑓, 𝑡𝑡)|2
+𝑛𝑛
+𝑘𝑘=1
+(1) 
+This article has been accepted for publication in IEEE Journal of Biomedical and Health Informatics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JBHI.2026.3679603
+© 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted,
+but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Hong Kong Polytechnic University. Downloaded on May 21,2026 at 07:44:05 UTC from IEEE Xplore.  Restrictions apply. 
+===== PAGE 4 =====
+ 
+ 
+Subsequently, compute the global mean 𝜇𝜇(𝑓𝑓) and standard 
+deviation 𝜎𝜎(𝑓𝑓) at each frequency point: 
+𝜇𝜇(𝑓𝑓) = 1
+𝑛𝑛𝑛𝑛� � |𝐹𝐹𝑘𝑘(𝑓𝑓, 𝑡𝑡)|2
+𝑡𝑡
+𝑛𝑛
+𝑘𝑘=1
+(2) 
+𝜎𝜎(𝑓𝑓) = � 1
+𝑛𝑛𝑛𝑛− 1 � �� |𝐹𝐹𝑘𝑘(𝑓𝑓, 𝑡𝑡)|2 − 𝜇𝜇(𝑓𝑓)�
+2
+𝑡𝑡
+𝑛𝑛
+𝑘𝑘=1
+(3) 
+In the above equation, 𝑛𝑛 r epresents the number of time points 
+set as the baseline (in this study, the time point before the onset 
+of the auditory stimulus is set as the baseline time point to 
+facilitate the examination of power changes in EEG signals 
+across frequencies after the o nset of the stimulus compared to 
+before the target appears). Finally, the ERSP value at  (𝑓𝑓, 𝑡𝑡) is 
+defined as: 
+𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸(𝑓𝑓, 𝑡𝑡) = �𝐸𝐸𝐸𝐸𝐸𝐸(𝑓𝑓, 𝑡𝑡) − 𝜇𝜇(𝑓𝑓)
+𝜎𝜎(𝑓𝑓)
+� (4) 
+D. Source Domain Analysis 
+We used the source analysis method to estimate the location, 
+direction, and intensity of neural activity sources in the brain, 
+based on the EEG signals. Firstly, the brain was divided into a 
+three-dimensional grid in order to establish a forward conduction 
+model. In this study, the symmetric boundary element method 
+was utilized to construct the forward conduction model  [23]. 
+Furthermore, we employed the standardized LOw Resolution 
+brain Electromagnetic TomogrAphy (sLORETA) [24] method to 
+solve for the dipole discharge activity at the vertex of each grid, 
+and its fundamental mathematical process was as follows: 
+Let 𝛷𝛷 represent the measured EEG signals, with the number 
+of channels being 𝑁𝑁
+𝐸𝐸. The dipole discharge information at the 𝑙𝑙-
+th grid vertex along the 𝑥𝑥, 𝑦𝑦, and 𝑧𝑧 axes is denoted as𝐽𝐽𝑙𝑙 , which is 
+in the form: 
+𝐽𝐽𝑙𝑙
+𝑇𝑇= �𝐽𝐽𝑙𝑙
+𝑥𝑥, 𝐽𝐽𝑙𝑙
+𝑦𝑦, 𝐽𝐽𝑙𝑙
+𝑧𝑧�  , where 𝐽𝐽𝑙𝑙 𝜖𝜖 𝐸𝐸3×1 (5) 
+ 
+L
+et 𝐽𝐽 be the matrix composed of the dipole discharge 
+information at all vertices. The sLORETA method assumes a 
+relationship between 𝛷𝛷 and 𝐽𝐽 as follows: 
+𝛷𝛷= 𝐾𝐾
+𝐽𝐽+ 𝑐𝑐𝑐𝑐 (6) 
+Where 𝐽𝐽 is given by: 
+𝐽𝐽= �𝐽𝐽1
+𝑇𝑇, 𝐽𝐽2
+𝑇𝑇, 𝐽𝐽3
+𝑇𝑇… 𝐽𝐽𝑁𝑁𝑣𝑣
+𝑇𝑇�
+𝑇𝑇
+(7) 
+In the equation above, 𝑐𝑐 is a constant, 𝑐𝑐 is  the identity matrix, 
+and 𝑁𝑁𝑣𝑣  is the number of grid vertices. The meaning of the 
+equation is that the EEG signals measured from the scalp are the 
+result of the combined discharge of all dipoles at the grid vertices 
+after intracranial conduction. The relationship between the 𝑖𝑖-th 
+EEG channel and the 𝑙𝑙-th dipole is characterized by the 𝑘𝑘
+𝑖𝑖,𝑙𝑙  entry 
+in the matrix 𝐾𝐾. The solution for 𝐾𝐾 and 𝐽𝐽 is achieved by 
+minimizing the objective function 𝐹𝐹: 
+𝐹𝐹= ‖𝛷𝛷 −𝐾𝐾
+𝐽𝐽− 𝑐𝑐𝑐𝑐‖2 + 𝛼𝛼‖𝐽𝐽‖2 (8) 
+In
+ this equation, the first term measures the error between the 
+computed 𝐾𝐾 and 𝐽𝐽 under equation (6) and the observed 𝛷𝛷. The 
+term 𝛼𝛼‖𝐽𝐽‖2   is a regularization term, where 𝛼𝛼 is the 
+regularization parameter. Minimizing the objective function F 
+involves selecting the 𝐽𝐽 with the smallest dipole moment and the 
+corresponding 𝐾𝐾 among all possible solutions. 
+E. AC-DANet 
+To decode the perception of auditory targets in complex 
+acoustic scenes from single-trial EEG data, we propose the AC-
+DANet. The architectural design of AC-DANet is not based on a 
+generic deep learning template; rather, it is fundamentally 
+motivated by a detailed analysis of the underlying neural 
+representations of auditory perception, which we will elaborate 
+upon in the Results section (Sec. IV .B). The network's core 
+structure is designed to mimic the functional specialization and 
+synergistic interaction of the brain's ventral and dorsal attention 
+pathways. The architecture, depicted in Fig. 3, comprises three 
+principal stages: (1) Multi -modal Neural Representation 
+Embedding, (2) a Dual -Pathway Attention Core, and (3) an 
+Executive Decision Unit trained with a joint loss function. 
+1) Multi-modal Neural Representation Embedding: The 
+initial stage of the network decomposes the raw EEG signal, 
+denoted as X ∈ ℝ𝐵𝐵×𝐶𝐶×𝑇𝑇 (where 𝐵𝐵 is batch size, 𝐶𝐶 is the 
+number of channels, and 𝑇𝑇 is the number of time steps), into 
+three parallel, neuroscientifically-principled data streams. This 
+decomposition is crucial for providing functionally specialized 
+inputs to the subsequent dual pathways. 
+The ERP-Stream (X𝐸𝐸𝐸𝐸𝐸𝐸= X) directly utilizes the raw time -
+series data to preserve the precise temporal dynamics of Event-
+Related Potentials. As our results will demonstrate, the 
+morphology and latency of these potentials are direct correlates 
+of cognitive processing stages, making this stream essential for 
+the top-down control pathway. 
+The ERSP-Stream (X
+𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸) is a time-frequency representation 
+computed dynamically via the Short -Time Fourier Transform 
+(STFT), X𝐸𝐸𝐸𝐸𝐸𝐸𝐸𝐸= |STFT(X)| ∈ ℝ𝐵𝐵×𝐶𝐶×𝐹𝐹×𝑇𝑇′
+, where 𝐹𝐹 and 𝑇𝑇′ are 
+the numbers of frequency bins and time frames, respectively. 
+This stream provides an explicit representation of the stimulus's 
+physical energy distribution over time and frequency, which is 
+the primary evidence required for the bottom -up saliency 
+detection pathway. 
+The Source-Stream (X𝐸𝐸𝑆𝑆 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆) is designed to approximate the 
+activity of task-relevant neural source clusters. It is generated by 
+a Constrained Learnable Spatial Filter, which is a 1D 
+convolutional layer applied to the sensor-space data. To ensure 
+this data-driven projection is neurophysiologically plausible and 
+interpretable, we introduce two critical constraints. First, the filter 
+weights are initialized based on neuroscientific priors derived 
+from our source analysis, biasing the network towards learning 
+anatomically meaningful components (e.g., temporal vs. fronto-
+parietal). Second, an L1 sparsity penalty is applied to the filter 
+weights during training, encouraging each filter to learn a focal 
+spatial pattern that mimics a localized neural source. The 
+resulting stream is computed as: 
+X
+𝐸𝐸𝑆𝑆 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆= ReLU(W𝑠𝑠𝑆𝑆 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆∗ X + b𝑠𝑠𝑆𝑆 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆) ∈ ℝ𝐵𝐵×𝑁𝑁𝑟𝑟𝑟𝑟𝑟𝑟×𝑇𝑇 (9) 
+w
+here the weights W𝑠𝑠𝑆𝑆 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆 are regularized by an L1 loss term, 
+ℒ𝐿𝐿1= ||W𝑠𝑠𝑆𝑆 𝑆𝑆𝑆𝑆𝑆𝑆𝑆𝑆||1. 
+2) The Dual-Pathway Attention Core: The heart of AC-
+DANet is its Dual-Pathway Architecture (DPA), which 
+This article has been accepted for publication in IEEE Journal of Biomedical and Health Informatics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JBHI.2026.3679603
+© 2026 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted,
+but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Hong Kong Polytechnic University. Downloaded on May 21,2026 at 07:44:05 UTC from IEEE Xplore.  Restrictions apply. 
